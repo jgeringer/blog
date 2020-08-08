@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import SwitchComponents from './SwitchComponents'
+import SwitchComponents from './switchComponents'
 
 class ContentArea extends Component {
     render() {
