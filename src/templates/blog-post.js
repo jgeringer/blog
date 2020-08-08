@@ -7,6 +7,8 @@ import Layout from '../components/layout'
 
 import heroStyles from '../components/hero.module.css'
 
+import ContentArea from '../components/contentArea'
+
 class BlogPostTemplate extends React.Component {
   render() {
     const post = get(this.props, 'data.contentfulBlogPost')
@@ -25,6 +27,13 @@ class BlogPostTemplate extends React.Component {
           </div>
           <div className="wrapper">
             <h1 className="section-headline">{post.title}</h1>
+            
+            <p>For each contentType, load them here</p>
+
+            {post.contentArea !== null && 
+              <ContentArea content={post.contentArea} />
+            }
+
             <p
               style={{
                 display: 'block',
@@ -61,6 +70,15 @@ export const pageQuery = graphql`
           ...GatsbyContentfulFluid_tracedSVG
         }
       }
+      contentArea {
+        __typename
+        id
+        title
+        galleryItems {
+          title
+          description
+        }
+      }
       body {
         childMarkdownRemark {
           html
@@ -69,3 +87,14 @@ export const pageQuery = graphql`
     }
   }
 `
+
+// contentArea {
+//   ...on ContentfulGallery {
+//     __typename
+//     title
+//     galleryItems {
+//       title
+//       description
+//     }
+//   }
+// }
