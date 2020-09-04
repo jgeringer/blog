@@ -1,37 +1,42 @@
 import React from 'react'
+import Interest from 'interestjs'
 
 class Calculator extends React.Component {
 
   constructor(props) {
     super(props)
+
     this.state = {
       rVal: this.props.rangeVal,
       rValMin: this.props.rangeValMin,
-      rValMax: this.props.rangeValMax
+      rValMax: this.props.rangeValMax,
+      percentage: 20,
+      monthlyInterestRate: (10/100) / 12
     };
   }
-
+  
   handleChange = (event) => {
     this.setState({
       rVal: event.target.value
     })
   }
 
+  totalInterest = (months) => {
+    const interest = Interest((this.state.rVal / months), months, this.state.percentage)
+    return (interest.interestSum).toFixed(2)
+  }
+
+  totalMonthlyPayment = (months) => {
+    const interest = Interest((this.state.rVal / months), months, this.state.percentage)
+    return (interest.sum / months).toFixed(2)
+  }
+
   render() {
     // https://www.thebalance.com/calculate-monthly-interest-315421#:~:text=To%20calculate%20a%20monthly%20interest,APR%20of%2010%25%20per%20year.
 
-    let interest = 10/100 // 10%
-    let interestRate = interest/12
-
-    let threeMonthsPerMonth = interestRate * this.state.rVal
-    let threeMonthsInterest = ((this.state.rVal / 3) * interest * 12) // 0.10/12 = 10% apr, 12 months
-
-    let sixMonthsPerMonths = interestRate * this.state.rVal
-    let sixMonthsInterest = ((this.state.rVal / 6) * interest * 12) // 0.10/12 = 10% apr, 12 months
-
     return (
       <>
-        <div>Calculator!</div>
+        <div>Calculator</div>
 
         <div>
           {this.state.rValMin}
@@ -54,36 +59,20 @@ class Calculator extends React.Component {
 
         <table cellPadding="6" width="300" style={{margin: `0 auto`}}>
           <tbody>
-            <tr>
+
+            {this.props.months.map((month, index) => (
+            <tr key={index}>
               <td>
-                  3 monthly payments of<br />
-                  Interest Rate: 10% APR<br />
-                  Total Interest: ${((threeMonthsPerMonth)).toFixed(2)}
+                  {month} monthly payments of<br />
+                  Interest Rate: {this.state.percentage}% APR<br />
+                  Total Interest: ${this.totalInterest(month)}
               </td>
               <td valign="top">
-                <strong>${((threeMonthsInterest)).toFixed(2)}</strong>
+                <strong>${this.totalMonthlyPayment(month)}</strong>
               </td>
             </tr>
-            <tr>
-            <td>
-                  6 monthly payments of<br />
-                  Interest Rate: 10% APR<br />
-                  Total Interest: ${(sixMonthsPerMonths).toFixed(2)}
-              </td>
-              <td valign="top">
-                <strong>${(sixMonthsInterest).toFixed(2)}</strong>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                  12 monthly payments<br />
-                  Interest Rate: 10%<br />
-                  Total Interest: $10.00
-              </td>
-              <td>
-                <strong>$10.00</strong>
-              </td>
-            </tr>
+            ))}
+            
           </tbody>
         </table>
 

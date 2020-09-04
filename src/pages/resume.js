@@ -12,7 +12,7 @@ class ResumeIndex extends React.Component {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const detail = get(this, 'props.data.allContentfulResume.edges[0]')
 
-    const rangeValue = 2000
+    const rangeValue = 500
     const rangeMinValue = 100
     const rangeMaxValue = 5000
 
@@ -23,7 +23,7 @@ class ResumeIndex extends React.Component {
           <div className={styles.hero}>Resume</div>
           <div className="wrapper">
 
-            <Calculator rangeVal={rangeValue} rangeValMin={rangeMinValue} rangeValMax={rangeMaxValue} />
+            <Calculator months={[3,6,12]} rangeVal={rangeValue} rangeValMin={rangeMinValue} rangeValMax={rangeMaxValue} />
 
             <br /><br /><br /><br /><br /><br /><br /><br /><br />
 
