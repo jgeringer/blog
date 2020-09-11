@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet'
 import styles from './blog.module.css'
 import Layout from '../components/layout'
 import ResumeDetail from '../components/resume-detail'
-import Calculator from '../components/calculator'
+import Calculator from '../components/Calculator'
 
 class ResumeIndex extends React.Component {
   render() {

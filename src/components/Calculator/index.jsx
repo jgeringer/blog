@@ -1,7 +1,13 @@
 import React from 'react'
 import Interest from 'interestjs'
+import PropTypes from 'prop-types'
+import styles from './style.module.css' 
 
 class Calculator extends React.Component {
+
+  static propTypes = {
+    rangeVal: PropTypes.number
+  }
 
   constructor(props) {
     super(props)
@@ -10,14 +16,13 @@ class Calculator extends React.Component {
       rVal: this.props.rangeVal,
       rValMin: this.props.rangeValMin,
       rValMax: this.props.rangeValMax,
-      percentage: 20,
-      monthlyInterestRate: (10/100) / 12
+      percentage: 20
     };
   }
   
-  handleChange = (event) => {
+  handleChange = (e) => {
     this.setState({
-      rVal: event.target.value
+      rVal: e.target.value
     })
   }
 
@@ -32,7 +37,7 @@ class Calculator extends React.Component {
   }
 
   render() {
-    // https://www.thebalance.com/calculate-monthly-interest-315421#:~:text=To%20calculate%20a%20monthly%20interest,APR%20of%2010%25%20per%20year.
+    const colorCode = (this.state.rVal > 900 ? styles.red : ``)
 
     return (
       <>
@@ -52,8 +57,11 @@ class Calculator extends React.Component {
         </div>
 
         <div>
-          <p style={{textAlign: `center`, fontWeight: `bold`}}>
-            Purchase: ${this.state.rVal}
+          <p className={styles.purchaseAmount}>
+            Purchase: 
+            <span className={colorCode}>
+              ${this.state.rVal}
+            </span>
           </p>
         </div>
 

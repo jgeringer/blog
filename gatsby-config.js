@@ -2,6 +2,9 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
+const path = require('path')
+const resolver = require('postcss-import-resolver')
+
 const contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
@@ -36,6 +39,28 @@ module.exports = {
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
+    },
+    {
+      resolve: `gatsby-plugin-postcss`,
+      options: {
+        cssLoaderOptions: {
+          module: true,
+          localIdentName: '[folder]-[local]--[hash:base64:5]',
+        },
+        parser: 'postcss-scss',
+        postCssPlugins: [
+          require('postcss-import')({
+            resolve: resolver({
+              alias: {
+                '~styles': path.resolve(__dirname, 'src/styles'),
+              },
+              extensions: ['.css'],
+              modules: ['src', 'node_modules'],
+            }),
+          }),
+          require('precss')
+        ],
+      },
     },
   ],
 }

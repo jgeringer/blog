@@ -25,6 +25,9 @@ export default () => (
       <li>
         <a href="https://www.linkedin.com/in/joe-geringer/" target="_blank">LinkedIn</a>
       </li>
+      <li>
+        <Link to="/Uses/">Uses</Link>
+      </li>
     </ol>
   </nav>
 )
