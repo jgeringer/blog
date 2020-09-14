@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^14.1.1",
+    "babel-jest": "^26.3.0",
+    "babel-preset-gatsby": "^0.5.9",
     "contentful": "^7.14.4",
     "gatsby-image": "^2.3.4",
     "gatsby-plugin-postcss": "^2.3.11",
@@ -16,7 +18,9 @@
     "gatsby-source-contentful": "^2.2.9",
     "gatsby-transformer-remark": "^2.7.3",
     "gatsby-transformer-sharp": "^2.4.6",
+    "identity-obj-proxy": "^3.0.0",
     "interestjs": "^1.0.0",
+    "jest": "^26.4.2",
     "lodash": "^4.17.15",
     "postcss": "^7.0.32",
     "postcss-custom-media": "^7.0.8",
@@ -30,6 +34,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
+    "react-test-renderer": "^16.13.1",
     "sharp": "^0.25.2"
   },
   "devDependencies": {
@@ -64,7 +69,7 @@
     "dev": "npm run develop",
     "develop": "gatsby develop",
     "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js' 'src/**/*.md' 'bin/*.js'",
     "build": "gatsby build",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
