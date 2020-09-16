@@ -108,7 +108,7 @@ class Testing extends React.Component {
       <Layout location={this.props.location}>
         <div>
           <p>Testing Static...</p>
-          <CalculatorStatic data={calculatorData} />
+          {/* <CalculatorStatic data={calculatorData} /> */}
         </div>
       </Layout>
     )
