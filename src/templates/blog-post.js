@@ -27,12 +27,12 @@ class BlogPostTemplate extends React.Component {
           </div>
           <div className="wrapper">
             <h1 className="section-headline">{post.title}</h1>
-            
+
             <p>For each contentType, load them here</p>
 
-            {post.contentArea !== null && 
-              <ContentArea content={post.contentArea} />
-            }
+            {post.contentArea !== null && (
+              <ContentArea contentTypes={post.contentArea} />
+            )}
 
             <p
               style={{
@@ -72,11 +72,9 @@ export const pageQuery = graphql`
       }
       contentArea {
         __typename
-        id
-        title
-        galleryItems {
-          title
-          description
+        ... on Node {
+          ...Gallery
+          ...Calculator
         }
       }
       body {

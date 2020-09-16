@@ -1,0 +1,16 @@
+@import '~styles/imports/index';
+
+.purchaseAmount {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+.red {
+    color: $color-red;
+}
+
+@media (--smartphone) {
+    .purchaseAmount {
+        font-size: 1rem;
+    }
+}

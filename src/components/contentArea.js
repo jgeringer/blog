@@ -1,18 +1,17 @@
 import React, { Component } from 'react'
-
-import SwitchComponents from './switchComponents'
+import ComponentList from './componentList'
 
 class ContentArea extends Component {
-    render() {
-        return this.props.content.map((item, index) => {
-            const DynamicComponent = SwitchComponents[item.__typename]
-            console.warn(item)
-            return (
-                <DynamicComponent key={item.contentful_id} content={item} />
-            )
-        })
-    }
+  render() {
+    console.log('Content Area', this.props)
+    return this.props.contentTypes.map((item, index) => {
+      console.log(item)
+      const DynamicComponent = ComponentList[item.__typename]
+      if (DynamicComponent !== undefined) {
+        return <DynamicComponent key={index} content={item} />
+      }
+    })
+  }
 }
 
 export default ContentArea
-
