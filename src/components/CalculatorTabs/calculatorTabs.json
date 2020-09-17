@@ -1,0 +1,52 @@
+{
+  "initValue": 500,
+  "minValue": 100,
+  "maxValue": 2000,
+  "items": [
+    {
+      "product": "Shoes",
+      "value": 250,
+      "terms": [
+        {
+          "payments": 3,
+          "affirm": {
+            "totalInterest": 2.5,
+            "monthlyPayment": 34,
+            "totalCost": 102.5
+          },
+          "creditCard": {
+            "totalInterest": 2.5,
+            "monthlyPayment": 34,
+            "totalCost": 102.5
+          }
+        },
+        {
+          "payments": 6,
+          "affirm": {
+            "totalInterest": 3.5,
+            "monthlyPayment": 44,
+            "totalCost": 108.5
+          },
+          "creditCard": {
+            "totalInterest": 4.5,
+            "monthlyPayment": 54,
+            "totalCost": 112.5
+          }
+        },
+        {
+          "payments": 12,
+          "affirm": {
+            "totalInterest": 4.5,
+            "monthlyPayment": 44,
+            "totalCost": 142.5
+          },
+          "creditCard": {
+            "totalInterest": 4.5,
+            "monthlyPayment": 44,
+            "totalCost": 142.5
+          }
+        }
+      ]
+    }
+  ]
+}

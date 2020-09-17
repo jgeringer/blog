@@ -1,7 +1,7 @@
 {
   "initValue": 500,
   "minValue": 100,
-  "maxValue": 2000,
+  "maxValue": 3000,
   "purchasePrices": [
     {
       "value": 100,
@@ -92,6 +92,29 @@
           "totalInterest": 49.65,
           "monthlyPayment": 51.14,
           "totalCost": 562.68
+        }
+      ]
+    },
+    {
+      "value": 3000,
+      "terms": [
+        {
+          "payments": 3,
+          "totalInterest": 27.63,
+          "monthlyPayment": 198.74,
+          "totalCost": 651.52
+        },
+        {
+          "payments": 6,
+          "totalInterest": 33.42,
+          "monthlyPayment": 96.01,
+          "totalCost": 566.34
+        },
+        {
+          "payments": 12,
+          "totalInterest": 54.65,
+          "monthlyPayment": 52.14,
+          "totalCost": 662.69
         }
       ]
     }

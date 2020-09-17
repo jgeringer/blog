@@ -13,6 +13,12 @@ export const CalculatorQuery = graphql`
         }
       }
     }
+    image {
+      title
+      fluid(maxWidth: 980) {
+        ...GatsbyContentfulFluid
+      }
+    }
     footer {
       json
     }

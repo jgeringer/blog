@@ -1,14 +1,11 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import PropTypes, { string } from 'prop-types'
 import RichText from '../RichText'
+import Img from 'gatsby-image'
 
 import calculatorDataJSON from './calculatorSlider.json'
 
 class CalculatorStatic extends React.Component {
-  static propTypes = {
-    rangeVal: PropTypes.number,
-  }
-
   // fetch static json
   calculatorData = calculatorDataJSON
 
@@ -16,39 +13,48 @@ class CalculatorStatic extends React.Component {
     super(props)
     this.state = {
       value: this.calculatorData.initValue,
+      valueSet: this.calculatorData.purchasePrices.map((item) => item.value),
     }
   }
 
+  // valueSet:
+  // loop through all of the purchasePrices.value
+
   handleChange = (e) => {
+    const elValue = e.target.value
     this.setState({
-      value: e.target.value,
+      value: this.state.valueSet.reduce(function (prev, curr) {
+        return Math.abs(curr - elValue) < Math.abs(prev - elValue) ? curr : prev
+      }),
     })
   }
 
-
   render() {
+    const { headline, subheadline } = this.props.content
+    const { fluid, title } = this.props.content.image
+
     return (
       <>
-        <div>Calculator: Static</div>
+        <Img fluid={fluid} alt={title} />
 
-        <h3>{this.props.content.headline}</h3>
-        <p>{this.props.content.subheadline}</p>
+        <div>Calculator: Static!</div>
+
+        <h3>{headline}</h3>
+        <p>{subheadline}</p>
 
         <div>
           <input
             type="range"
             name="number1"
-            defaultValue={this.state.value}
+            value={this.state.value}
             list="sizes"
             min={this.calculatorData.minValue}
             max={this.calculatorData.maxValue}
-            onMouseUp={this.handleChange}
+            onChange={this.handleChange}
           />
           <datalist id="sizes">
             {this.calculatorData.purchasePrices.map((item, index) => {
-              return (
-                <option key={index}>{item.value}</option>
-              )
+              return <option key={index}>{item.value}</option>
             })}
           </datalist>
         </div>
@@ -95,6 +101,22 @@ class CalculatorStatic extends React.Component {
       </>
     )
   }
+}
+
+CalculatorStatic.propTypes = {
+  content: PropTypes.object,
+  headline: PropTypes.string,
+  subheadline: PropTypes.string,
+  fluid: PropTypes.string,
+  title: PropTypes.string,
+}
+
+CalculatorStatic.defaultProps = {
+  content: {},
+  headline: '',
+  subheadline: '',
+  fluid: '',
+  title: '',
 }
 
 export default CalculatorStatic
