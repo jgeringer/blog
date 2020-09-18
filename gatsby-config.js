@@ -41,6 +41,22 @@ module.exports = {
       options: contentfulConfig,
     },
     {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          "@src": "src",
+          "@components": "src/components",
+          "@pages": "src/pages",
+          "@templates": "src/templates",
+          "@styles": "src/styles",
+          "@assets": "src/assets",
+        },
+        extensions: [
+          "js",
+        ],
+      }
+    },
+    {
       resolve: `gatsby-plugin-postcss`,
       options: {
         cssLoaderOptions: {

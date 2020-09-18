@@ -1,4 +1,5 @@
 import React from 'react'
+import Modal from '@components/Modal';
 
 class CalculatorTabs extends React.Component {
   // constructor here
@@ -13,11 +14,37 @@ class CalculatorTabs extends React.Component {
           <div>Tab</div>
 
           <div>
-            Payment Term
-            <select class="Filters-dropdown">
-              <option value="6">6 months</option>
-              <option value="12">12 months</option>
-            </select>
+            
+            {/* Chart */}
+            <section>
+              <ol>
+                <li>Cost of item</li>
+                <li>Interest</li>
+                <li>Potential fees</li>
+              </ol>
+            </section>
+
+            <aside>
+              <div>
+                Payment Term
+                <select className="Filters-dropdown">
+                  <option value="6">6 months</option>
+                  <option value="12">12 months</option>
+                </select>
+              </div>
+              <div>
+                Monthly payment $XX.XX
+              </div>
+              <div>
+                total: $XX.XX<br />
+                int: $XX.XX
+              </div>
+            </aside>
+
+            <p>Blurb.</p>
+
+            <Modal />
+
           </div>
 
           <div></div>

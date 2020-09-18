@@ -17,9 +17,6 @@ class CalculatorStatic extends React.Component {
     }
   }
 
-  // valueSet:
-  // loop through all of the purchasePrices.value
-
   handleChange = (e) => {
     const elValue = e.target.value
     this.setState({
@@ -46,11 +43,12 @@ class CalculatorStatic extends React.Component {
           <input
             type="range"
             name="number1"
-            value={this.state.value}
+            defaultValue={this.state.value}
             list="sizes"
             min={this.calculatorData.minValue}
             max={this.calculatorData.maxValue}
-            onChange={this.handleChange}
+            onMouseUp={this.handleChange}
+            key={Date.now()}
           />
           <datalist id="sizes">
             {this.calculatorData.purchasePrices.map((item, index) => {
