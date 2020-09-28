@@ -1,28 +1,25 @@
 {
   "initValue": 500,
   "minValue": 100,
-  "maxValue": 3000,
+  "maxValue": 5000,
   "purchasePrices": [
     {
       "value": 100,
       "terms": [
         {
           "payments": 3,
-          "totalInterest": 2.5,
-          "monthlyPayment": 34,
-          "totalCost": 102.5
+          "totalInterest": 3.36,
+          "monthlyPayment": 34.45
         },
         {
           "payments": 6,
-          "totalInterest": 5.0,
-          "monthlyPayment": 18,
-          "totalCost": 108.24
+          "totalInterest": 5.93,
+          "monthlyPayment": 17.66
         },
         {
           "payments": 12,
-          "totalInterest": 60.15,
-          "monthlyPayment": 9.85,
-          "totalCost": 116.36
+          "totalInterest": 11.19,
+          "monthlyPayment": 9.27
         }
       ]
     },
@@ -31,21 +28,18 @@
       "terms": [
         {
           "payments": 3,
-          "totalInterest": 12.52,
-          "monthlyPayment": 170.84,
-          "totalCost": 512.52
+          "totalInterest": 16.79,
+          "monthlyPayment": 172.26
         },
         {
           "payments": 6,
-          "totalInterest": 22.33,
-          "monthlyPayment": 87.04,
-          "totalCost": 522.23
+          "totalInterest": 29.67,
+          "monthlyPayment": 88.28
         },
         {
           "payments": 12,
-          "totalInterest": 41.55,
-          "monthlyPayment": 45.13,
-          "totalCost": 541.55
+          "totalInterest": 55.94,
+          "monthlyPayment": 46.33
         }
       ]
     },
@@ -54,21 +48,18 @@
       "terms": [
         {
           "payments": 3,
-          "totalInterest": 13.52,
-          "monthlyPayment": 175.84,
-          "totalCost": 582.52
+          "totalInterest": 33.58,
+          "monthlyPayment": 344.53
         },
         {
           "payments": 6,
-          "totalInterest": 23.33,
-          "monthlyPayment": 88.04,
-          "totalCost": 529.23
+          "totalInterest": 59.35,
+          "monthlyPayment": 176.56
         },
         {
           "payments": 12,
-          "totalInterest": 42.55,
-          "monthlyPayment": 46.13,
-          "totalCost": 542.67
+          "totalInterest": 111.88,
+          "monthlyPayment": 92.66
         }
       ]
     },
@@ -77,21 +68,18 @@
       "terms": [
         {
           "payments": 3,
-          "totalInterest": 17.63,
-          "monthlyPayment": 188.74,
-          "totalCost": 601.52
+          "totalInterest": 67.16,
+          "monthlyPayment": 689.05
         },
         {
           "payments": 6,
-          "totalInterest": 29.42,
-          "monthlyPayment": 94.01,
-          "totalCost": 546.34
+          "totalInterest": 118.69,
+          "monthlyPayment": 353.12
         },
         {
           "payments": 12,
-          "totalInterest": 49.65,
-          "monthlyPayment": 51.14,
-          "totalCost": 562.68
+          "totalInterest": 223.77,
+          "monthlyPayment": 185.31
         }
       ]
     },
@@ -100,21 +88,58 @@
       "terms": [
         {
           "payments": 3,
-          "totalInterest": 27.63,
-          "monthlyPayment": 198.74,
-          "totalCost": 651.52
+          "totalInterest": 100.74,
+          "monthlyPayment": 1033.58
         },
         {
           "payments": 6,
-          "totalInterest": 33.42,
-          "monthlyPayment": 96.01,
-          "totalCost": 566.34
+          "totalInterest": 178.04,
+          "monthlyPayment": 529.67
         },
         {
           "payments": 12,
-          "totalInterest": 54.65,
-          "monthlyPayment": 52.14,
-          "totalCost": 662.69
+          "totalInterest": 335.65,
+          "monthlyPayment": 277.97
+        }
+      ]
+    },
+    {
+      "value": 4000,
+      "terms": [
+        {
+          "payments": 3,
+          "totalInterest": 134.32,
+          "monthlyPayment": 1378.11
+        },
+        {
+          "payments": 6,
+          "totalInterest": 237.39,
+          "monthlyPayment": 706.23
+        },
+        {
+          "payments": 12,
+          "totalInterest": 447.53,
+          "monthlyPayment": 370.63
+        }
+      ]
+    },
+    {
+      "value": 5000,
+      "terms": [
+        {
+          "payments": 3,
+          "totalInterest": 167.90,
+          "monthlyPayment": 1722.63
+        },
+        {
+          "payments": 6,
+          "totalInterest": 296.73,
+          "monthlyPayment": 882.79
+        },
+        {
+          "payments": 12,
+          "totalInterest": 559.42,
+          "monthlyPayment": 463.28
         }
       ]
     }

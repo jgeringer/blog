@@ -26,6 +26,11 @@ class CalculatorStatic extends React.Component {
     })
   }
 
+  formatValue = (monthlyPayment, payments, totalInterest) => {
+    const formattedValue = (monthlyPayment * payments) + totalInterest
+    return  formattedValue.toFixed(2)
+  }
+
   render() {
     const { headline, subheadline } = this.props.content
     const { fluid, title } = this.props.content.image
@@ -79,7 +84,7 @@ class CalculatorStatic extends React.Component {
                             Total interest: ${term.totalInterest}
                             <br />${term.monthlyPayment}
                             <br />
-                            Total cost: ${term.totalCost}
+                            Total cost computed function: ${this.formatValue(term.monthlyPayment, term.payments, term.totalInterest)}
                             <br />
                             <br />
                           </div>
