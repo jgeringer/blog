@@ -1,7 +1,5 @@
 {
-    "workbench.editorAssociations": [
-    
-    ],
+    "workbench.editorAssociations": {},
     "workbench.colorCustomizations": {
         "[Monokai Dimmed]": {}
     },
