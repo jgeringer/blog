@@ -1,8 +1,8 @@
 name: End-to-end tests
 on: [push]
-env:
-  CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
-  CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN}}
+# env:
+#   CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+#   CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN}}
 
 jobs:
   cypress-run:
@@ -20,7 +20,7 @@ jobs:
 
       - name: Run Gatsby Develop
         uses: contentful/contentful-action@v1
-          env: # Set the secret as an input
+          env:
             CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
             CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
         run: yarn run gatsby develop
