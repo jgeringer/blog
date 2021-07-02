@@ -3,12 +3,24 @@ on: [push]
 env:
   CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
   CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN}}
+
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --prefer-offline
+
+      - name: Create and configure .env.development.json for Contentful
+        run: |
+          touch .env.development.json && echo {\"spaceId\": \"${CONTENTFUL_SPACE_ID}\", \"accessToken\": \"${CONTENTFUL_ACCESS_TOKEN}\"} > .contentful.json
+
+      - name: Run Gatsby Develop
+        run: yarn run gatsby develop
+
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
