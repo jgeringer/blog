@@ -16,7 +16,7 @@ jobs:
 
       - name: Create and configure .env.development.json for Contentful
         run: |
-          touch .env.development.json && echo {\"spaceId\": \"${CONTENTFUL_SPACE_ID}\", \"accessToken\": \"${CONTENTFUL_ACCESS_TOKEN}\"} > .contentful.json
+          touch .env.development.json && echo {\"CONTENTFUL_SPACE_ID\": \"${CONTENTFUL_SPACE_ID}\", \"CONTENTFUL_ACCESS_TOKEN\": \"${CONTENTFUL_ACCESS_TOKEN}\"} > .contentful.json
 
       - name: Run Gatsby Develop
         run: yarn run gatsby develop
