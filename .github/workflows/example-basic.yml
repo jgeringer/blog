@@ -1,5 +1,8 @@
 name: End-to-end tests
 on: [push]
+env:
+  CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+  CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN}}
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
