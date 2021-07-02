@@ -7,7 +7,7 @@ describe('My First Test', function () {
             cy.visit('https://example.cypress.io')
 
             // great for debugging
-            cy.pause()
+            // cy.pause()
 
             // - query for an element
             cy.contains('type').click()

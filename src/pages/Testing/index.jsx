@@ -7,9 +7,8 @@ class Testing extends React.Component {
     return (
       <Layout location={this.props.location}>
         <div>
-          <p>Testing Tabs...</p>
-
-          <CalculatorTabs />
+          <p>Testing</p>
+          <p>Looking for the testing text here.</p>
         </div>
       </Layout>
     )

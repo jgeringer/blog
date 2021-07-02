@@ -15,7 +15,7 @@ export default () => (
         <Link to="/resume/">Resume</Link>
       </li>
       <li className={styles.navigationItem}>
-        <Link to="/Testing/">Testing</Link>
+        <Link to="/testing" data-cy="cy-nav-testing">Testing</Link>
       </li>
     </ul>
     <ol>

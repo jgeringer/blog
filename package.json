@@ -10,6 +10,7 @@
     "@contentful/rich-text-react-renderer": "^14.1.1",
     "babel-jest": "^26.3.0",
     "babel-preset-gatsby": "^0.5.9",
+    "classnames": "^2.3.1",
     "contentful": "^7.14.4",
     "gatsby-image": "^2.3.4",
     "gatsby-plugin-alias-imports": "^1.0.5",
@@ -72,6 +73,7 @@
   },
   "scripts": {
     "cypress:open": "cypress open",
+    "cy:run": "cypress run",
     "dev": "npm run develop",
     "develop": "gatsby develop",
     "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
