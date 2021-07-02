@@ -13,12 +13,16 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile --prefer-offline
-
-      - name: Create and configure .env.development.json for Contentful
-        run: |
-          touch .env.development.json && echo {\"CONTENTFUL_SPACE_ID\": \"${env.CONTENTFUL_SPACE_ID}\", \"CONTENTFUL_ACCESS_TOKEN\": \"${env.CONTENTFUL_ACCESS_TOKEN}\"} > .contentful.json
+      
+      # - name: Create and configure .env.development.json for Contentful
+      #   run: |
+      #     touch .env.development.json && echo {\"CONTENTFUL_SPACE_ID\": \"${env.CONTENTFUL_SPACE_ID}\", \"CONTENTFUL_ACCESS_TOKEN\": \"${env.CONTENTFUL_ACCESS_TOKEN}\"} > .contentful.json
 
       - name: Run Gatsby Develop
+        uses: contentful/contentful-action@v1
+          env: # Set the secret as an input
+            CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+            CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
         run: yarn run gatsby develop
 
       # Install NPM dependencies, cache them correctly
