@@ -1350,38 +1350,10 @@
     "core-js-pure" "^3.0.0"
     "regenerator-runtime" "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.2.0", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
-  "integrity" "sha512-NE2DtOdufG7R5vnfQUTehdTfNycfUANEtCa9PssN9O/xmTzP4E08UI797ixaei6hBEVL9BI/PsdJS5x7mWoB9Q=="
-  "resolved" "https://registry.npmjs.org/@babel/runtime/-/runtime-7.9.2.tgz"
-  "version" "7.9.2"
-  dependencies:
-    "regenerator-runtime" "^0.13.4"
-
-"@babel/runtime@^7.10.2":
-  "integrity" "sha512-RzGO0RLSdokm9Ipe/YD+7ww8X2Ro79qiXZF3HU9ljrM+qnJmH1Vqth+hbiQZy761LnMJTMitHDuKVYTk3k4dLw=="
-  "resolved" "https://registry.npmjs.org/@babel/runtime/-/runtime-7.10.3.tgz"
-  "version" "7.10.3"
-  dependencies:
-    "regenerator-runtime" "^0.13.4"
-
-"@babel/runtime@^7.10.3":
-  "integrity" "sha512-TeWkU52so0mPtDcaCTxNBI/IHiz0pZgr8VEFqXFtZWpYD08ZB6FaSwVAS8MKRQAP3bYKiVjwysOJgMFY28o6Tw=="
-  "resolved" "https://registry.npmjs.org/@babel/runtime/-/runtime-7.11.2.tgz"
-  "version" "7.11.2"
-  dependencies:
-    "regenerator-runtime" "^0.13.4"
-
-"@babel/runtime@^7.11.2":
-  "integrity" "sha512-TeWkU52so0mPtDcaCTxNBI/IHiz0pZgr8VEFqXFtZWpYD08ZB6FaSwVAS8MKRQAP3bYKiVjwysOJgMFY28o6Tw=="
-  "resolved" "https://registry.npmjs.org/@babel/runtime/-/runtime-7.11.2.tgz"
-  "version" "7.11.2"
-  dependencies:
-    "regenerator-runtime" "^0.13.4"
-
-"@babel/runtime@^7.9.6":
-  "integrity" "sha512-RzGO0RLSdokm9Ipe/YD+7ww8X2Ro79qiXZF3HU9ljrM+qnJmH1Vqth+hbiQZy761LnMJTMitHDuKVYTk3k4dLw=="
-  "resolved" "https://registry.npmjs.org/@babel/runtime/-/runtime-7.10.3.tgz"
-  "version" "7.10.3"
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.3", "@babel/runtime@^7.11.2", "@babel/runtime@^7.2.0", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2", "@babel/runtime@^7.9.6":
+  "integrity" "sha512-/PCB2uJ7oM44tz8YhC4Z/6PeOKXp4K588f+5M3clr1M4zbqztlo0XEfJ2LEzj/FgwfgGcIdl8n7YYjTCI0BYwg=="
+  "resolved" "https://registry.npmjs.org/@babel/runtime/-/runtime-7.14.6.tgz"
+  "version" "7.14.6"
   dependencies:
     "regenerator-runtime" "^0.13.4"
 
@@ -8111,6 +8083,21 @@
   dependencies:
     "@babel/runtime" "^7.2.0"
 
+"gatsby-plugin-google-gtag@^2.1.13":
+  "integrity" "sha512-cpQJowgxgfekAZdkKHxp6iIcOCeC/378wRCNUo+/LJrpEXvGxkyPp31VjBfWKztGRm84ExVF65k5V81TBoZAeg=="
+  "resolved" "https://registry.npmjs.org/gatsby-plugin-google-gtag/-/gatsby-plugin-google-gtag-2.1.13.tgz"
+  "version" "2.1.13"
+  dependencies:
+    "@babel/runtime" "^7.11.2"
+    "minimatch" "^3.0.4"
+
+"gatsby-plugin-google-tagmanager@^2.4.0":
+  "integrity" "sha512-1DsLaHeLoUq5RUWPDPgHxa0mxdnCvJLuyoqP+h4U3w5PyMhk2Knso40PlR8NU7CfIWKn52m9CbFefjPpw9z5AA=="
+  "resolved" "https://registry.npmjs.org/gatsby-plugin-google-tagmanager/-/gatsby-plugin-google-tagmanager-2.4.0.tgz"
+  "version" "2.4.0"
+  dependencies:
+    "@babel/runtime" "^7.11.2"
+
 "gatsby-plugin-page-creator@^2.2.3":
   "integrity" "sha512-nQxFZOBUjqSBcFMs+1LaAJilmAPZ0BYxMZkcfQFju1Ql4pJP6SjcmET1X/nbJMBzoa32AGv5zWeum1rdNJ+tWw=="
   "resolved" "https://registry.npmjs.org/gatsby-plugin-page-creator/-/gatsby-plugin-page-creator-2.3.11.tgz"
@@ -8348,7 +8335,7 @@
     "semver" "^5.7.1"
     "sharp" "^0.25.1"
 
-"gatsby@^2.20.25":
+"gatsby@^2.0.0", "gatsby@^2.20.25":
   "integrity" "sha512-K+qO3Trb6Hhg4TGsQuElDn+Q5P1PSVM2h2tANq/jUF62on9m/aUKz/KUb/mQiEPP2PcgdgIBESHhjrIbBqUBSw=="
   "resolved" "https://registry.npmjs.org/gatsby/-/gatsby-2.20.25.tgz"
   "version" "2.20.25"

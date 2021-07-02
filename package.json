@@ -13,6 +13,8 @@
     "contentful": "^7.14.4",
     "gatsby-image": "^2.3.4",
     "gatsby-plugin-alias-imports": "^1.0.5",
+    "gatsby-plugin-google-gtag": "^2.1.13",
+    "gatsby-plugin-google-tagmanager": "^2.4.0",
     "gatsby-plugin-postcss": "^2.3.11",
     "gatsby-plugin-react-helmet": "^3.2.4",
     "gatsby-plugin-sharp": "^2.5.6",
