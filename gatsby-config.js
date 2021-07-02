@@ -12,9 +12,6 @@ const contentfulConfig = {
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
 }
 
-console.log(spaceId)
-console.log(process.env.CONTENTFUL_SPACE_ID)
-
 // if you want to use the preview API please define
 // CONTENTFUL_HOST in your environment config
 // the `host` property should map to `preview.contentful.com`
