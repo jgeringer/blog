@@ -22,6 +22,7 @@ jobs:
       #   run: yarn run gatsby develop
       - name: Run Gatsby Build 
         run: yarn run gatsby build 
+        with:
           env: CONTENTFUL_SPACE_ID=gop6x1ssjaqg, CONTENTFUL_ACCESS_TOKEN=vjrfHg8Nbo3z9rjUV40oVhIf3ZiwD0pIEbE43QGbtAU
 
 
