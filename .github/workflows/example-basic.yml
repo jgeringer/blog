@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        run: echo "SECRET is --- ${CONTENTFUL_SPACE_ID}"
+
 
       # - name: Install dependencies
       #   run: yarn install --frozen-lockfile --prefer-offline
