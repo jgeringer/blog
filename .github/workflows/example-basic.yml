@@ -17,10 +17,9 @@ jobs:
 
       - name: Dump Github Context
         env:
-          CONTEXT: ${{ toJson(github) }}
           SECRETS: ${{ toJson(secrets) }}
           TOK: ${{ secrets.ACCESS_TOKEN }}
-          TEST: ${{ secrets.TEST }
+          TEST: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }
         run: |
           echo $ACCESS_TOKEN
           echo $TOK
