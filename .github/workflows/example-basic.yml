@@ -15,8 +15,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Echo
-        run: echo "SECRET is --- ${{secrets.CONTENTFUL_SPACE_ID}}"
+      - name: Dump Github Context
+        env:
+          CONTEXT: ${{ toJson(github) }}
+          SECRETS: ${{ toJson(secrets) }}
+          TOK: ${{ secrets.ACCESS_TOKEN }}
+          TEST: ${{ secrets.TEST }
+        run: |
+          echo $ACCESS_TOKEN
+          echo $TOK
+          echo $TEST
+          echo $GITHUB_TOKEN
+          echo "$SECRETS"
+          echo "$CONTEXT"
 
       # - name: Install dependencies
       #   run: yarn install --frozen-lockfile --prefer-offline
