@@ -20,12 +20,15 @@ jobs:
 
       # - name: Run Gatsby Develop
       #   run: yarn run gatsby develop
+      - name: Run Gatsby Build 
+        run: yarn run gatsby build 
+          env: CONTENTFUL_SPACE_ID=gop6x1ssjaqg, CONTENTFUL_ACCESS_TOKEN=vjrfHg8Nbo3z9rjUV40oVhIf3ZiwD0pIEbE43QGbtAU
+
 
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          env: CONTENTFUL_SPACE_ID=gop6x1ssjaqg, CONTENTFUL_ACCESS_TOKEN=vjrfHg8Nbo3z9rjUV40oVhIf3ZiwD0pIEbE43QGbtAU
           start: npm start
           wait-on: http://localhost:8000
