@@ -24,7 +24,7 @@ jobs:
       # - name: Run Gatsby Develop
       #   run: yarn run gatsby develop
       - name: Run Gatsby Build 
-        run: yarn run gatsby build 
+        run: yarn build 
 
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
