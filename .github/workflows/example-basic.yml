@@ -19,14 +19,13 @@ jobs:
         env:
           SECRETS: ${{ secrets }}
           TOK: ${{ secrets.ACCESS_TOKEN }}
-          TEST: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }
+          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }
         run: |
           echo $ACCESS_TOKEN
           echo $TOK
-          echo $TEST
+          echo $CONTENTFUL_ACCESS_TOKEN
           echo $GITHUB_TOKEN
           echo "$SECRETS"
-          echo "$CONTEXT"
 
       # - name: Install dependencies
       #   run: yarn install --frozen-lockfile --prefer-offline
