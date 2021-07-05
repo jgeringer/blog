@@ -1,6 +1,6 @@
 name: End-to-end tests
 on: [push]
-env:
+# env:
   # CONTENTFUL_SPACE_ID: ${{ secrets.GITHUB_CONTENTFUL_SPACE_ID }}
   # CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
 # env:
