@@ -1,8 +1,8 @@
 name: End-to-end tests
 on: [push]
-# env:
-  # CONTENTFUL_SPACE_ID: ${{ secrets.GITHUB_CONTENTFUL_SPACE_ID }}
-  # CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+env:
+  CONTENTFUL_SPACE_ID: ${{ secrets.GITHUB_CONTENTFUL_SPACE_ID }}
+  CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
 # env:
 #   CONTENTFUL_SPACE_ID: 'gop6x1ssjaqg'
 #   CONTENTFUL_ACCESS_TOKEN: 'vjrfHg8Nbo3z9rjUV40oVhIf3ZiwD0pIEbE43QGbtAU'
@@ -14,18 +14,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Test
-        env:
-          TEST_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TEST_SECRET: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
-        run: |
-          echo ${#TEST_GITHUB_TOKEN}
-          echo ${#TEST_SECRET}
-
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+      # - name: Test
+      #   env:
+      #     TEST_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     TEST_SECRET: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+      #   run: |
+      #     echo ${#TEST_GITHUB_TOKEN}
+      #     echo ${#TEST_SECRET}
 
       # - name: Install dependencies
       #   run: yarn install --frozen-lockfile --prefer-offline
