@@ -32,6 +32,10 @@ jobs:
       # - name: Run Gatsby Develop
       #   run: yarn run gatsby develop
       
+      - name: Create and configure .env.development for Contentful
+        run: |
+          touch .env.development && echo {\"CONTENTFUL_SPACE_ID\": \"${CONTENTFUL_SPACE_ID}\", \"CONTENTFUL_ACCESS_TOKEN\": \"${CONTENTFUL_ACCESS_TOKEN}\"} > .env.development
+
 
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
@@ -40,10 +44,6 @@ jobs:
         with:
           start: npm start
           wait-on: http://localhost:8000
-
-      - name: Create and configure .env.development for Contentful
-        run: |
-          touch .env.development && echo {\"CONTENTFUL_SPACE_ID\": \"${CONTENTFUL_SPACE_ID}\", \"CONTENTFUL_ACCESS_TOKEN\": \"${CONTENTFUL_ACCESS_TOKEN}\"} > .env.development
 
       - name: Run Gatsby Build 
         run: yarn build 
