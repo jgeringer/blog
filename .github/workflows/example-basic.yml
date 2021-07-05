@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Echo
-        run: echo "SECRET is --- ${CONTENTFUL_SPACE_ID}"
+        run: echo "SECRET is --- ${{secrets.CONTENTFUL_SPACE_ID}}"
 
       # - name: Install dependencies
       #   run: yarn install --frozen-lockfile --prefer-offline
