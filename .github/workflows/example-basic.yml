@@ -42,8 +42,9 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
+          build: npm run build
           start: npm start
-          wait-on: http://localhost:8000
+          wait-on: http://localhost:9000
 
-      - name: Run Gatsby Build 
-        run: yarn build 
+      # - name: Run Gatsby Build 
+      #   run: yarn build 
