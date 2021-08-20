@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import styles from './kitchen.module.css'
+import KitchenFilter from '../../components/KitchenFilter'
 import KitchenList from '../../components/KitchenList'
 
 export default function Kitchen({ data }) {
@@ -12,8 +13,9 @@ export default function Kitchen({ data }) {
             <h2>Kitchen</h2>
             <ol>
                 <li>List all recipes</li>
+                <li>Filter</li>
             </ol>
-            
+            <KitchenFilter />
             <KitchenList recipes={recipes} />
         </>
     )
