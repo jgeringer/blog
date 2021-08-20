@@ -3,7 +3,6 @@ import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
 import { Helmet } from 'react-helmet'
 import styles from './blog.module.css'
-import Layout from '../components/layout'
 import ResumeDetail from '../components/resume-detail'
 import Calculator from '../components/Calculator'
 
@@ -17,7 +16,6 @@ class ResumeIndex extends React.Component {
     const rangeMaxValue = 5000
 
     return (
-      <Layout location={this.props.location}>
         <div style={{ background: '#fff' }}>
           <Helmet title={siteTitle} />
           <div className={styles.hero}>Resume</div>
@@ -30,7 +28,6 @@ class ResumeIndex extends React.Component {
             <ResumeDetail data={detail.node} />
           </div>
         </div>
-      </Layout>
     )
   }
 }

@@ -1,11 +1,11 @@
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
 console.log(`env: `, process.env.NODE_ENV);
 
-const path = require('path')
-const resolver = require('postcss-import-resolver')
+const path = require('path');
+const resolver = require('postcss-import-resolver');
 
 const contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID,
@@ -30,7 +30,7 @@ if (!spaceId || !accessToken) {
   )
 }
 
-module.exports = {
+export default {
   siteMetadata: {
     title: 'Gatsby Contentful starter',
   },

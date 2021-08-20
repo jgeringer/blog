@@ -3,57 +3,48 @@ import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import get from 'lodash/get'
 import Img from 'gatsby-image'
-import Layout from '../components/layout'
 
 import heroStyles from '../components/hero.module.css'
-
 import ContentArea from '../components/contentArea'
 
-class BlogPostTemplate extends React.Component {
-  render() {
-    const post = get(this.props, 'data.contentfulBlogPost')
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title')
+export default function BlogPostTemplate({ data: { post } }) {
+  const siteTitle = get(post, 'data.site.siteMetadata.title')
 
-    return (
-      <Layout location={this.props.location}>
-        <div style={{ background: '#fff' }}>
-          <Helmet title={`${post.title} | ${siteTitle}`} />
-          <div className={heroStyles.hero}>
-            <Img
-              className={heroStyles.heroImage}
-              alt={post.title}
-              fluid={post.heroImage.fluid}
-            />
-          </div>
-          <div className="wrapper">
-            <h1 className="section-headline">{post.title}</h1>
-
-            <p>For each contentType, load them here</p>
-
-            {post.contentArea !== null && (
-              <ContentArea contentTypes={post.contentArea} />
-            )}
-
-            <p
-              style={{
-                display: 'block',
-              }}
-            >
-              {post.publishDate}
-            </p>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: post.body.childMarkdownRemark.html,
-              }}
-            />
-          </div>
+  return (
+      <div style={{ background: '#fff' }}>
+        <Helmet title={`${post.title} | ${siteTitle}`} />
+        <div className={heroStyles.hero}>
+          <Img
+            className={heroStyles.heroImage}
+            alt={post.title}
+            fluid={post.heroImage.fluid}
+          />
         </div>
-      </Layout>
-    )
-  }
-}
+        <div className="wrapper">
+          <h1 className="section-headline">{post.title}</h1>
 
-export default BlogPostTemplate
+          <p>For each contentType, load them here</p>
+
+          {post.contentArea !== null && (
+            <ContentArea contentTypes={post.contentArea} />
+          )}
+
+          <p
+            style={{
+              display: 'block',
+            }}
+          >
+            {post.publishDate}
+          </p>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: post.body.childMarkdownRemark.html,
+            }}
+          />
+        </div>
+      </div>
+  )
+}
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
@@ -62,7 +53,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    contentfulBlogPost(slug: { eq: $slug }) {
+    post: contentfulBlogPost(slug: { eq: $slug }) {
       title
       publishDate(formatString: "MMMM Do, YYYY")
       heroImage {
@@ -85,14 +76,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-// contentArea {
-//   ...on ContentfulGallery {
-//     __typename
-//     title
-//     galleryItems {
-//       title
-//       description
-//     }
-//   }
-// }

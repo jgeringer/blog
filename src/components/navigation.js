@@ -17,6 +17,9 @@ export default () => (
       <li className={styles.navigationItem}>
         <Link to="/testing" data-cy="cy-nav-testing">Testing</Link>
       </li>
+      <li className={styles.navigationItem}>
+        <Link to="/kitchen">Kitchen</Link>
+      </li>
     </ul>
     <ol>
       <li>
