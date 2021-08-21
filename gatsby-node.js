@@ -37,6 +37,7 @@ async function turnRecipesIntoPages({ graphql, actions }) {
           title
           slug
           id
+          type
         }
       }
     }
@@ -44,13 +45,25 @@ async function turnRecipesIntoPages({ graphql, actions }) {
 
   data.recipes.nodes.forEach((recipe) => {
     actions.createPage({
-      path: `/kitchen/recipe/${recipe.slug}`,
+      path: `/kitchen/${recipe.type}/${recipe.slug}`,
       component: recipeTemplate,
       context: {
         slug: recipe.slug
       }
     });
   });
+
+  // data.mealTypes.nodes.forEach((type) => {
+  //   actions.createPage({
+  //     path: `/kitchen/${type.type}/${type.slug}`,
+  //     component: typesTemplate,
+  //     context: {
+  //       type: type.type,
+  //       slug: recipe.slug,
+  //     }
+  //   });
+  // });
+
 }
 
 
@@ -71,10 +84,11 @@ async function turnTypesIntoPages({ graphql, actions }) {
 
   data.mealTypes.nodes.forEach((type) => {
     actions.createPage({
-      path: `/kitchen/type/${type.type}`,
+      path: `/kitchen/${type.type}`,
       component: typesTemplate,
       context: {
-        type: type.type
+        type: type.type,
+        
       }
     });
   });

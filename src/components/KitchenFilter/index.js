@@ -56,7 +56,6 @@ console.log(typeWithCounts);
 
   return (
     <>
-      <p>filters coming soon</p>
       <Link to="/kitchen">
         <span className="name">All</span>
         <span className="count">: {recipes.totalCount}</span>
@@ -64,7 +63,7 @@ console.log(typeWithCounts);
 
       {typeWithCounts.map((type) => (
         <div>
-            <Link to={`/kitchen/type/${type.type}`} key={type.count}>
+            <Link to={`/kitchen/${type.type}`} key={type.count}>
                 <span className="name">{type.type} ({type.count})</span>
             </Link>
         </div>

@@ -30,6 +30,7 @@ export const query = graphql`
                 title
                 slug
                 id
+                type
             }
         }
     }
