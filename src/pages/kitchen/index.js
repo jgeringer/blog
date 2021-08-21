@@ -31,6 +31,46 @@ export const query = graphql`
                 slug
                 id
                 type
+                instructions {
+                    json
+                }
+                notes {
+                    json
+                }
+                rating
+                source
+                price
+                frozen
+                sides {
+                    title
+                    slug
+                    id
+                    type
+                    instructions {
+                        json
+                    }
+                    notes {
+                        json
+                    }
+                    rating
+                    source
+                    price
+                    frozen
+                }
+                ingredients {
+                    id
+                    amount
+                    unit
+                    type
+                    modification
+                    price
+                }
+                image {
+                    title
+                    fluid(maxWidth: 800) {
+                        ...GatsbyContentfulFluid
+                    }
+                }
             }
         }
     }

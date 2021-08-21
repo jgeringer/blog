@@ -28,7 +28,7 @@ if (!spaceId || !accessToken) {
 
 export default {
   siteMetadata: {
-    title: 'Gatsby Contentful starter',
+    title: 'Joe Geringer | Frontend Web Developer',
   },
   pathPrefix: '/gatsby-contentful-starter',
   plugins: [

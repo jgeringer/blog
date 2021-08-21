@@ -6,7 +6,7 @@ class Uses extends React.Component {
     render() {
         
         return (
-            <Layout location={this.props.location}>
+            <>
                 <div>
                     <Counter />
                     <h1>What I Use:</h1>
@@ -63,7 +63,7 @@ class Uses extends React.Component {
                         </li>
                     </ol>
                 </div>
-            </Layout>
+            </>
         )
     }
 }
