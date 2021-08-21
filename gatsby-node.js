@@ -53,10 +53,40 @@ async function turnRecipesIntoPages({ graphql, actions }) {
   });
 }
 
+
+
+async function turnTypesIntoPages({ graphql, actions }) {
+  const typesTemplate = path.resolve('./src/pages/kitchen/index.js');
+
+  const { data } = await graphql(`
+    query {
+      mealTypes: allContentfulTypeOfMeal {
+        nodes {
+          type
+          id
+        }
+      }
+    }
+  `);
+
+  data.mealTypes.nodes.forEach((type) => {
+    actions.createPage({
+      path: `/kitchen/type/${type.type}`,
+      component: typesTemplate,
+      context: {
+        type: type.type
+      }
+    });
+  });
+}
+
+
+
 export async function createPages(params) {
   await Promise.all([
     turnBlogPostsIntoPages(params),
-    turnRecipesIntoPages(params)
+    turnRecipesIntoPages(params),
+    turnTypesIntoPages(params),
   ]);
 }
 

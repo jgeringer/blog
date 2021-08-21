@@ -23,8 +23,9 @@ export default function Kitchen({ data }) {
 
 
 export const query = graphql`
-    query KitchenQuery {
-        recipes: allContentfulRecipe {
+    query KitchenQuery($type: [String]) {
+        recipes: allContentfulRecipe(filter: {type: {in: $type}}) {
+            totalCount
             nodes {
                 title
                 slug
