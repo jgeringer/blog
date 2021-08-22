@@ -14,14 +14,37 @@
 
 .recipeLayout {
     display: flex;
+    flex-direction: column;
     gap: 2rem;
+    @media (--above-smartphone) {
+        flex-direction: row;
+    }
     aside {
         width: 100%;
-        max-width: 300px;
         display: block;
         flex-shrink: 0;
-        position: sticky;
-        top: 0;
-        align-self: start;
+        
+        @media (--above-smartphone) {
+            position: sticky;
+            top: 0;
+            align-self: start;
+            max-width: 300px;
+        }
     }
+}
+
+.recipeTitle {
+    margin-bottom: .25rem;
+    line-height: 2.2rem;
+}
+
+.type {
+    text-transform: capitalize;
+}
+
+.details {
+    flex-direction: row;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
 }

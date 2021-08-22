@@ -10,10 +10,31 @@ export default function SingleRecipePage({ data: { recipe } }) {
     return (
         <div className="wrapper">
             <KitchenFilter />
-            <h2>{recipe.title}</h2>
-            {recipe.type && (
-                <div>{recipe.type}</div>
-            )}
+            <h2 className={styles.recipeTitle}>{recipe.title}</h2>
+
+            <div className={styles.details}>
+                {recipe.type && (
+                    <div className={styles.type}>{recipe.type}</div>
+                )}
+
+                {recipe.rating && (
+                    <div>
+                        {recipe.rating} / 5 
+                    </div>
+                )}
+
+                {recipe.price && (
+                    <div>
+                        ${recipe.price}
+                    </div>
+                )}
+
+                {recipe.frozen && (
+                    <div>
+                        Frozen
+                    </div>
+                )}
+            </div>
             
             {recipe.image && (
                 <div>
@@ -38,25 +59,6 @@ export default function SingleRecipePage({ data: { recipe } }) {
                                 )
                             })}
                         </ol>
-                    </div>
-                )}
-
-                {recipe.rating && (
-                    <div>
-                        <h3>Rating</h3>
-                        {recipe.rating} out of 5.
-                    </div>
-                )}
-
-                {recipe.price && (
-                    <div>
-                        {recipe.price}
-                    </div>
-                )}
-
-                {recipe.frozen && (
-                    <div>
-                        Found in the frozen isle
                     </div>
                 )}
             </aside>
