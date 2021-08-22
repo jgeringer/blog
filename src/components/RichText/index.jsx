@@ -1,6 +1,7 @@
 import React from 'react'
 import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import style from './style.module.css'
 
 class RichText extends React.Component {
   render() {
@@ -22,7 +23,7 @@ class RichText extends React.Component {
           <img src={`https:${node.data.target.fields.file['en-US'].url}`} />
         ),
         [BLOCKS.PARAGRAPH]: (node, children) => (
-          <p className="copy">{children}</p>
+          <p className={style.copy}>{children}</p>
         ),
       },
       renderMark: {},

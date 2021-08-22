@@ -11,7 +11,10 @@ function SingleRecipe({ recipe }) {
                 {recipe.image && (
                     <Img alt="" fluid={recipe.image.fluid} />
                 )}
-                <h2>{recipe.title}</h2>
+                <div>
+                    <h4>{recipe.title}</h4>
+                    <span>{recipe.type}</span>
+                </div>
             </Link>
         </>
     );
@@ -20,7 +23,7 @@ function SingleRecipe({ recipe }) {
 export default function RecipeList({ recipes }) {
     console.log(`recipe list: `, recipes)
     return(
-        <section>
+        <section className={styles.section}>
             {recipes.map(recipe => (
                 <SingleRecipe recipe={recipe} key={recipe.id} />
             ))}

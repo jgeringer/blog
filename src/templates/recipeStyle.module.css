@@ -4,4 +4,24 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
+    overflow: auto;
+    max-height: 80vh;
+}
+
+.recipeImage {
+    height: 40vh !important;
+}
+
+.recipeLayout {
+    display: flex;
+    gap: 2rem;
+    aside {
+        width: 100%;
+        max-width: 300px;
+        display: block;
+        flex-shrink: 0;
+        position: sticky;
+        top: 0;
+        align-self: start;
+    }
 }

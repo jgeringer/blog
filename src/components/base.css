@@ -58,10 +58,17 @@ a {
   border-bottom: 1px solid #ddd;
 }
 
+.textLink {
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 /**
  *
  */
-.list-inline {
+.list-inline, .list-plain {
   margin: 0;
   padding: 0;
   list-style: none;

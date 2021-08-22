@@ -14,75 +14,87 @@ export default function SingleRecipePage({ data: { recipe } }) {
             {recipe.type && (
                 <div>{recipe.type}</div>
             )}
-            <div>
-                <h4>Ingredients</h4>
-                {recipe.ingredients && (
-                    <ol className={styles.ingredients}>
-                        {recipe.ingredients.map((ingredient) => {
-                            return (
-                                <li>
-                                    {ingredient.amount} {ingredient.unit} {ingredient.type}
-                                    {ingredient.modification}
-                                </li>
-                            )
-                        })}
-                    </ol>
-                )}
-            </div>
             
             {recipe.image && (
                 <div>
-                    <Img alt="" fluid={recipe.image.fluid} />
+                    <Img alt="" fluid={recipe.image.fluid} className={styles.recipeImage} />
                 </div>
             )}
            
-
-            {recipe.instructions && (
-                <div>
-                    instructions...
-                    <RichText content={recipe.instructions.json} />
-                </div>
-            )}
-
-            {recipe.notes && (
-                <div>
-                    <RichText content={recipe.notes.json} />
-                </div>
-            )}
-            
-            <div>
-                {recipe.sides && (
-                    <ol>
-                        {recipe.sides.map((side) => {
-                            return (
-                                <div>
-                                    <Link to={`/kitchen/${side.type}/${side.slug}`}>
-                                        {side.title}
-                                    </Link>
-                                </div>
-                            )
-                        })}
-                    </ol>
+           <section className={styles.recipeLayout}>
+               <aside>
+                {recipe.ingredients && (
+                    <div>
+                        <h3>Ingredients</h3>
+                        <ol className={styles.ingredients}>
+                            {recipe.ingredients.map((ingredient) => {
+                                return (
+                                    <li>
+                                        {ingredient.amount} {ingredient.unit} {ingredient.type}
+                                        {ingredient.modification && (
+                                            ` - ${ingredient.modification}`
+                                        )}
+                                    </li>
+                                )
+                            })}
+                        </ol>
+                    </div>
                 )}
-            </div>
-            
-            {recipe.rating && (
-                <div>
-                    {recipe.rating}
-                </div>
-            )}
 
-            {recipe.price && (
-                <div>
-                    {recipe.price}
-                </div>
-            )}
+                {recipe.rating && (
+                    <div>
+                        <h3>Rating</h3>
+                        {recipe.rating} out of 5.
+                    </div>
+                )}
 
-            {recipe.frozen && (
-                <div>
-                    Found in the frozen isle
-                </div>
-            )}
+                {recipe.price && (
+                    <div>
+                        {recipe.price}
+                    </div>
+                )}
+
+                {recipe.frozen && (
+                    <div>
+                        Found in the frozen isle
+                    </div>
+                )}
+            </aside>
+
+            <article>
+                {recipe.instructions && (
+                    <div>
+                        <h3>Instructions</h3>
+                        <RichText content={recipe.instructions.json} />
+                    </div>
+                )}
+
+                {recipe.notes && (
+                    <div>
+                        <h3>Notes</h3>
+                        <RichText content={recipe.notes.json} />
+                    </div>
+                )}
+                
+                {recipe.sides && (
+                    <div>
+                        <h3>Recommended Sides</h3>
+                        <ol className="list-plain">
+                            {recipe.sides.map((side) => {
+                                return (
+                                    <li>
+                                        <Link to={`/kitchen/${side.type}/${side.slug}`} className="textLink">
+                                            {side.title}
+                                        </Link>
+                                    </li>
+                                )
+                            })}
+                        </ol>
+                    </div>
+                )}
+            </article>
+
+           </section>
         </div>
     );
 }
