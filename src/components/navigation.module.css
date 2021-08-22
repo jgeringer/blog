@@ -1,3 +1,5 @@
+@import '~styles/imports/index';
+
 .navigation {
   display: flex;
   justify-content: center;

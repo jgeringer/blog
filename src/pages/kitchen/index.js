@@ -60,6 +60,7 @@ export const query = graphql`
                     type
                     modification
                     price
+                    sectionHeading
                 }
                 image {
                     title

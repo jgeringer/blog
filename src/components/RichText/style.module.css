@@ -2,7 +2,7 @@ ol {
     margin: 0;
     padding: 0;
     margin-left: 1rem;
-    li:hover {
+    li:hover, li:focus {
         background: rgba(0,0,0,.1);
     }
     li {

@@ -50,12 +50,19 @@ export default function SingleRecipePage({ data: { recipe } }) {
                         <ol className={styles.ingredients}>
                             {recipe.ingredients.map((ingredient) => {
                                 return (
-                                    <li>
+                                    <>
+                                    {ingredient.sectionHeading && (
+                                        <div className={styles.sectionHeading}>
+                                            <strong>{ingredient.sectionHeading}</strong>
+                                        </div>
+                                    )}
+                                    <li tabIndex="1">
                                         {ingredient.amount} {ingredient.unit} {ingredient.type}
                                         {ingredient.modification && (
                                             ` - ${ingredient.modification}`
                                         )}
                                     </li>
+                                    </>
                                 )
                             })}
                         </ol>
@@ -142,6 +149,7 @@ export const query = graphql`
                 type
                 modification
                 price
+                sectionHeading
             }
             image {
                 fluid(maxWidth: 800) {
