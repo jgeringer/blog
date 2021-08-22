@@ -1,5 +1,6 @@
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import React from 'react';
+import styles from './style.module.css'
 
 function countRecipesInTypes(recipes) {
     // Return the recipe types with counts
@@ -55,7 +56,7 @@ const typeWithCounts = countRecipesInTypes(recipes.nodes);
 console.log(typeWithCounts);
 
   return (
-    <>
+    <div className={styles.breadcrumbs}>
       <Link to="/kitchen">
         <span className="name">All</span>
         <span className="count">: {recipes.totalCount}</span>
@@ -63,12 +64,12 @@ console.log(typeWithCounts);
 
       {typeWithCounts.map((type) => (
         <div>
-            <Link to={`/kitchen/${type.type}`} key={type.count}>
+            <Link to={`/kitchen/${type.type}`} key={type.id}>
                 <span className="name">{type.type} ({type.count})</span>
             </Link>
         </div>
       ))}
 
-    </>
+    </div>
   );
 }

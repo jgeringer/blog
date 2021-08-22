@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image'
-import styles from './style.module.css' 
+import styles from './style.module.css'
 
 function SingleRecipe({ recipe }) {
     console.log(`recipe: `, recipe)

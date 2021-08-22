@@ -9,15 +9,11 @@ export default function Kitchen({ data }) {
     const recipes = data.recipes.nodes;
 
     return(
-        <>
+        <div className="wrapper">
             <h2>Kitchen</h2>
-            <ol>
-                <li>List all recipes</li>
-                <li>Filter</li>
-            </ol>
             <KitchenFilter />
             <KitchenList recipes={recipes} />
-        </>
+        </div>
     )
 }
 
