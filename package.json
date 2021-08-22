@@ -76,7 +76,7 @@
   "scripts": {
     "build": "cross-env NODE_OPTIONS=\"-r esm\" gatsby build",
     "develop": "cross-env NODE_OPTIONS=\"-r esm\" gatsby develop",
-    "serve": "cross-env NODE_OPTIONS=\"-r esm\" gatsby serve",
+    "serve": "cross-env NODE_OPTIONS=\"-r esm\" NODE_ENV=production gatsby serve",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "test:e2e": "gatsby develop && cypress open",
