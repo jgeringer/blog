@@ -21,9 +21,10 @@ const Sidebar = (props: SidebarProps) => {
   // Listen for onChange events and update the value
   useEffect(() => {
     // just for the storage
-    window.addEventListener('storage', ()=> {
-      setMessage(window.localStorage.getItem('syncySync') || '');
-    });
+    // window.addEventListener('storage', ()=> {
+    //   setMessage(window.localStorage.getItem('syncySync') || '');
+    // });
+    
 
     props.sdk.entry.fields.testFieldForApp.onValueChanged((value) => {
       console.log('value: ', value);
