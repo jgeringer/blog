@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { List, ListItem, Note } from '@contentful/forma-36-react-components';
+import { List, ListItem, Note, Paragraph } from '@contentful/forma-36-react-components';
 import { SidebarExtensionSDK } from '@contentful/app-sdk';
 import readingTime from 'reading-time';
 
@@ -16,8 +16,19 @@ const Sidebar = (props: SidebarProps) => {
 
   const [blogText, setBlogText] = useState(contentField.getValue());
 
+  const [message, setMessage] = useState(''); // for the localstorage sync
+
   // Listen for onChange events and update the value
   useEffect(() => {
+    // just for the storage
+    window.addEventListener('storage', ()=> {
+      setMessage(window.localStorage.getItem('syncySync') || '');
+    });
+
+    props.sdk.entry.fields.testFieldForApp.onValueChanged((value) => {
+      console.log('value: ', value);
+    })
+
     const detach = contentField.onValueChanged((value) => {
       setBlogText(value);
     });
@@ -37,6 +48,7 @@ const Sidebar = (props: SidebarProps) => {
           <ListItem>Reading time: {stats.text}</ListItem>
         </List>
       </Note>
+      <Paragraph>{message}</Paragraph>
     </>
   );
 };
