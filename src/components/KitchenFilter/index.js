@@ -50,10 +50,9 @@ query {
     }
 }
 `);
-console.clear();
-console.log({ mealTypes, recipes });
-const typeWithCounts = countRecipesInTypes(recipes.nodes);
-console.log(typeWithCounts);
+
+  console.log({ mealTypes, recipes });
+  const typeWithCounts = countRecipesInTypes(recipes.nodes);
 
   return (
     <div className={styles.breadcrumbs}>
@@ -67,6 +66,8 @@ console.log(typeWithCounts);
             <Link to={`/kitchen/${type.type}`} key={type.id}>
                 <span className="name">{type.type} ({type.count})</span>
             </Link>
+            <div>
+          </div>
         </div>
       ))}
 

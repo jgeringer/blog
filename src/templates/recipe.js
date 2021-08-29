@@ -1,7 +1,6 @@
 import { graphql, Link } from 'gatsby';
 import React from 'react';
 import KitchenFilter from '../components/KitchenFilter'
-import RecipeList from '../components/KitchenList';
 import styles from './recipeStyle.module.css';
 import Img from 'gatsby-image'
 import RichText from '../components/RichText'

@@ -7,7 +7,7 @@ interface SidebarProps {
   sdk: SidebarExtensionSDK;
 }
 
-const CONTENT_FIELD_ID_SLUG = 'slug';
+const CONTENT_FIELD_ID_SLUG = 'urlSlug';
 const CONTENT_FIELD_ID_STATS_JSON = 'stats';
 
 const Sidebar = (props: SidebarProps) => {
@@ -34,7 +34,7 @@ const Sidebar = (props: SidebarProps) => {
     }
     return (elements)
   }
-  
+
   return (
     <>
       <div>

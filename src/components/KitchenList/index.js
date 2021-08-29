@@ -6,7 +6,11 @@ import styles from './style.module.css'
 function SingleRecipe({ recipe }) {
     console.log(`recipe: `, recipe)
     return (
-        <>
+        <div className={styles.card}>
+            <label className={styles.checkboxContainer}>
+                <input type="checkbox" />
+                <span className={styles.checkmark}></span>
+            </label>
             <Link to={`/kitchen/${recipe.type}/${recipe.slug}`}>
                 {recipe.image && (
                     <Img alt="" fluid={recipe.image.fluid} />
@@ -16,17 +20,21 @@ function SingleRecipe({ recipe }) {
                     <span>{recipe.type}</span>
                 </div>
             </Link>
-        </>
+        </div>
     );
 }
 
 export default function RecipeList({ recipes }) {
-    console.log(`recipe list: `, recipes)
+    // Sort recipes by ABC
+    recipes.sort((a, b) => a.title.localeCompare(b.title))
+
     return(
-        <section className={styles.section}>
-            {recipes.map(recipe => (
-                <SingleRecipe recipe={recipe} key={recipe.id} />
-            ))}
-        </section>
+        <>
+            <section className={styles.section}>
+                {recipes.map(recipe => (
+                    <SingleRecipe recipe={recipe} key={recipe.id} />
+                ))}
+            </section>
+        </>
     )
 }
