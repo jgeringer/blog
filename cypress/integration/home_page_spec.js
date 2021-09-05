@@ -7,6 +7,6 @@ describe('The Home Page', () => {
             .click();
         
         cy.url()
-            .should('include', '/testing');
+            .should('include', '/testing/two');
     });
   })

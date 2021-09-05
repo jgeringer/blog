@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^14.1.1",
+    "@react-three/fiber": "^7.0.6",
     "babel-jest": "^26.3.0",
     "babel-preset-gatsby": "^0.5.9",
     "classnames": "^2.3.1",
@@ -41,8 +42,11 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
+    "react-spring": "^9.2.4",
     "react-test-renderer": "^16.13.1",
-    "sharp": "^0.25.2"
+    "react-three-fiber": "^6.0.13",
+    "sharp": "^0.25.2",
+    "three": "^0.132.2"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
