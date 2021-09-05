@@ -1,7 +1,8 @@
 .section {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, min(300px, 1fr));
     grid-gap: 1rem;
+    grid-auto-rows: 40vh;
     > * {
         display: flex;
         flex-flow: column;
@@ -19,6 +20,18 @@
         }
         div {
             padding: 1rem;
+        }
+        &:first-child {
+            grid-column: span 2;
+            a {
+                overflow: hidden;
+                div:last-child {
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%;
+                    background: white;
+                }
+            }
         }
     }
 }

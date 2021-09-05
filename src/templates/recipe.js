@@ -52,6 +52,7 @@ export default function SingleRecipePage({ data: { recipe } }) {
                                     <>
                                     {ingredient.sectionHeading && (
                                         <div className={styles.sectionHeading}>
+                                            {/* TODO: Copy/Paste on line click */}
                                             <strong>{ingredient.sectionHeading}</strong>
                                         </div>
                                     )}
