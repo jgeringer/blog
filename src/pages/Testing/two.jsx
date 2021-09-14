@@ -45,7 +45,10 @@ const Box = () => {
         <boxGeometry attach="geometry" args={[2.5, 4, .2]} />
         <a.meshPhysicalMaterial attach="material" color='orange' />
       </a.mesh>
-      
+
+
+
+
       <a.mesh
         ref={meshRef2} 
         castShadow
@@ -57,6 +60,11 @@ const Box = () => {
         <boxGeometry attach="geometry" args={[2.5, 4, .2]} />
         <a.meshPhysicalMaterial attach="material" color='black' />
       </a.mesh>
+
+
+
+
+
 
       <a.mesh
         ref={meshRef3} 
