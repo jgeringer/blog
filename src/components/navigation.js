@@ -15,10 +15,10 @@ export default () => (
         <Link to="/resume/">Resume</Link>
       </li>
       <li className={styles.navigationItem}>
-        <Link to="/testing/two" data-cy="cy-nav-testing">3D: Basic</Link>
+        <Link to="/3d/two" data-cy="cy-nav-testing">3D: Basic</Link>
       </li>
       <li className={styles.navigationItem}>
-        <Link to="/testing/three">3D: GLTF</Link>
+        <Link to="/3d/three">3D: GLTF</Link>
       </li>
       <li className={styles.navigationItem}>
         <Link to="/kitchen">Kitchen</Link>
