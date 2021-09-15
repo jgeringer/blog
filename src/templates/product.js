@@ -64,7 +64,7 @@
 //       title
 //       heroImage {
 //         fluid(maxWidth: 1440) {
-//           ...GatsbyContentfulFluid_tracedSVG
+//           ...GatsbyContentfulFluid
 //         }
 //       }
 //       edges {
