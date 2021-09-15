@@ -10,7 +10,7 @@ function countRecipesInTypes(recipes) {
       .reduce((acc, type) => {
         // check of this is an existing topping
         const existingType = acc[type];
-        console.log(type)
+        // console.log(type)
         if (existingType) {
           // if it is, increment it by 1
           existingType.count += 1;
@@ -51,7 +51,7 @@ query {
 }
 `);
 
-  console.log({ mealTypes, recipes });
+  // console.log({ mealTypes, recipes });
   const typeWithCounts = countRecipesInTypes(recipes.nodes);
 
   return (

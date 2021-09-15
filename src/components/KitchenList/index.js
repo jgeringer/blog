@@ -4,7 +4,7 @@ import Img from 'gatsby-image'
 import styles from './style.module.css'
 
 function SingleRecipe({ recipe }) {
-    console.log(`recipe: `, recipe)
+    // console.log(`recipe: `, recipe)
     return (
         <div className={styles.card}>
             <label className={styles.checkboxContainer}>

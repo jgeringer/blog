@@ -9,7 +9,7 @@ interface PageProps {
 const Page = (props: PageProps) => {
   useEffect(() => {
     props.sdk.space.getEntries().then((data) => {
-      console.log('data: ', data.items);
+      // console.log('data: ', data.items);
     })
   }, []);
   return (
