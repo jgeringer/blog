@@ -3,6 +3,7 @@ import styles from './style.module.css'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useSpring, a } from '@react-spring/three'
 import * as THREE from 'three'
+import { isWindowDefined } from '@utils/dom';
 
 const Box = () => {
   const meshRef = useRef();
@@ -95,11 +96,13 @@ const Testing = () => {
     return null
   }
 
-  document.addEventListener('mousemove', (event) => {
-    // console.log(`Mouse X: ${event.clientX}`);
-    setCurrX(event.clientX)
-    setCurrY(event.clientY)
-  });
+  if (isWindowDefined()) {
+    document.addEventListener('mousemove', (event) => {
+      // console.log(`Mouse X: ${event.clientX}`);
+      setCurrX(event.clientX)
+      setCurrY(event.clientY)
+    });
+  }
 
   return (
     <div className={styles.background}>

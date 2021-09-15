@@ -50,6 +50,7 @@ export default {
           "@templates": "src/templates",
           "@styles": "src/styles",
           "@assets": "src/assets",
+          "@utils": "src/utils",
         },
         extensions: [
           "js",
