@@ -104,20 +104,23 @@ const Box = () => {
 
 
   useEffect(() => {
-    function onScroll() {
-      let currentPosition = window.pageYOffset; // or use document.documentElement.scrollTop;
-      if (currentPosition > scrollTop) {
-        // downscroll code
-        setScrolling(false);
-      } else {
-        // upscroll code
-        setScrolling(true);
+    if (isWindowDefined) {
+      function onScroll() {
+        let currentPosition = window.pageYOffset; // or use document.documentElement.scrollTop;
+        if (currentPosition > scrollTop) {
+          // downscroll code
+          setScrolling(false);
+        } else {
+          // upscroll code
+          setScrolling(true);
+        }
+        setScrollTop(currentPosition <= 0 ? 0 : currentPosition);
       }
-      setScrollTop(currentPosition <= 0 ? 0 : currentPosition);
+  
+      window.addEventListener("scroll", onScroll);
+      return () => window.removeEventListener("scroll", onScroll);
     }
-
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    
   }, [scrollTop]);
 
   const zoomAmount = isWindowDefined ? window.innerWidth > 920 ? 150 : 60 : 60;
