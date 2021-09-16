@@ -104,7 +104,7 @@ const Box = () => {
 
 
   useEffect(() => {
-    if (isWindowDefined) {
+    if (isWindowDefined()) {
       function onScroll() {
         let currentPosition = window.pageYOffset; // or use document.documentElement.scrollTop;
         if (currentPosition > scrollTop) {
@@ -123,7 +123,7 @@ const Box = () => {
     
   }, [scrollTop]);
 
-  const zoomAmount = isWindowDefined ? window.innerWidth > 920 ? 150 : 60 : 60;
+  const zoomAmount = isWindowDefined() ? window.innerWidth > 920 ? 150 : 60 : 60;
 
   return (
     <div className={styles.background}>
