@@ -95,8 +95,8 @@ async function turnTypesIntoPages({ graphql, actions }) {
 }
 
 
-
-export async function createPages(params) {
+exports.createPages = async (params) => {
+// export async function createPages(params) {
   await Promise.all([
     turnBlogPostsIntoPages(params),
     turnRecipesIntoPages(params),

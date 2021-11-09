@@ -1,8 +1,8 @@
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
-console.log(`env: `, process.env.NODE_ENV);
+// console.log(`env: `, process.env.NODE_ENV);
 
 // if (process.env.NODE_ENV !== 'production') {
 //   dotenv.config()
@@ -26,7 +26,7 @@ if (!spaceId || !accessToken) {
   )
 }
 
-export default {
+module.exports = {
   siteMetadata: {
     title: 'Joe Geringer | Frontend Web Developer',
   },
