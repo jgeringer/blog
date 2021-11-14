@@ -5,7 +5,6 @@ import styles from './hero.module.css'
 
 export default ({ data }) => (
   <div className={styles.hero}>
-  Hi There
     <Img
       className={styles.heroImage}
       alt={data.name}

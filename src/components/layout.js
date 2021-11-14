@@ -1,8 +1,12 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import base from './base.css'
+import footerStyles from './footer.module.css'
 import Navigation from './navigation'
 import '../styles/app.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faTools } from "@fortawesome/free-solid-svg-icons"
+import { faCodepen, faGit, faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
 
 
 export default function Layout({ children }) {
@@ -11,24 +15,26 @@ export default function Layout({ children }) {
       <Navigation />
       {children}
       <footer>
-        <ol className="wrapper">
+        <ol className={footerStyles.wrapper}>
           <li>
             <a href="https://codepen.io/jgeringer" target="_blank">
-              Codepen
+              <FontAwesomeIcon icon={faCodepen} />
             </a>
           </li>
           <li>
             <a href="https://github.com/jgeringer" target="_blank">
-              Github
+              <FontAwesomeIcon icon={faGithub} />
             </a>
           </li>
           <li>
             <a href="https://www.linkedin.com/in/joe-geringer/" target="_blank">
-              LinkedIn
+              <FontAwesomeIcon icon={faLinkedinIn} />
             </a>
           </li>
           <li>
-            <Link to="/Uses/">Uses</Link>
+            <Link to="/Uses/">
+              <FontAwesomeIcon icon={faTools} />
+            </Link>
           </li>
         </ol>
       </footer>

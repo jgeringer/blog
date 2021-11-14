@@ -16,7 +16,7 @@ class ResumeIndex extends React.Component {
     const rangeMaxValue = 5000
 
     return (
-        <div style={{ background: '#fff' }}>
+        <div>
           <Helmet title={siteTitle} />
           <div className={styles.hero}>Resume</div>
           <div className="wrapper">

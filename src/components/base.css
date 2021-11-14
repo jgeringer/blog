@@ -1,18 +1,13 @@
-@font-face {
-  font-family: "Avenir";
-  font-weight: 400;
-  font-style: normal;
-  src: url("/avenir-400.woff2") format("woff2");
-  font-display: swap;
-}
-
 body {
-  font-family: "Avenir", Tahoma, Arial, Helvetica, sans-serif;
   font-size: 1em;
   line-height: 1.65;
-  color: #373F49;
-  background: #eee;
+  color: #fff;
+  background: #383A4D;
   margin: 0;
+  font-display: swap;
+  // font-family: 'Sarpanch', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
 }
 
 img {
@@ -25,6 +20,10 @@ h2,
 h3 {
   font-size: 2em;
   font-weight: normal;
+}
+
+footer {
+  color: white;
 }
 
 a {

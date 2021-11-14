@@ -11,7 +11,7 @@ export default function BlogPostTemplate({ data: { post } }) {
   const siteTitle = get(post, 'data.site.siteMetadata.title')
 
   return (
-      <div style={{ background: '#fff' }}>
+      <div>
         <Helmet title={`${post.title} | ${siteTitle}`} />
         <div className={heroStyles.hero}>
           <Img

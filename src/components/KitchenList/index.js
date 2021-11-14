@@ -7,10 +7,10 @@ function SingleRecipe({ recipe }) {
     // console.log(`recipe: `, recipe)
     return (
         <div className={styles.card}>
-            <label className={styles.checkboxContainer}>
+            {/* <label className={styles.checkboxContainer}>
                 <input type="checkbox" />
                 <span className={styles.checkmark}></span>
-            </label>
+            </label> */}
             <Link to={`/kitchen/${recipe.type}/${recipe.slug}`}>
                 {recipe.image && (
                     <Img alt="" fluid={recipe.image.fluid} />
