@@ -1,8 +1,8 @@
 .section {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 1rem;
-    grid-auto-rows: 300px;
+    grid-auto-rows: 200px;
     grid-auto-flow: dense;
     > * {
         display: flex;
@@ -12,6 +12,8 @@
         overflow: hidden;
         h4 {
             margin: 0;
+            line-height: 1.3rem;
+            font-weight: 400;
         }
         div {
             padding: 1rem;
@@ -25,14 +27,29 @@
                 background: #2c2f4e;
             }
         }
-        &:first-child, &:nth-child(6) {
+        &:first-child, &:nth-child(6n) {
             grid-row: span 2;
             grid-column: span 2;
+        }
+        &:nth-child(3n) {
+            grid-row: span 1;
+            grid-column: span 2;
+        }
+        &:nth-child(4n) {
+            grid-row: span 2;
+            grid-column: span 1;
         }
     }
 }
 a {
     text-decoration: none;
+}
+
+.recipeImage {
+    height: 100%;
+    position: absolute;
+    left: 0;
+    width: 100%;
 }
 
 .checkmark {

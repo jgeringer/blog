@@ -13,11 +13,11 @@ function SingleRecipe({ recipe }) {
             </label> */}
             <Link to={`/kitchen/${recipe.type}/${recipe.slug}`}>
                 {recipe.image && (
-                    <Img alt="" fluid={recipe.image.fluid} />
+                    <Img alt="" fluid={recipe.image.fluid} className={styles.recipeImage} />
                 )}
                 <div>
                     <h4>{recipe.title}</h4>
-                    <span>{recipe.type}</span>
+                    {/* <span>{recipe.type}</span> */}
                 </div>
             </Link>
         </div>

@@ -1,1 +1,7 @@
+// TODO: Add a normalize
+
+* {
+    box-sizing: border-box;
+}
+
 @import './imports/index';
