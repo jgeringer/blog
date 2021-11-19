@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
 import { Helmet } from 'react-helmet'
-import styles from './blog.module.css'
+import * as styles from './blog.module.css'
 import ResumeDetail from '../components/resume-detail'
 import Calculator from '../components/Calculator'
 
@@ -47,7 +47,7 @@ export const pageQuery = graphql`
           id
           title
           body {
-            json
+            raw
           }
         }
       }

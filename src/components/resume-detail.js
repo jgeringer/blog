@@ -1,7 +1,8 @@
 import React from 'react'
-import styles from './hero.module.css'
+import * as styles from './hero.module.css'
 import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { graphql } from 'gatsby'
 
 const ResumeDetail = ({ data }) => {
   const firstRichContent = data
@@ -41,7 +42,7 @@ export const query = graphql`
       nodes {
         title
         body {
-          json
+          raw
         }
       }
     }

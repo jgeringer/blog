@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import styles from './kitchen.module.css'
+import * as styles from './kitchen.module.css'
 import KitchenFilter from '../../components/KitchenFilter'
 import KitchenList from '../../components/KitchenList'
 
@@ -28,10 +28,10 @@ export const query = graphql`
                 id
                 type
                 instructions {
-                    json
+                    raw
                 }
                 notes {
-                    json
+                    raw
                 }
                 rating
                 source
@@ -43,10 +43,10 @@ export const query = graphql`
                     id
                     type
                     instructions {
-                        json
+                        raw
                     }
                     notes {
-                        json
+                        raw
                     }
                     rating
                     source
@@ -64,9 +64,7 @@ export const query = graphql`
                 }
                 image {
                     title
-                    fluid(maxWidth: 800) {
-                        ...GatsbyContentfulFluid
-                    }
+                    gatsbyImageData(width: 800)
                 }
             }
         }

@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import React from 'react';
-import styles from './style.module.css'
+import * as styles from './style.module.css'
 
 function countRecipesInTypes(recipes) {
     // Return the recipe types with counts

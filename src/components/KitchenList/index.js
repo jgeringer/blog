@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import Img from 'gatsby-image'
-import styles from './style.module.css'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import * as styles from './style.module.css'
 
 function SingleRecipe({ recipe }) {
     // console.log(`recipe: `, recipe)
@@ -13,7 +13,7 @@ function SingleRecipe({ recipe }) {
             </label> */}
             <Link to={`/kitchen/${recipe.type}/${recipe.slug}`}>
                 {recipe.image && (
-                    <Img alt="" fluid={recipe.image.fluid} className={styles.recipeImage} />
+                    <GatsbyImage alt="" image={recipe.image.gatsbyImageData} className={styles.recipeImage} />
                 )}
                 <div>
                     <h4>{recipe.title}</h4>

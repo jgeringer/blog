@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes, { string } from 'prop-types'
 import RichText from '../RichText'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import calculatorDataJSON from './calculatorSlider.json'
 
@@ -33,11 +33,11 @@ class CalculatorStatic extends React.Component {
 
   render() {
     const { headline, subheadline } = this.props.content
-    const { fluid, title } = this.props.content.image
+    const { gatsbyImageData, title } = this.props.content.image
 
     return (
       <>
-        <Img fluid={fluid} alt={title} />
+        <GatsbyImage image={gatsbyImageData} alt={title} />
 
         <div>Calculator: Static!</div>
 
@@ -110,7 +110,6 @@ CalculatorStatic.propTypes = {
   content: PropTypes.object,
   headline: PropTypes.string,
   subheadline: PropTypes.string,
-  fluid: PropTypes.string,
   title: PropTypes.string,
 }
 
@@ -118,7 +117,6 @@ CalculatorStatic.defaultProps = {
   content: {},
   headline: '',
   subheadline: '',
-  fluid: '',
   title: '',
 }
 

@@ -62,8 +62,10 @@ module.exports = {
       resolve: `gatsby-plugin-postcss`,
       options: {
         cssLoaderOptions: {
-          module: true,
-          localIdentName: '[folder]-[local]--[hash:base64:5]',
+          esModule: false,
+          modules: {
+            namedExport: false,
+          },
         },
         parser: 'postcss-scss',
         postCssPlugins: [
