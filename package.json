@@ -1,11 +1,8 @@
 {
-  "name": "gatsby-contentful-starter",
-  "description": "Starter Contentful Gatsby Blog",
+  "name": "joe-geringer-personal-site",
+  "description": "Contentful Gatsby Blog",
   "version": "1.0.0",
-  "author": "Stefan Judis <stefanjudis@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/contentful-userland/gatsby-contentful-starter/issues"
-  },
+  "author": "Joe Geringer <joegeringer@gmail.com>",
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^14.1.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -86,12 +83,11 @@
   },
   "scripts": {
     "build": "cross-env NODE_OPTIONS=\"-r esm\" gatsby build",
-    "develop": "cross-env NODE_OPTIONS=\"-r esm\" gatsby develop",
-    "serve": "cross-env NODE_OPTIONS=\"-r esm\" NODE_ENV=production gatsby serve",
+    "preview": "cross-env NODE_OPTIONS=\"-r esm\" gatsby develop",
+    "serve": "cross-env NODE_OPTIONS=\"-r esm\" NODE_ENV=production gatsby build && gatsby serve -H 0.0.0.0",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "test:e2e": "gatsby develop && cypress open",
-    "dev": "npm run develop",
     "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
     "test": "jest",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js' 'src/**/*.md' 'bin/*.js'",

@@ -2,11 +2,6 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-// console.log(`env: `, process.env.NODE_ENV);
-
-// if (process.env.NODE_ENV !== 'production') {
-//   dotenv.config()
-// }
 
 const path = require('path')
 const resolver = require('postcss-import-resolver')
@@ -14,11 +9,17 @@ const resolver = require('postcss-import-resolver')
 const contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+  host: process.env.HOST,
 }
 
-const { spaceId, accessToken } = contentfulConfig
+// if (process.env.CONTENTFUL_PREVIEW) {
+//   contentfulConfig.host = 'preview.contentful.com';
+// }
 
-console.log(`spaceId: `, spaceId);
+const { spaceId, accessToken, host } = contentfulConfig
+
+console.log(`accessToken: `, accessToken);
+console.log(`host: `, host);
 
 if (!spaceId || !accessToken) {
   throw new Error(
