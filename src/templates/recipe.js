@@ -74,14 +74,14 @@ export default function SingleRecipePage({ data: { recipe } }) {
                 {recipe.instructions && (
                     <div>
                         <h3>Instructions</h3>
-                        <RichText content={recipe.instructions.json} />
+                        <RichText body={recipe.instructions} />
                     </div>
                 )}
 
                 {recipe.notes && (
                     <div>
                         <h3>Notes</h3>
-                        <RichText content={recipe.notes.json} />
+                        <RichText body={recipe.notes} />
                     </div>
                 )}
                 

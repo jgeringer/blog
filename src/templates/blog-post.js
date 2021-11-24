@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet'
 import get from 'lodash/get'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
-import heroStyles from '../components/hero.module.css'
+import * as heroStyles from '../components/hero.module.css'
 import ContentArea from '../components/contentArea'
 
 export default function BlogPostTemplate({ data: { post } }) {

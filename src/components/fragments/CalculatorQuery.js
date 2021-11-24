@@ -17,7 +17,7 @@ export const CalculatorQuery = graphql`
       gatsbyImageData(width: 980)
     }
     footer {
-      json
+      raw
     }
   }
 `

@@ -99,7 +99,7 @@ class CalculatorStatic extends React.Component {
         </div>
 
         <div>
-          <RichText content={this.props.content.footer.json} />
+          <RichText body={this.props.content.footer} />
         </div>
       </>
     )

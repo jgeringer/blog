@@ -31,23 +31,13 @@ const ResumeDetail = ({ data }) => {
   }
   return (
     <div>
-      <p className={styles.heroTitle}>{data.title}</p>
-      {documentToReactComponents(firstRichContent.body.json, options)}
+      Fix this later
+      {/* <p className={styles.heroTitle}>{data.title}</p>
+      {documentToReactComponents(firstRichContent.body.raw, options)} */}
     </div>
   )
 }
-export const query = graphql`
-  {
-    allContentfulResume {
-      nodes {
-        title
-        body {
-          raw
-        }
-      }
-    }
-  }
-`
+
 export default ResumeDetail
 
 // export default ({ data }) => (
