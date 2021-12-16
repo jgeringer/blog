@@ -2,6 +2,9 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+console.log('*******');
+console.log(process.env.NODE_ENV);
+console.log('*******');
 
 const path = require('path')
 const resolver = require('postcss-import-resolver')

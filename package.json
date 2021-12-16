@@ -88,9 +88,9 @@
     "url": "git+https://github.com/contentful-userland/gatsby-contentful-starter.git"
   },
   "scripts": {
-    "build": "cross-env NODE_OPTIONS=\"-r esm\" gatsby build",
+    "build": "gatsby build",
     "preview": "cross-env NODE_OPTIONS=\"-r esm\" gatsby develop",
-    "serve": "cross-env NODE_OPTIONS=\"-r esm\" NODE_ENV=production gatsby build && gatsby serve -H 0.0.0.0",
+    "serve": "gatsby serve",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "test:e2e": "gatsby develop && cypress open",
