@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     list-style: none;
-    svg {
-        font-size: 32px;
+    a {
+        font-size: 28px;
         padding-left: 18px;
         padding-right: 18px;
     }

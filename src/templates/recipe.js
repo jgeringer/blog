@@ -1,8 +1,8 @@
 import { graphql, Link } from 'gatsby';
 import React from 'react';
 import KitchenFilter from '../components/KitchenFilter'
-import styles from './recipeStyle.module.css';
-import Img from 'gatsby-image'
+import * as styles from './recipeStyle.module.css';
+import { GatsbyImage } from 'gatsby-plugin-image'
 import RichText from '../components/RichText'
 
 export default function SingleRecipePage({ data: { recipe } }) {
@@ -37,7 +37,7 @@ export default function SingleRecipePage({ data: { recipe } }) {
             
             {recipe.image && (
                 <div>
-                    <Img alt="" fluid={recipe.image.fluid} className={styles.recipeImage} />
+                    <GatsbyImage alt="" image={recipe.image.gatsbyImageData} className={styles.recipeImage} />
                 </div>
             )}
            
@@ -74,14 +74,14 @@ export default function SingleRecipePage({ data: { recipe } }) {
                 {recipe.instructions && (
                     <div>
                         <h3>Instructions</h3>
-                        <RichText content={recipe.instructions.json} />
+                        <RichText body={recipe.instructions} />
                     </div>
                 )}
 
                 {recipe.notes && (
                     <div>
                         <h3>Notes</h3>
-                        <RichText content={recipe.notes.json} />
+                        <RichText body={recipe.notes} />
                     </div>
                 )}
                 
@@ -117,10 +117,10 @@ export const query = graphql`
             id
             type
             instructions {
-                json
+                raw
             }
             notes {
-                json
+                raw
             }
             rating
             source
@@ -132,10 +132,10 @@ export const query = graphql`
                 id
                 type
                 instructions {
-                    json
+                    raw
                 }
                 notes {
-                    json
+                    raw
                 }
                 rating
                 source
@@ -152,9 +152,7 @@ export const query = graphql`
                 sectionHeading
             }
             image {
-                fluid(maxWidth: 800) {
-                    ...GatsbyContentfulFluid
-                }
+                gatsbyImageData(width: 800)
             }
         }
     }

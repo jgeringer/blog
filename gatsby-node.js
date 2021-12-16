@@ -1,6 +1,34 @@
 const Promise = require('bluebird');
 const path = require('path');
 
+async function turnPagesIntoPages({ graphql, actions }) {
+  const pageTemplate = path.resolve('./src/templates/page.js');
+
+  const { data } = await graphql(`
+    query {
+      pages: allContentfulPage {
+        nodes {
+          id
+          slug
+          title
+        }
+      }
+    }
+  `);
+
+  data.pages.nodes.forEach((page) => {
+    actions.createPage({
+      path: `/${page.slug}`,
+      component: pageTemplate,
+      context: {
+        slug: page.slug
+      }
+    });
+  });
+}
+
+
+
 async function turnBlogPostsIntoPages({ graphql, actions }) {
   const blogPostTemplate = path.resolve('./src/templates/blog-post.js');
 
@@ -63,10 +91,7 @@ async function turnRecipesIntoPages({ graphql, actions }) {
   //     }
   //   });
   // });
-
 }
-
-
 
 async function turnTypesIntoPages({ graphql, actions }) {
   const typesTemplate = path.resolve('./src/pages/kitchen/index.js');
@@ -101,6 +126,7 @@ exports.createPages = async (params) => {
     turnBlogPostsIntoPages(params),
     turnRecipesIntoPages(params),
     turnTypesIntoPages(params),
+    turnPagesIntoPages(params)
   ]);
 }
 

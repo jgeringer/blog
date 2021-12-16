@@ -2,6 +2,9 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+console.log('*******');
+console.log(process.env.NODE_ENV);
+console.log('*******');
 
 const path = require('path')
 const resolver = require('postcss-import-resolver')
@@ -37,6 +40,7 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
+    'gatsby-plugin-image',
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
@@ -47,9 +51,10 @@ module.exports = {
         alias: {
           "@src": "src",
           "@components": "src/components",
+          "@sections": "src/components/sections",
           "@pages": "src/pages",
           "@templates": "src/templates",
-          "@styles": "src/styles",
+          "@styles": "src/styles/imports",
           "@assets": "src/assets",
           "@utils": "src/utils",
         },
@@ -62,10 +67,15 @@ module.exports = {
       resolve: `gatsby-plugin-postcss`,
       options: {
         cssLoaderOptions: {
-          module: true,
-          localIdentName: '[folder]-[local]--[hash:base64:5]',
+          modules: {
+            auto: undefined,
+            localIdentName: '[folder]-[local]--[hash:base64:5]',
+          },
         },
-        parser: 'postcss-scss',
+        postcssOptions: {
+          syntax: 'postcss-scss',
+          parser: 'postcss-scss',
+        },
         postCssPlugins: [
           require('postcss-import')({
             resolve: resolver({

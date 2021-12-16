@@ -1,7 +1,7 @@
 import React from 'react'
 import Interest from 'interestjs'
 import PropTypes from 'prop-types'
-import styles from './style.module.css' 
+import * as styles from './style.module.css' 
 
 class Calculator extends React.Component {
 

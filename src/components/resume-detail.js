@@ -1,7 +1,8 @@
 import React from 'react'
-import styles from './hero.module.css'
+import * as styles from './hero.module.css'
 import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { graphql } from 'gatsby'
 
 const ResumeDetail = ({ data }) => {
   const firstRichContent = data
@@ -30,23 +31,13 @@ const ResumeDetail = ({ data }) => {
   }
   return (
     <div>
-      <p className={styles.heroTitle}>{data.title}</p>
-      {documentToReactComponents(firstRichContent.body.json, options)}
+      Fix this later
+      {/* <p className={styles.heroTitle}>{data.title}</p>
+      {documentToReactComponents(firstRichContent.body.raw, options)} */}
     </div>
   )
 }
-export const query = graphql`
-  {
-    allContentfulResume {
-      nodes {
-        title
-        body {
-          json
-        }
-      }
-    }
-  }
-`
+
 export default ResumeDetail
 
 // export default ({ data }) => (

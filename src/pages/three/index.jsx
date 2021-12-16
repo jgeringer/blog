@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, Suspense } from 'react'
 import * as THREE from 'three'
 
-import styles from './style.module.css'
+import * as styles from './style.module.css'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { Canvas, extend, useThree, useFrame, useLoader } from '@react-three/fiber'
 import { useSpring, a } from '@react-spring/three'

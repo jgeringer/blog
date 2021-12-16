@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
 import { Helmet } from 'react-helmet'
-import styles from './blog.module.css'
+import * as styles from './blog.module.css'
 import ArticlePreview from '../components/article-preview'
 
 class BlogIndex extends React.Component {
@@ -48,9 +48,7 @@ export const pageQuery = graphql`
           publishDate(formatString: "MMMM Do, YYYY")
           tags
           heroImage {
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid
-            }
+            gatsbyImageData(width: 350, height: 196)
           }
           description {
             childMarkdownRemark {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import base from './base.css'
-import footerStyles from './footer.module.css'
+import * as base from './base.css'
+import * as footerStyles from './footer.module.css'
 import Navigation from './navigation'
 import '../styles/app.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"

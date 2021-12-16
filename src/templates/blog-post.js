@@ -2,9 +2,9 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import get from 'lodash/get'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
-import heroStyles from '../components/hero.module.css'
+import * as heroStyles from '../components/hero.module.css'
 import ContentArea from '../components/contentArea'
 
 export default function BlogPostTemplate({ data: { post } }) {
@@ -14,10 +14,10 @@ export default function BlogPostTemplate({ data: { post } }) {
       <div>
         <Helmet title={`${post.title} | ${siteTitle}`} />
         <div className={heroStyles.hero}>
-          <Img
+          <GatsbyImage
             className={heroStyles.heroImage}
             alt={post.title}
-            fluid={post.heroImage.fluid}
+            image={post.heroImage.gatsbyImageData}
           />
         </div>
         <div className="wrapper">
@@ -57,9 +57,7 @@ export const pageQuery = graphql`
       title
       publishDate(formatString: "MMMM Do, YYYY")
       heroImage {
-        fluid(maxWidth: 1180, background: "rgb:000000") {
-          ...GatsbyContentfulFluid
-        }
+        gatsbyImageData(width: 1180, height: 480)
       }
       contentArea {
         __typename

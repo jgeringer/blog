@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
 import { Helmet } from 'react-helmet'
-import styles from './blog.module.css'
+import * as styles from './blog.module.css'
 import ResumeDetail from '../components/resume-detail'
 import Calculator from '../components/Calculator'
 
@@ -23,16 +23,11 @@ class ResumeIndex extends React.Component {
 
             <Calculator months={[3,6,12]} rangeVal={rangeValue} rangeValMin={rangeMinValue} rangeValMax={rangeMaxValue} />
 
-            <br /><br /><br /><br /><br /><br /><br /><br /><br />
-
-            <ResumeDetail data={detail.node} />
           </div>
         </div>
     )
   }
 }
-
-export default ResumeIndex
 
 export const pageQuery = graphql`
   query ResumeIndexQuery {
@@ -41,16 +36,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allContentfulResume {
-      edges {
-        node {
-          id
-          title
-          body {
-            json
-          }
-        }
-      }
-    }
   }
 `
+
+export default ResumeIndex
