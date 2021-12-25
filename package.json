@@ -59,7 +59,6 @@
     "@babel/plugin-transform-classes": "^7.14.9",
     "@babel/preset-typescript": "^7.15.0",
     "@loadable/babel-plugin": "^5.13.2",
-    "@netlify/plugin-gatsby": "^1.0.3",
     "babel-eslint": "^10.1.0",
     "chalk": "^4.0.0",
     "contentful-import": "^8.2.24",
