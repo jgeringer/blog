@@ -1,5 +1,10 @@
 @import '~styles/imports/index';
 
+.navigationContainer {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
 .navigation {
   display: flex;
   list-style: none;
@@ -32,6 +37,14 @@
       width: 100%;
       height: 100%;
       z-index: -1;
+    }
+  }
+  &:first-child {
+    background: -webkit-linear-gradient(180deg, #cc84ff, #4649eb);
+    -webkit-text-fill-color: #0000;
+    -webkit-background-clip: text;
+    [aria-current]:after {
+      content: none;
     }
   }
 }

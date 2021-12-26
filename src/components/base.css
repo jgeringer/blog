@@ -24,6 +24,7 @@ h3 {
 
 footer {
   color: white;
+  height: 100px;
 }
 
 a {
@@ -31,9 +32,10 @@ a {
 }
 
 .wrapper {
-  width: calc(100% - 10vmin);
+  max-width: 1440px;
+  width: 100%;
   margin: 0 auto;
-  padding: 5vmin 0;
+  padding: 16px;
 }
 
 /**

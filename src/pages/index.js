@@ -5,6 +5,8 @@ import { Helmet } from 'react-helmet'
 import Hero from '../components/hero'
 import ArticlePreview from '../components/article-preview'
 
+import * as styles from './index.module.css'
+
 class RootIndex extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
@@ -14,18 +16,22 @@ class RootIndex extends React.Component {
     return (
         <div>
           <Helmet title={siteTitle} />
-          <Hero data={author.node} />
-          <div className="wrapper">
-            <h2 className="section-headline">Recent articles</h2>
-            <ul className="article-list">
-              {posts.map(({ node }) => {
-                return (
-                  <li key={node.slug}>
-                    <ArticlePreview article={node} />
-                  </li>
-                )
-              })}
-            </ul>
+          <div className='wrapper'>
+            <div className={styles.mainContent}>
+              <Hero data={author.node} />
+              <div className="wrapper">
+                <h2 className="section-headline">Recent articles</h2>
+                <ul className="article-list">
+                  {posts.map(({ node }) => {
+                    return (
+                      <li key={node.slug}>
+                        <ArticlePreview article={node} />
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
     )

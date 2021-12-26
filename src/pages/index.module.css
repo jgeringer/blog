@@ -1,0 +1,9 @@
+.mainContent {
+  @media (--above-smartphone) {
+    display: flex;
+    align-items: center;
+    > * {
+      width: 50%;
+    }
+  }
+}

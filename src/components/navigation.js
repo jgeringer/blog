@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import * as styles from './navigation.module.css'
-import * as globalStyles from '@styles/global.module.css'
+import classNames from 'classnames';
 
 export default () => (
-  <nav role="navigation" className={globalStyles.container}>
+  <nav role="navigation" className={classNames("wrapper", styles.navigationContainer)}>
     <ul className={styles.navigation}>
       <li className={styles.navigationItem}>
         <Link to="/">Joe Geringer</Link>
