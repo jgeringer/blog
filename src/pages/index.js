@@ -41,7 +41,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
+    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, limit: 1) {
       edges {
         node {
           title
@@ -65,13 +65,7 @@ export const pageQuery = graphql`
       edges {
         node {
           name
-          shortBio {
-            shortBio
-          }
           title
-          heroImage: image {
-            gatsbyImageData(width: 1180, height: 480)
-          }
         }
       }
     }

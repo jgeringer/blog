@@ -2,7 +2,6 @@
 
 .navigation {
   display: flex;
-  justify-content: center;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -10,16 +9,31 @@
   flex-direction: column;
   color: white;
   @media (--above-smartphone) {
-    height: 20vh;
-    max-height: 100px;
+    height: 100px;
     flex-direction: row;
   }
 }
 
 .navigationItem {
   display: inline-flex;
-  align-items: center;
-  margin: 0 1em;
+  align-items: flex-end;
+  margin: 0 6px;
+  position: relative;
+  a {
+    padding: 12px;
+  }
+  [aria-current] {
+    &:after {
+      background: #C4C4C4;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+  }
 }
 
 .navigationItem a {
