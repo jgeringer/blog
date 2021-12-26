@@ -3,11 +3,12 @@ import React, { useState } from 'react';
 const THIS_PAGE = "/contact";
 
 const ContactForm = () => {
-    const [formData, setFormData] = useState({
+    const initFormData = {
         name: "", 
         email: "",
         message: "", 
-    });
+    };
+    const [formData, setFormData] = useState(initFormData);
     const [statusText, setStatusText] = useState("");
     
     const handleChange = event => {
@@ -16,7 +17,7 @@ const ContactForm = () => {
         const newFormData = {...formData, [key]: updatedFormValue};
         setFormData(newFormData);
 	};
-    
+
     const handleSubmit = event => {
         event.preventDefault();
         
@@ -34,8 +35,8 @@ const ContactForm = () => {
                 if (!response.ok)
                     throw Error(response.statusText);
 
-                const emptyForm = createEmptyForm(formData);
-                setFormData(emptyForm);
+                // clear the form
+                setFormData(initFormData);
 
                 setStatusText("Thank you!");
             })
@@ -63,15 +64,17 @@ const ContactForm = () => {
                         name="name" 
                         value={formData.name}
                         onChange={e => handleChange(e)}
+                        required
                     />
                 </div>
                 <div>
                     <label htmlFor="email">Email</label>
                     <input 
-                        type="text" 
+                        type="email" 
                         name="email" 
                         value={formData.email}
                         onChange={e => handleChange(e)}
+                        required
                     />
                 </div>
                 <div>
@@ -80,6 +83,7 @@ const ContactForm = () => {
                         name="message" 
                         value={formData.message}
                         onChange={e => handleChange(e)}
+                        required
                     />
                 </div>
                 <div>
