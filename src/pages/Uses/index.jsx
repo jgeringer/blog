@@ -51,11 +51,11 @@ class Uses extends React.Component {
                                 <li>React</li>
                                 <li>Gatsby</li>
                                 <li>Nuxt</li>
-                                <li>Angular 9</li>
                             </ul>
                         </li>
                         <li>Fun
                             <ul>
+                                <li><a href="https://www.huion.com/pen_display/KamvasPro/kamvas-pro-16.html" target="_blank">Huion Kamvas Pro 16 - drawing tablet.</a></li>
                                 <li><a href="https://www.creality3dofficial.com/products/creality-ender-3-pro-3d-printer" target="_blank">Creality Ender 3 Pro</a> - 3D printer.</li>
                                 <li><a href="https://matthewpalmer.net/rocket/" target="_blank">Rocket</a> - For enabling system wide emojis.</li>
                                 <li><a href="https://www.blender.org/" target="_blank">Blender</a></li>
