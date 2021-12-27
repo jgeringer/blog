@@ -26,17 +26,25 @@
   position: relative;
   a {
     padding: 12px;
-  }
-  [aria-current] {
     &:after {
-      background: #C4C4C4;
+      background: -webkit-linear-gradient(90deg, #cc84ff, #4649eb);
       content: '';
       position: absolute;
       top: 0;
-      left: 0;
+      left: -18px;
       width: 100%;
       height: 100%;
       z-index: -1;
+      transform: scaleY(0);
+      transition: transform 350ms ease-in-out, opacity 350ms ease-in-out;
+      transform-origin: top;
+      opacity: 0;
+    }
+  }
+  [aria-current] {
+    &:after {
+      transform: scaleY(1) skew(15deg, 0deg);
+      opacity: 1;
     }
   }
   &:first-child {

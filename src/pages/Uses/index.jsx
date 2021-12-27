@@ -59,6 +59,7 @@ class Uses extends React.Component {
                                 <li><a href="https://www.creality3dofficial.com/products/creality-ender-3-pro-3d-printer" target="_blank">Creality Ender 3 Pro</a> - 3D printer.</li>
                                 <li><a href="https://matthewpalmer.net/rocket/" target="_blank">Rocket</a> - For enabling system wide emojis.</li>
                                 <li><a href="https://www.blender.org/" target="_blank">Blender</a></li>
+                                <li>MAME Cabinet</li>
                             </ul>
                         </li>
                     </ol>
@@ -68,4 +69,4 @@ class Uses extends React.Component {
     }
 }
 
-export default Uses
+export default uses

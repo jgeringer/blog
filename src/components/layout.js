@@ -32,7 +32,7 @@ export default function Layout({ children }) {
             </a>
           </li>
           <li>
-            <Link to="/Uses/">
+            <Link to="/uses/">
               <FontAwesomeIcon icon={faTools} />
             </Link>
           </li>
