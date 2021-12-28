@@ -24,6 +24,11 @@
   align-items: flex-end;
   margin: 0 6px;
   position: relative;
+  &:first-child {
+    a {
+      padding-left: 0;
+    }
+  }
   a {
     padding: 12px;
     &:after {

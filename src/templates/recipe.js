@@ -152,7 +152,7 @@ export const query = graphql`
                 sectionHeading
             }
             image {
-                gatsbyImageData(width: 800)
+                gatsbyImageData(width: 1800)
             }
         }
     }

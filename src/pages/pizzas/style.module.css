@@ -1,0 +1,12 @@
+.tmnt {
+    font-size: 10px;
+    text-align: center;
+    letter-spacing: 3px;
+
+    img {
+        width: 256px;
+        margin: 0 auto;
+        border: 10px solid white;
+        margin-bottom: 5px;
+    }
+}

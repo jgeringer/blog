@@ -13,7 +13,9 @@ export default function Layout({ children }) {
   return (
     <>
       <Navigation />
-      {children}
+      <main>
+        {children}
+      </main>
       <footer>
         <ol className={footerStyles.wrapper}>
           <li>

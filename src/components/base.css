@@ -22,6 +22,22 @@ h3 {
   font-weight: normal;
 }
 
+h1,
+h2,
+h3 {
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.heading--h3 {
+  font-size: 1.4rem;
+}
+
 footer {
   color: white;
   height: 100px;
@@ -29,6 +45,24 @@ footer {
 
 a {
   color: currentColor;
+}
+
+main {
+  padding: 48px 0;
+}
+
+.u-flex {
+  display: flex;
+}
+
+@media (--above-smartphone) {
+  .u-lg-1of4 {
+    width: 25%;
+  }
+  
+  .u-lg-3of4 {
+    width: 75%; 
+  }
 }
 
 .wrapper {
@@ -55,7 +89,6 @@ a {
  */
 .section-headline {
   padding: 0 0 0.4em 0;
-  margin: 0 0 5vmin 0;
   border-bottom: 1px solid #ddd;
 }
 

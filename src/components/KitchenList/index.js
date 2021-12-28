@@ -17,7 +17,6 @@ function SingleRecipe({ recipe }) {
                 )}
                 <div>
                     <h4>{recipe.title}</h4>
-                    {/* <span>{recipe.type}</span> */}
                 </div>
             </Link>
         </div>
