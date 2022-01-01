@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ContactForm from '../../components/ContactForm'
 import Layout from '../../components/layout'
 
-class Uses extends React.Component {
+class Contact extends React.Component {
     render() {
         
         return (
@@ -16,4 +16,4 @@ class Uses extends React.Component {
     }
 }
 
-export default Uses
+export default Contact

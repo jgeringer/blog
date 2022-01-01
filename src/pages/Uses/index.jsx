@@ -69,4 +69,4 @@ class Uses extends React.Component {
     }
 }
 
-export default uses
+export default Uses

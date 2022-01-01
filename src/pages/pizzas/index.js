@@ -20,11 +20,13 @@ export default function Pizzas({ data }) {
             pizzariaPizzas.forEach(pizzaPie => {
                 pizzaPie['restaurant'] = pizza.title
                 pizzaPie['hasRcCola'] = pizza.hasRcCola
+                pizzaPie['pizzariaSlug'] = pizza.slug
                 pizzas.push(pizzaPie)
             })
         } else {
             pizzariaPizzas[0]['restaurant'] = pizza.title
             pizzariaPizzas[0]['hasRcCola'] = pizza.hasRcCola
+            pizzariaPizzas[0]['pizzariaSlug'] = pizza.slug
             pizzas.push(pizzariaPizzas[0])
         }
     });
@@ -99,7 +101,9 @@ export default function Pizzas({ data }) {
                     <div>
                         {pizzas.map(pizza => (
                             <div key={pizza.id}>
-                                Pizza: {pizza.restaurant} - {pizza.title}
+                                <Link to={`/pizzas/${pizza.pizzariaSlug}/${pizza.slug}`}>
+                                    Pizza: {pizza.restaurant} - {pizza.title} : {pizza.slug}
+                                </Link>
                             </div>
                         ))}
                     </div>
@@ -123,6 +127,7 @@ export const query = graphql`
                 pizzas {
                     id
                     title
+                    slug
                 }
             }
         }
@@ -137,6 +142,7 @@ export const query = graphql`
                 pizzas {
                     id
                     title
+                    slug
                 }
             }
         }

@@ -107,6 +107,39 @@ async function turnTypesIntoPages({ graphql, actions }) {
   });
 }
 
+async function turnPizzasIntoPages({ graphql, actions }) {
+  const template = path.resolve('./src/templates/pizza/index.js');
+
+  const { data } = await graphql(`
+    query {
+      pizzas: allContentfulPizza {
+        nodes {
+          title
+          id
+          slug
+          pizzaria {
+            id
+            slug
+            title
+          }
+        }
+      }
+    }
+  `);
+
+  data.pizzas.nodes.forEach((pizza) => {
+    const pizzariaSlug = pizza.pizzaria[0].slug;
+    console.log('PIZZA SLUG: ', `/pizzas/${pizzariaSlug}/${pizza.slug}`);
+    actions.createPage({
+      path: `/pizzas/${pizzariaSlug}/${pizza.slug}`,
+      component: template,
+      context: {
+        slug: pizza.slug,
+      }
+    })
+  })
+}
+
 async function turnPizzariasIntoPages({ graphql, actions }) {
   const template = path.resolve('./src/pages/pizzas/index.js');
 
@@ -144,8 +177,8 @@ exports.createPages = async (params) => {
     turnRecipesIntoPages(params),
     turnTypesIntoPages(params),
     turnPagesIntoPages(params),
-    turnPizzariasIntoPages(params)
-    // turnPizzasIntoPages(params)
+    turnPizzariasIntoPages(params),
+    turnPizzasIntoPages(params)
   ]);
 }
 
