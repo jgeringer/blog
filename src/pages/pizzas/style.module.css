@@ -10,3 +10,7 @@
         margin-bottom: 5px;
     }
 }
+
+.pizzaria[aria-current="page"] {
+    color: lightblue;
+}

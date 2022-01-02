@@ -27,6 +27,7 @@
   align-items: flex-end;
   margin: 0 6px;
   position: relative;
+  line-height: 1.3rem;
   &:first-child {
     a {
       padding-left: 0;
