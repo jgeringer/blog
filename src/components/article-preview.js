@@ -6,10 +6,11 @@ import * as styles from './article-preview.module.css'
 
 export default ({ article }) => (
   <div className={styles.preview}>
-    <GatsbyImage alt="" image={article.heroImage.gatsbyImageData} />
-    <h3 className={styles.previewTitle}>
-      <Link to={`/blog/${article.slug}`}>{article.title}</Link>
-    </h3>
+    <Link to={`/blog/${article.slug}`}><GatsbyImage alt="" image={article.heroImage.gatsbyImageData} />
+      <h3 className={styles.previewTitle}>
+        {article.title}
+      </h3>
+    </Link>
     <small>{article.publishDate}</small>
     <div
       dangerouslySetInnerHTML={{

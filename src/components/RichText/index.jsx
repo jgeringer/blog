@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { graphql } from 'gatsby';
 import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
+import { Link } from 'gatsby'
 
 import * as styles from './style.module.css';
 import * as typography from '@styles/typography.module.css';

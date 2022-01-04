@@ -2,15 +2,55 @@
     font-size: 10px;
     text-align: center;
     letter-spacing: 3px;
+    margin-bottom: 24px;
 
     img {
-        width: 256px;
+        width: 128px;
         margin: 0 auto;
-        border: 10px solid white;
-        margin-bottom: 5px;
+        border: 6px solid white;
+        margin-bottom: 6px;
     }
 }
 
 .pizzaria[aria-current="page"] {
     color: lightblue;
+}
+
+.pizzaGrid {
+    display: grid;
+    /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-gap: 1rem;
+    grid-auto-rows: 200px;
+    grid-auto-flow: dense;
+    > *:first-child,
+    > *:nth-child(6n) {
+        grid-row: span 2;
+        grid-column: span 2;
+    }
+}
+
+.link {
+    position: relative;
+    display: flex;
+    border: 1px solid white;
+    &-text {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        line-height: 17px;
+        background: white;
+        text-shadow: 2px 2px 2px rgba(0,0,0,.5);
+        background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(255,255,255,0) 80%);
+    }
+}
+
+.pizza {
+    &-title {
+        font-size: 12px;
+    }
 }

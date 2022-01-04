@@ -3,7 +3,7 @@ import React from 'react';
 import KitchenFilter from '../components/KitchenFilter'
 import * as styles from './recipeStyle.module.css';
 import { GatsbyImage } from 'gatsby-plugin-image'
-import RichText from '../components/RichText'
+import RichText from '@components/RichText'
 
 export default function SingleRecipePage({ data: { recipe } }) {
     return (

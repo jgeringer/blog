@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 export default function SinglePizzaPage({ data: { pizza } }) {
     console.log(`individual pizza: `, pizza);
@@ -8,8 +9,10 @@ export default function SinglePizzaPage({ data: { pizza } }) {
 
     return (
         <div>
-            <p>Pizzaria: {pizzaria} | {pizza.slug}</p>
-            <p><strong>Individual pizza page! title: {pizza.title}</strong></p>
+            <div className="wrapper">
+                <h1>{pizzaria} / {pizza.title}</h1>
+            </div>
+            <GatsbyImage alt={pizza.description || pizza.title} image={pizza.images[0].gatsbyImageData} />
         </div>
     );
 }
@@ -19,6 +22,11 @@ export const query = graphql`
         pizza: contentfulPizza(slug: { eq: $slug }) {
             slug
             title
+            images {
+                gatsbyImageData(width: 1440, height: 1440)
+                title
+                description
+            }
             pizzaria {
                 id
                 title

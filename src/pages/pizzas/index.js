@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Link, graphql } from 'gatsby'
 import * as styles from './style.module.css'
+import { GatsbyImage } from 'gatsby-plugin-image'
+
+import RichText from '@components/RichText'
 
 export default function Pizzas({ data }) {
     console.log(`pizza time: `, data);
@@ -22,6 +25,7 @@ export default function Pizzas({ data }) {
                 pizzaPie['restaurant'] = pizza.title
                 pizzaPie['hasRcCola'] = pizza.hasRcCola
                 pizzaPie['pizzariaSlug'] = pizza.slug
+                pizzaPie['coverPhoto'] = pizza.coverPhoto
                 pizzaPie['area'] = pizza.area
                 initialPizzas.push(pizzaPie)
             })
@@ -29,6 +33,7 @@ export default function Pizzas({ data }) {
             pizzariaPizzas[0]['restaurant'] = pizza.title
             pizzariaPizzas[0]['hasRcCola'] = pizza.hasRcCola
             pizzariaPizzas[0]['pizzariaSlug'] = pizza.slug
+            pizzariaPizzas[0]['coverPhoto'] = pizza.coverPhoto
             pizzariaPizzas[0]['area'] = pizza.area
             initialPizzas.push(pizzariaPizzas[0])
         }
@@ -66,10 +71,10 @@ export default function Pizzas({ data }) {
 
     return(
         <div className="wrapper">
-            <h2>Pizza time</h2>
             <section className='u-flex'>
                 <div className='u-lg-1of4'>
-                    Pizzaria filters:
+                    <h2>Pizza time</h2>
+                    Filter by:
                     <ul>
                         <li>
                             <Link to={`/pizzas`} className={styles.pizzaria}>
@@ -114,24 +119,40 @@ export default function Pizzas({ data }) {
                             </>
                         )}                        
                     </ul>
-                </div>
-                <div className='u-lg-3of4'>
-                    <p className={styles.tmnt}>
-                        <img src="tmnt-pizza.gif" />
-                        COMING SOON
-                    </p>
                     {activePizzaria && (
                         <div>
-                            <p>Pizzaria details:
-                                Address: {activePizzaria.address}
+                            <p>{activePizzaria.address}</p>
+                            <p>{activePizzaria.phone}</p>
+                            <p>{activePizzaria.yearEstablished}</p>
+                            <p>
+                                <a href={activePizzaria.url} target='_blank'>
+                                    Website
+                                </a>
                             </p>
+                            <p>{activePizzaria.hasRcCola}</p>
+                            <p>{activePizzaria.cashOnly}</p>
+                            <p>{activePizzaria.area}</p>
                         </div>
                     )}
-                    <div>
+                </div>
+                <div className='u-lg-3of4'>
+                    {activePizzaria && (
+                        <div>
+                            <h1>{activePizzaria.title}</h1>
+                            {activePizzaria.description && (
+                                <RichText body={activePizzaria.description} />
+                            )}
+                        </div>
+                    )}
+                    <div className={styles.pizzaGrid}>
                         {pizzas.map(pizza => (
                             <div key={pizza.id}>
-                                <Link to={`/pizzas/${pizza.pizzariaSlug}/${pizza.slug}`}>
-                                    Pizza: {pizza.restaurant} - {pizza.title} : {pizza.slug}
+                                <Link to={`/pizzas/${pizza.pizzariaSlug}/${pizza.slug}`} className={styles.link}>
+                                    <GatsbyImage className={styles.pizzaImage} alt={pizza.description || pizza.title} image={pizza.images[0].gatsbyImageData} />
+                                    <span className={styles.linkText}>
+                                        <span>{pizza.restaurant}</span>
+                                        <span className={styles.pizzaTitle}>{pizza.title}</span>
+                                    </span>
                                 </Link>
                             </div>
                         ))}
@@ -169,6 +190,16 @@ export const query = graphql`
                     id
                     title
                     slug
+                    images {
+                        gatsbyImageData(width: 520, height: 416)
+                        title
+                        description
+                    }
+                }
+                coverPhoto {
+                    gatsbyImageData(width: 520, height: 416)
+                    title
+                    description
                 }
             }
         }
@@ -196,6 +227,16 @@ export const query = graphql`
                     id
                     title
                     slug
+                    images {
+                        gatsbyImageData(width: 520, height: 416)
+                        title
+                        description
+                    }
+                }
+                coverPhoto {
+                    gatsbyImageData(width: 520, height: 416)
+                    title
+                    description
                 }
             }
         }
