@@ -39,7 +39,7 @@ const Controls = () => {
 
 export default () => (
   <div className={styles.section}>
-    <h1 className={styles.h1}>threejs/react-fiber</h1>
+    <h1 className={styles.h1}>threejs/react-fiber demo</h1>
     <Canvas camera={{ position: [0,0,5] }} onCreated={({ gl }) => {
       gl.shadowMap.enabled = true
       gl.shadowMap.type = THREE.PCFSoftShadowMap

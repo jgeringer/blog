@@ -19,6 +19,7 @@ const RichText = (props) => {
       [MARKS.ITALIC]: (text) => <span className={typography.italic}>{text}</span>,
     },
     renderNode: {
+      [BLOCKS.HEADING_1]: (node, children) => <h1 className={typography.h1}>{children}</h1>,
       [BLOCKS.HEADING_2]: (node, children) => <h2 className={typography.h2}>{children}</h2>,
       [BLOCKS.HEADING_3]: (node, children) => <h3 className={typography.h3}>{children}</h3>,
       [BLOCKS.HEADING_4]: (node, children) => <h4 className={typography.h4}>{children}</h4>,
@@ -45,7 +46,7 @@ const RichText = (props) => {
       // eslint-disable-next-line react/prop-types
       [INLINES.HYPERLINK]: ({ data }, children) => (
         // eslint-disable-next-line react/prop-types
-        <Link to={data.uri}>
+        <Link to={data.uri} className={styles.link}>
           {children}
         </Link>
       ),

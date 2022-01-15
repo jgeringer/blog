@@ -7,38 +7,15 @@ import RichText from '@components/RichText'
 
 export default function Pizzas({ data }) {
     console.log(`pizza time: `, data);
-    
+
     const allPizzarias = data.allPizzarias.nodes;
     const pizzarias = data.pizzarias.nodes;
 
+    const [initialPizzas, setInitialPizzas] = useState(allPizzarias)
+
+    const [pizzasToShow, setPizzasToShow] = useState(allPizzarias)
+
     console.log(`pizzarias:: `, pizzarias);
-
-    // get all pizzas from pizzarias...
-
-    const initialPizzas = []
-    pizzarias.forEach(pizza => {
-        const pizzariaPizzas = pizza.pizzas
-        const numOfPizzasInPizzaria = pizzariaPizzas.length
-        console.log(`pizzas - `, numOfPizzasInPizzaria)
-        if (numOfPizzasInPizzaria > 1) {
-            pizzariaPizzas.forEach(pizzaPie => {
-                pizzaPie['restaurant'] = pizza.title
-                pizzaPie['hasRcCola'] = pizza.hasRcCola
-                pizzaPie['pizzariaSlug'] = pizza.slug
-                pizzaPie['coverPhoto'] = pizza.coverPhoto
-                pizzaPie['area'] = pizza.area
-                initialPizzas.push(pizzaPie)
-            })
-        } else {
-            pizzariaPizzas[0]['restaurant'] = pizza.title
-            pizzariaPizzas[0]['hasRcCola'] = pizza.hasRcCola
-            pizzariaPizzas[0]['pizzariaSlug'] = pizza.slug
-            pizzariaPizzas[0]['coverPhoto'] = pizza.coverPhoto
-            pizzariaPizzas[0]['area'] = pizza.area
-            initialPizzas.push(pizzariaPizzas[0])
-        }
-    });
-    console.log('initialPizzas:::: ', initialPizzas)
 
     const [pizzas, setPizzas] = useState(initialPizzas)
     const [activePizzaria, setActivePizzaria] = useState(pizzarias.length === 1 ? pizzarias[0] : null)
@@ -47,11 +24,14 @@ export default function Pizzas({ data }) {
     const filterByRcCola = (e) => {
         const isChecked = e.target.checked
         if (isChecked) {
-            setPizzas(
-                initialPizzas.filter(x => x.hasRcCola === isChecked)
+            console.log('it is checked')
+            setPizzasToShow(
+                pizzasToShow.filter(x => x.hasRcCola === isChecked)
             )
         } else {
-            setPizzas(initialPizzas)
+            setPizzasToShow(
+                initialPizzas
+            )
         }
     }
 
@@ -74,30 +54,32 @@ export default function Pizzas({ data }) {
             <section className='u-flex'>
                 <div className='u-lg-1of4'>
                     <h2>Pizza time</h2>
-                    Filter by:
                     <ul>
                         <li>
                             <Link to={`/pizzas`} className={styles.pizzaria}>
                                 All Pizzarias
                             </Link>
-                            {allPizzarias.map(pizzaria => (
-                                <div key={pizzaria.id}>
-                                    <Link to={`/pizzas/${pizzaria.slug}`} className={styles.pizzaria}>
-                                    {pizzaria.title} 
-                                    {pizzaria.hasRcCola && (
-                                        <i> (RC)</i>
-                                    )}
-                                    </Link>
-                                </div>
-                            ))}
                         </li>
-                        <li> --- </li>
+                        <li>
+                            <ul>
+                                {allPizzarias.map(pizzaria => (
+                                    <li key={pizzaria.id}>
+                                        <Link to={`/pizzas/${pizzaria.slug}`} className={styles.pizzaria}>
+                                        {pizzaria.title} 
+                                        {pizzaria.hasRcCola && (
+                                            <i> (RC)</i>
+                                        )}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </li>
 
                         {!activePizzaria && (
                             <>
                                 <li>
                                     <input type="checkbox" id="hasRcCola" name="hasRcCola" onChange={(e) => filterByRcCola(e)} />
-                                    <label for="hasRcCola">Includes RC</label>
+                                    <label for="hasRcCola">Includes RC!</label>
                                 </li>
                                 <li>
                                     <select onChange={(e) => filterByArea(e)}>
@@ -107,6 +89,7 @@ export default function Pizzas({ data }) {
                                         <option value="Burbs">Burbs</option>
                                     </select>
                                 </li>
+{/*                                 
                                 <li>---</li>
                                 <li>Nearest</li>
                                 <li>Cut: Square Cut, Pie Cut</li>
@@ -115,7 +98,7 @@ export default function Pizzas({ data }) {
                                 <li>Unique flavor: Greasy, Sweet Sauce</li>
                                 <li>Packaging: Paper bag, Box</li>
                                 <li>Cash Only</li>
-                                <li>Age: 10+, 20+, 30+, 40+</li>
+                                <li>Age: 10+, 20+, 30+, 40+</li> */}
                             </>
                         )}                        
                     </ul>
@@ -142,21 +125,24 @@ export default function Pizzas({ data }) {
                             {activePizzaria.description && (
                                 <RichText body={activePizzaria.description} />
                             )}
+                            <GatsbyImage className={styles.pizzaImage} alt={activePizzaria.description || activePizzaria.title} image={activePizzaria.coverPhoto.gatsbyImageData} />
                         </div>
                     )}
-                    <div className={styles.pizzaGrid}>
-                        {pizzas.map(pizza => (
-                            <div key={pizza.id}>
-                                <Link to={`/pizzas/${pizza.pizzariaSlug}/${pizza.slug}`} className={styles.link}>
-                                    <GatsbyImage className={styles.pizzaImage} alt={pizza.description || pizza.title} image={pizza.images[0].gatsbyImageData} />
-                                    <span className={styles.linkText}>
-                                        <span>{pizza.restaurant}</span>
-                                        <span className={styles.pizzaTitle}>{pizza.title}</span>
-                                    </span>
-                                </Link>
-                            </div>
-                        ))}
-                    </div>
+                    {!activePizzaria && (
+                        <div className={styles.pizzaGrid}>
+                            {pizzasToShow.map(pizzaria => (
+                                <div key={pizzaria.id}>
+                                    <Link to={`/pizzas/${pizzaria.slug}`} className={styles.link}>
+                                        <GatsbyImage className={styles.pizzaImage} alt={pizzaria.description || pizzaria.title} image={pizzaria.coverPhoto.gatsbyImageData} />
+                                        <span className={styles.linkText}>
+                                            {/* <span>{pizza.restaurant}</span> */}
+                                            <span className={styles.pizzaTitle}>{pizzaria.title}</span>
+                                        </span>
+                                    </Link>
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </section>
         </div>

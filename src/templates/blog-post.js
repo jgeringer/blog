@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import get from 'lodash/get'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import RichText from '@components/RichText'
 
 import * as heroStyles from '../components/hero.module.css'
 import ContentArea from '../components/contentArea'
@@ -41,6 +42,7 @@ export default function BlogPostTemplate({ data: { post } }) {
               __html: post.body.childMarkdownRemark.html,
             }}
           />
+          <RichText body={post.bodyRichText} />
         </div>
       </div>
   )
@@ -70,6 +72,9 @@ export const pageQuery = graphql`
         childMarkdownRemark {
           html
         }
+      }
+      bodyRichText {
+        raw
       }
     }
   }

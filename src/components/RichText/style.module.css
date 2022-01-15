@@ -18,3 +18,11 @@ ol {
         margin-bottom: 0;
     }
 }
+
+.link {
+    color: #c594f7;
+    transition: 100ms ease color;
+    &:hover {
+        color: #8e4ef3;
+    }
+}
