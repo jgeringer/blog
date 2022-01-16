@@ -12,7 +12,7 @@ export default function SinglePizzaPage({ data: { pizza } }) {
             <div className="wrapper">
                 <h1>{pizzaria} / {pizza.title}</h1>
             </div>
-            <GatsbyImage alt={pizza.description || pizza.title} image={pizza.images[0].gatsbyImageData} />
+            {/* <GatsbyImage alt={pizza.description || pizza.title} image={pizza.images[0].gatsbyImageData} /> */}
         </div>
     );
 }

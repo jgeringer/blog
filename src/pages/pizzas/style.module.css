@@ -28,6 +28,14 @@
         grid-row: span 2;
         grid-column: span 2;
     }
+    > * {
+        display: flex;
+    }
+}
+
+.filters {
+    position: sticky;
+    top: 1rem;
 }
 
 .link {
