@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
+import { useForm } from "react-hook-form";
 import { Link, graphql } from 'gatsby'
 import * as styles from './style.module.css'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 import RichText from '@components/RichText'
+import { initial } from 'lodash';
 
 export default function Pizzas({ data }) {
+
+    const { register, handleSubmit, watch, getValues, formState: { errors } } = useForm();
+
     console.log(`pizza time: `, data);
 
     const allPizzarias = data.allPizzarias.nodes;
@@ -26,12 +31,10 @@ export default function Pizzas({ data }) {
         if (isChecked) {
             console.log('it is checked')
             setPizzasToShow(
-                pizzasToShow.filter(x => x.hasRcCola === isChecked)
+                initialPizzas.filter(x => x.hasRcCola === isChecked)
             )
         } else {
-            setPizzasToShow(
-                initialPizzas
-            )
+            setPizzasToShow(initialPizzas)
         }
     }
 
@@ -40,13 +43,29 @@ export default function Pizzas({ data }) {
         console.log('areaSelected: ', areaSelected)
         if (areaSelected !== "All Areas") {
             console.log('not null')
-            setPizzas(
-                initialPizzas.filter(y => y.area === areaSelected)
+            setPizzasToShow(
+                initialPizzas.filter(x => x.area === areaSelected)
             )
         } else {
             console.log('show all pizzas')
-            setPizzas(initialPizzas)
+            // setPizzas(initialPizzas)
+            setPizzasToShow(initialPizzas)
         }
+    }
+
+    const applyFilters = (data) => {
+        // check the value of all form data
+        const values = getValues();
+        console.log(values)
+        console.log(initialPizzas)
+
+        const filterHasRcCola = pizza => values.hasRcCola === true ? pizza.hasRcCola === values.hasRcCola : false || true
+
+        const filterArea = area => values.area !== '' ? area.area === values.area : true
+
+        setPizzasToShow(
+            initialPizzas.filter(filterHasRcCola).filter(filterArea)
+        )
     }
 
     return(
@@ -54,54 +73,69 @@ export default function Pizzas({ data }) {
             <section className='u-flex'>
                 <div className='u-lg-1of4'>
                     <h2>Pizza time</h2>
-                    <ul>
-                        <li>
-                            <Link to={`/pizzas`} className={styles.pizzaria}>
-                                All Pizzarias
-                            </Link>
-                        </li>
-                        <li>
-                            <ul>
-                                {allPizzarias.map(pizzaria => (
-                                    <li key={pizzaria.id}>
-                                        <Link to={`/pizzas/${pizzaria.slug}`} className={styles.pizzaria}>
-                                        {pizzaria.title} 
-                                        {pizzaria.hasRcCola && (
-                                            <i> (RC)</i>
-                                        )}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </li>
+                    <form onSubmit={handleSubmit(applyFilters)}>
+                        <ul>
+                            <li>
+                                <Link to={`/pizzas`} className={styles.pizzaria}>
+                                    All Pizzarias
+                                </Link>
+                            </li>
+                            <li>
+                                <ul>
+                                    {allPizzarias.map(pizzaria => (
+                                        <li key={pizzaria.id}>
+                                            <Link to={`/pizzas/${pizzaria.slug}`} className={styles.pizzaria}>
+                                            {pizzaria.title} 
+                                            {pizzaria.hasRcCola && (
+                                                <i> (RC)</i>
+                                            )}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </li>
 
-                        {!activePizzaria && (
-                            <>
-                                <li>
-                                    <input type="checkbox" id="hasRcCola" name="hasRcCola" onChange={(e) => filterByRcCola(e)} />
-                                    <label for="hasRcCola">Includes RC!</label>
-                                </li>
-                                <li>
-                                    <select onChange={(e) => filterByArea(e)}>
-                                        <option>All Areas</option>
-                                        <option value="North Side">North Side</option>
-                                        <option value="South Side">South Side</option>
-                                        <option value="Burbs">Burbs</option>
-                                    </select>
-                                </li>
-{/*                                 
-                                <li>---</li>
-                                <li>Nearest</li>
-                                <li>Cut: Square Cut, Pie Cut</li>
-                                <li>My Rating</li>
-                                <li>Style: Tavern, Deep Dish, Cracker, Neopolitan</li>
-                                <li>Unique flavor: Greasy, Sweet Sauce</li>
-                                <li>Packaging: Paper bag, Box</li>
-                                <li>Cash Only</li>
-                                <li>Age: 10+, 20+, 30+, 40+</li> */}
-                            </>
-                        )}                        
-                    </ul>
+                            {!activePizzaria && (
+                                <>
+                                    <li>
+                                        {/* <input {...register("hasRcCola")} id="hasRcCola" type="checkbox" onChange={(e) => filterByRcCola(e)} /> */}
+                                        <input 
+                                            {...register("hasRcCola", {
+                                                onChange: (e) => applyFilters(e)
+                                            })}
+                                            id="hasRcCola"
+                                            type="checkbox"
+                                        />
+                                        <label for="hasRcCola">Includes RC!</label>
+                                    </li>
+                                    <li>
+                                        <select
+                                            {...register("area", {
+                                                onChange: (e) => applyFilters(e)
+                                            })}
+                                        >
+                                            {/* onChange={(e) => filterByArea(e)} */}
+                                            <option value="">All Areas</option>
+                                            <option value="North Side">North Side</option>
+                                            <option value="South Side">South Side</option>
+                                            <option value="Burbs">Burbs</option>
+                                        </select>
+                                    </li>
+                                    {/*                                 
+                                    <li>---</li>
+                                    <li>Nearest</li>
+                                    <li>Cut: Square Cut, Pie Cut</li>
+                                    <li>My Rating</li>
+                                    <li>Style: Tavern, Deep Dish, Cracker, Neopolitan</li>
+                                    <li>Unique flavor: Greasy, Sweet Sauce</li>
+                                    <li>Packaging: Paper bag, Box</li>
+                                    <li>Cash Only</li>
+                                    <li>Age: 10+, 20+, 30+, 40+</li>
+                                    */}
+                                </>
+                            )}                        
+                        </ul>
+                    </form>
                     {activePizzaria && (
                         <div>
                             <p>{activePizzaria.address}</p>
