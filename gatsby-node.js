@@ -121,11 +121,6 @@ async function turnPizzasIntoPages({ graphql, actions }) {
             id
             slug
             title
-            images {
-              gatsbyImageData(width: 520, height: 416)
-                title
-                description
-            }
             pizzas {
               images {
                   gatsbyImageData(width: 1440, height: 1440)
