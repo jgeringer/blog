@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { Link, graphql } from 'gatsby'
 import * as styles from './style.module.css'
+
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 import RichText from '@components/RichText'
@@ -93,8 +94,8 @@ export default function Pizzas({ data }) {
 
     return(
         <div className="wrapper">
-            <section className='u-flex'>
-                <div className='u-lg-1of4'>
+            <section className={styles.pizzaListingPage}>
+                <div className={styles.filtersWrapper}>
                     <div className={styles.filters}>
                         <form onSubmit={handleSubmit(applyFilters)}>
                             <ul>
@@ -102,16 +103,11 @@ export default function Pizzas({ data }) {
                                     <Link to={`/pizzas`} className={styles.pizzaria}>
                                         All Pizzarias
                                     </Link>
-                                </li>
-                                <li>
                                     <ul>
                                         {allPizzarias.map(pizzaria => (
                                             <li key={pizzaria.id}>
                                                 <Link to={`/pizzas/${pizzaria.slug}`} className={styles.pizzaria}>
-                                                {pizzaria.title} 
-                                                {pizzaria.hasRcCola && (
-                                                    <i> (RC)</i>
-                                                )}
+                                                    {pizzaria.title}
                                                 </Link>
                                             </li>
                                         ))}
@@ -121,40 +117,8 @@ export default function Pizzas({ data }) {
                                 {!activePizzaria && (
                                     <>
                                         <li>
-                                            <input 
-                                                {...register("hasRcCola", {
-                                                    onChange: (e) => applyFilters(e)
-                                                })}
-                                                id="hasRcCola"
-                                                type="checkbox"
-                                            />
-                                            <label for="hasRcCola">Includes RC!</label>
-                                        </li>
-                                        <li>
-                                            <input 
-                                                {...register("goodCold", {
-                                                    onChange: (e) => applyFilters(e)
-                                                })}
-                                                id="goodCold"
-                                                type="checkbox"
-                                            />
-                                            <label for="goodCold">Good Cold</label>
-                                        </li>
-                                        <li>
-                                            <select
-                                                {...register("area", {
-                                                    onChange: (e) => applyFilters(e)
-                                                })}
-                                            >
-                                                <option value="">All Areas</option>
-                                                <option value="North Side">North Side</option>
-                                                <option value="South Side">South Side</option>
-                                                <option value="Burbs">Burbs</option>
-                                            </select>
-                                        </li>
-                                        <li>
+                                            Styles
                                             <ul>
-                                                Offerings: <br />
                                                 {activeStyles.map(style => (
                                                     <li>
                                                         <input 
@@ -170,8 +134,19 @@ export default function Pizzas({ data }) {
                                             </ul>
                                         </li>
                                         <li>
-                                            Sort by est.
-                                            <div onClick={(e) => applyFilters(e)}>Oldest</div>
+                                            <select
+                                                {...register("area", {
+                                                    onChange: (e) => applyFilters(e)
+                                                })}
+                                            >
+                                                <option value="">All Areas</option>
+                                                <option value="North Side">North Side</option>
+                                                <option value="South Side">South Side</option>
+                                                <option value="Burbs">Burbs</option>
+                                            </select>
+                                        </li>
+                                        <li>
+                                            Sort by Est.
                                             <div>
                                                 <input
                                                     type="radio"
@@ -198,6 +173,27 @@ export default function Pizzas({ data }) {
                                                 <label for="yearEstablishedNewest">Newest</label>
                                             </div>
                                         </li>
+
+                                        <li>
+                                            <input 
+                                                {...register("hasRcCola", {
+                                                    onChange: (e) => applyFilters(e)
+                                                })}
+                                                id="hasRcCola"
+                                                type="checkbox"
+                                            />
+                                            <label for="hasRcCola">Includes RC</label>
+                                        </li>
+                                        <li>
+                                            <input 
+                                                {...register("goodCold", {
+                                                    onChange: (e) => applyFilters(e)
+                                                })}
+                                                id="goodCold"
+                                                type="checkbox"
+                                            />
+                                            <label for="goodCold">Good Cold</label>
+                                        </li>
                                         {/*
                                             <li>Nearest</li>
                                             <li>Cut: Square Cut, Pie Cut</li>
@@ -214,33 +210,40 @@ export default function Pizzas({ data }) {
                             <div>
                                 <p>{activePizzaria.address}</p>
                                 <p>{activePizzaria.phone}</p>
-                                <p>{activePizzaria.yearEstablished}</p>
+                                <p>Est. {activePizzaria.yearEstablished}</p>
                                 <p>
                                     <a href={activePizzaria.url} target='_blank'>
                                         Website
                                     </a>
                                 </p>
-                                <p>{activePizzaria.hasRcCola}</p>
-                                <p>{activePizzaria.cashOnly}</p>
+                                {activePizzaria.hasRcCola && (
+                                    <p>Includes RC Cola</p>
+                                )}
+                                {activePizzaria.cashOnly && (
+                                    <p>Cash Only!</p>
+                                )}
                                 <p>{activePizzaria.area}</p>
                             </div>
                         )}
                     </div>
                 </div>
-                <div className='u-lg-3of4'>
+
+                <div className={styles.mainContent}>
                     {activePizzaria && (
                         <div>
                             <h1>{activePizzaria.title}</h1>
                             {activePizzaria.description && (
                                 <RichText body={activePizzaria.description} />
                             )}
-                            <GatsbyImage className={styles.pizzaImage} alt={activePizzaria.description || activePizzaria.title} image={activePizzaria.coverPhoto.gatsbyImageData} />
+                            <GatsbyImage className={styles.pizzaDetailHeroImage} alt={activePizzaria.description || activePizzaria.title} image={activePizzaria.coverPhoto.gatsbyImageData} />
 
-                            {activePizzaria.pizzas.map(pizza => (
-                                pizza.images.map(image => (
-                                    <GatsbyImage image={image.gatsbyImageData} />
-                                ))
-                            ))}
+                            <div className={styles.imagesGrid}>
+                                {activePizzaria.pizzas.map(pizza => (
+                                    pizza.images.map(image => (
+                                        <GatsbyImage image={image.gatsbyImageData} />
+                                    ))
+                                ))}
+                            </div>
                         </div>
                     )}
                     {!activePizzaria && (
