@@ -1,6 +1,6 @@
 import { graphql, Link } from 'gatsby';
 import React from 'react';
-import * as styles from './recipeStyle.module.css';
+// import * as styles from './recipeStyle.module.css';
 import { GatsbyImage } from 'gatsby-plugin-image'
 import RichText from '../components/RichText'
 
