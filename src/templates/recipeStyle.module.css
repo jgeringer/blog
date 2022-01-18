@@ -1,5 +1,54 @@
 @import '~styles/imports/index';
 
+.recipeHeroWrapper {
+    position: relative;
+    height: 570px;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 50%;
+}
+
+.stickyHeader {
+    position: sticky;
+    top: .5rem;
+    z-index: 1;
+}
+
+h3 {
+    margin-bottom: 1rem;
+}
+
+ol li {
+    list-style-position: inside;
+    &::marker {
+        display: inline;
+    }
+    p {
+        display:inline;
+        margin: 0;
+    }
+}
+
+.recipeHero {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    padding: 1rem;
+    &:before {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(140deg, rgba(0,0,0,0.3) 0%, rgba(255,255,255,0) 35%);
+        content: '';
+        z-index: 1;
+    }
+}
+
 .ingredients {
     display: flex;
     flex-direction: column;
@@ -15,13 +64,17 @@
 }
 
 .recipeImage {
-    height: 40vh !important;
+    height: 100vh;
+    @media (--above-smartphone) {
+        height: 500px;
+    }
 }
 
 .recipeLayout {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    margin-top: 2rem;
     @media (--above-smartphone) {
         flex-direction: row;
     }
@@ -42,6 +95,9 @@
 .recipeTitle {
     margin-bottom: .25rem;
     line-height: 2.2rem;
+    text-shadow: 1px 1px #2e2d2d;
+    position: relative;
+    z-index: 3;
 }
 
 .type {

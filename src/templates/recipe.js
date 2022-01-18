@@ -9,35 +9,42 @@ export default function SingleRecipePage({ data: { recipe } }) {
     return (
         <div className="wrapper">
             <KitchenFilter />
-            <h2 className={styles.recipeTitle}>{recipe.title}</h2>
-
-            <div className={styles.details}>
-                {recipe.type && (
-                    <div className={styles.type}>{recipe.type}</div>
-                )}
-
-                {recipe.rating && (
-                    <div>
-                        {recipe.rating} / 5 
-                    </div>
-                )}
-
-                {recipe.price && (
-                    <div>
-                        ${recipe.price}
-                    </div>
-                )}
-
-                {recipe.frozen && (
-                    <div>
-                        Frozen
-                    </div>
-                )}
-            </div>
             
             {recipe.image && (
-                <div>
-                    <GatsbyImage alt="" image={recipe.image.gatsbyImageData} className={styles.recipeImage} />
+                <div
+                    className={styles.recipeHeroWrapper}
+                    style={{
+                        backgroundImage: `url(${recipe.image.file.url}?w=1400&h=1400&q=75)`,
+                    }}
+                >
+                    <div className={styles.recipeHero}>
+                        <div className={styles.stickyHeader}>
+                            <h2 className={styles.recipeTitle}>{recipe.title}</h2>
+                            <div className={styles.details}>
+                                {recipe.type && (
+                                    <div className={styles.type}>{recipe.type}</div>
+                                )}
+
+                                {recipe.rating && (
+                                    <div>
+                                        {recipe.rating} / 5 
+                                    </div>
+                                )}
+
+                                {recipe.price && (
+                                    <div>
+                                        ${recipe.price}
+                                    </div>
+                                )}
+
+                                {recipe.frozen && (
+                                    <div>
+                                        Frozen
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             )}
            
@@ -152,7 +159,10 @@ export const query = graphql`
                 sectionHeading
             }
             image {
-                gatsbyImageData(width: 1800)
+                gatsbyImageData(width: 1400)
+                file {
+                    url
+                }
             }
         }
     }
