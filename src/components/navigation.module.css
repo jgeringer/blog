@@ -1,8 +1,36 @@
 @import '~styles/imports/index';
 
 .navigationContainer {
-  padding-bottom: 0;
-  padding-top: 0;
+  @media (--smartphone) {
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    background: #201f3a;
+  }
+  @media (--above-smartphone) {
+    align-items: center;
+    display: flex;
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+}
+
+.navigationWrapper {
+  &:before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100vh;
+    background: rgba(111,111,111,.5);
+    opacity: 0;
+    transition: opacity 300ms;
+    &Expaned {
+      opacity: 1;
+      width: 100vw;
+    }
+  }
 }
 
 .navigation {
@@ -11,12 +39,52 @@
   padding: 0;
   margin: 0;
   font-size: 1rem;
-  flex-direction: column;
   color: white;
+
+  flex-direction: row;
+  justify-content: space-between;
+
   @media (--above-smartphone) {
     font-size: 1.25rem;
     height: 100px;
-    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+
+.mobileMenu,
+.closeButton {
+  @media (--above-smartphone) {
+    display: none;
+  }
+}
+
+.mobileMenuNavExpanded {
+
+}
+
+.mobileMenuNav {
+  @media (--smartphone) {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    z-index: 99999;
+    width: 100%;
+    left: 0;
+    transition: transform 300ms;
+    position: fixed;
+    top: 0;
+    background-color: #211d32;
+    height: 100vh;
+    list-style-type: none;
+    &Expanded {
+      transform: translateX(20%);
+    }
+  }
+  @media (--above-smartphone) {
+    display: block;
   }
 }
 
@@ -34,26 +102,31 @@
   a {
     @media (--above-smartphone) {
       padding: 12px;
-    }
-    &:after {
-      background: -webkit-linear-gradient(90deg, #cc84ff, #4649eb);
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -18px;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      transform: scaleY(0);
-      transition: transform 350ms ease-in-out, opacity 350ms ease-in-out;
-      transform-origin: top;
-      opacity: 0;
+      &:after {
+        background: -webkit-linear-gradient(90deg, #cc84ff, #4649eb);
+        content: '';
+        position: absolute;
+        top: -40px;
+        left: -18px;
+        width: 100%;
+        height: 80px;
+        z-index: -1;
+        transform: scaleY(0);
+        transition: transform 350ms ease-in-out, opacity 350ms ease-in-out;
+        transform-origin: top;
+        opacity: 0;
+      }
     }
   }
   [aria-current] {
     &:after {
       transform: scaleY(1) skew(15deg, 0deg);
       opacity: 1;
+    }
+    @media (--smartphone) {
+      background: -webkit-linear-gradient(180deg, #cc84ff, #4649eb);
+      -webkit-text-fill-color: #0000;
+      -webkit-background-clip: text;
     }
   }
   &:first-child {

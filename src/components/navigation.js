@@ -1,29 +1,87 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'gatsby'
 import * as styles from './navigation.module.css'
 import classNames from 'classnames';
 
-export default () => (
-  <nav role="navigation" className={classNames("wrapper", styles.navigationContainer)}>
-    <ul className={styles.navigation}>
-      <li className={styles.navigationItem}>
-        <Link to="/">Joe Geringer</Link>
-      </li>
-      <li className={styles.navigationItem}>
-        <Link to="/blog/">Journal</Link>
-      </li>
-      <li className={styles.navigationItem}>
-        <Link to="/resume/">Resume</Link>
-      </li>
-      <li className={styles.navigationItem}>
-        <Link to="/contact">Contact</Link>
-      </li>
-      <li className={styles.navigationItem}>
-        <Link to="/kitchen">Kitchen</Link>
-      </li>
-      <li className={styles.navigationItem}>
-        <Link to="/pizzas">Chicago Pizzas</Link>
-      </li>
-    </ul>
-  </nav>
-)
+export default function() {
+  
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  
+  const mobileMenuClass = classNames(styles.mobileMenuNav, {
+    [styles.mobileMenuNavExpanded]: showMobileMenu,
+  });
+
+  const navigationWrapperClass = classNames(styles.navigationWrapper, {
+    [styles.navigationWrapperExpanded]: showMobileMenu,
+  })
+
+  const handleMobileMenuClick = () => {
+    console.log('clicked it', showMobileMenu)
+    setShowMobileMenu(!showMobileMenu)
+  }
+
+  // mobileMenuButton
+  // const handleMobileMenu = () => {
+
+  // }
+
+  return (
+    <div className={navigationWrapperClass}>
+
+      <nav role="navigation" className={classNames("wrapper", styles.navigationContainer)}>
+          {/* <ul className={styles.navigation}>
+            <li className={styles.navigationItem}>
+              <Link to="/">Joe Geringer</Link>
+            </li>
+            <li className={styles.navigationItem}>
+              <Link to="/blog/">Journal</Link>
+            </li>
+            <li className={styles.navigationItem}>
+              <Link to="/resume/">Resume</Link>
+            </li>
+            <li className={styles.navigationItem}>
+              <Link to="/contact">Contact</Link>
+            </li>
+            <li className={styles.navigationItem}>
+              <Link to="/kitchen">Kitchen</Link>
+            </li>
+            <li className={styles.navigationItem}>
+              <Link to="/pizzas">Chicago Pizzas</Link>
+            </li>
+          </ul> */}
+
+          <ul className={styles.navigation}>
+            <li className={styles.navigationItem}>
+              <Link to="/">Joe Geringer</Link>
+            </li>
+            <li className={styles.mobileMenu}>
+              <div className={styles.mobileMenuButton} onClick={() => handleMobileMenuClick() }>
+                MENU
+              </div>
+            </li>
+          </ul>
+          <ul className={mobileMenuClass}>
+            <li onClick={() => handleMobileMenuClick() } className={styles.closeButton}>
+              Close
+            </li>
+            <li className={styles.navigationItem}>
+              <Link to="/blog/" onClick={() => handleMobileMenuClick() }>Journal</Link>
+            </li>
+            <li className={styles.navigationItem}>
+              <Link to="/resume/" onClick={() => handleMobileMenuClick() }>Resume</Link>
+            </li>
+            <li className={styles.navigationItem}>
+              <Link to="/contact" onClick={() => handleMobileMenuClick() }>Contact</Link>
+            </li>
+            <li className={styles.navigationItem}>
+              <Link to="/kitchen" onClick={() => handleMobileMenuClick() }>Kitchen</Link>
+            </li>
+            <li className={styles.navigationItem}>
+              <Link to="/pizzas" onClick={() => handleMobileMenuClick() }>Chicago Pizzas</Link>
+            </li>
+          </ul>
+
+        </nav>
+      </div>
+  );
+}

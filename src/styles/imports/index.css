@@ -49,11 +49,11 @@ body {
   a {
     color: currentColor;
   }
-  
+/*   
   main {
     padding: 48px 0;
   }
-  
+   */
   .u-flex {
     display: flex;
   }

@@ -2,20 +2,36 @@
 
 .recipeHeroWrapper {
     position: relative;
-    height: 570px;
     background-size: cover;
     background-attachment: fixed;
     background-position: 50%;
+    height: 70vh;
+    @media (--above-smartphone) {
+        height: 570px;
+    }
 }
 
 .stickyHeader {
     position: sticky;
-    top: .5rem;
+    top: 24px;
     z-index: 1;
+    @media (--smartphone) {
+        top: 72px;
+    }
 }
 
 h3 {
     margin-bottom: 1rem;
+}
+
+ol {
+    @media (--smartphone) {
+        margin-left: 0;
+        li {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
 }
 
 ol li {

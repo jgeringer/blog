@@ -40,17 +40,19 @@
                 text-shadow: 1px 1px #2e2d2d;
             }
         }
-        &:first-child, &:nth-child(6n) {
-            grid-row: span 2;
-            grid-column: span 2;
-        }
-        &:nth-child(3n) {
-            grid-row: span 1;
-            grid-column: span 2;
-        }
-        &:nth-child(4n) {
-            grid-row: span 2;
-            grid-column: span 1;
+        @media (--above-smartphone) {
+            &:first-child, &:nth-child(6n) {
+                grid-row: span 2;
+                grid-column: span 2;
+            }
+            &:nth-child(3n) {
+                grid-row: span 1;
+                grid-column: span 2;
+            }
+            &:nth-child(4n) {
+                grid-row: span 2;
+                grid-column: span 1;
+            }
         }
     }
 }

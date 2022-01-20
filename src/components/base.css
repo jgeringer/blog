@@ -50,7 +50,9 @@ a {
 }
 
 main {
-  padding: 48px 0;
+  @media (--smartphone) {
+    padding: 48px 0;
+  }
 }
 
 .u-flex {
