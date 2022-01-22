@@ -18,11 +18,11 @@ jobs:
         with:
           node-version: '12.x'
 
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile --prefer-offline
+      # - name: Install dependencies
+      #   run: yarn install --frozen-lockfile --prefer-offline
 
       - name: Run Gatsby Build
-        run: yarn run gatsby build
+        run: npm run build
 
       - name: Audit URLs using Lighthouse
         uses: treosh/lighthouse-ci-action@v8
