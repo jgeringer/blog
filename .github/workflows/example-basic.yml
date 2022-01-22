@@ -38,7 +38,6 @@ jobs:
         run: |
           touch .env.development && echo {\"CONTENTFUL_SPACE_ID\": \"${CONTENTFUL_SPACE_ID}\", \"CONTENTFUL_ACCESS_TOKEN\": \"${CONTENTFUL_ACCESS_TOKEN}\"} > .env.development
 
-
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
@@ -52,16 +51,16 @@ jobs:
       #   run: yarn build 
   axe:
     runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
-        - name: Use Node.js 12.x
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-        - run: npm ci
-        - run: npm run build --if-present
-        - run: npm start & npx wait-on http://localhost:3000
-        - name: Run axe
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm start & npx wait-on http://localhost:3000
+      - name: Run axe
         run: |
           npm install -g @axe-core/cli
           axe http://localhost:3000 --exit
