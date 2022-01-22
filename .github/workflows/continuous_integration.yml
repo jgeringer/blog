@@ -60,7 +60,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-          cache: 'npm' # or 'npm'
       - run: npm ci
       - run: npm build --if-present
       - run: npm serve & npx wait-on http://localhost:9000
