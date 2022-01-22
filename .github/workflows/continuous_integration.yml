@@ -8,30 +8,30 @@ env:
 
 jobs:
 lighthouse-audit:
-    name: Lighthouse Audit
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
+  name: Lighthouse Audit
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v2
 
-      - name: Setup Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
+    - name: Setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
 
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile --prefer-offline
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile --prefer-offline
 
-      - name: Run Gatsby Build
-        run: yarn run gatsby build
+    - name: Run Gatsby Build
+      run: yarn run gatsby build
 
-      - name: Audit URLs using Lighthouse
-        uses: treosh/lighthouse-ci-action@v8
-        with:
-          configPath: './lighthouserc.json'
-          runs: 5
-          temporaryPublicStorage: true
-  # cypress-run:
-  #   runs-on: ubuntu-latest
+    - name: Audit URLs using Lighthouse
+      uses: treosh/lighthouse-ci-action@v8
+      with:
+        configPath: './lighthouserc.json'
+        runs: 5
+        temporaryPublicStorage: true
+# cypress-run:
+#   runs-on: ubuntu-latest
   #   steps:
   #     - name: Checkout
   #       uses: actions/checkout@v2
