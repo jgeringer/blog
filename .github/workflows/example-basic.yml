@@ -5,50 +5,29 @@ on: [push]
 env:
   CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
   CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
-# env:
-#   CONTENTFUL_SPACE_ID: 'gop6x1ssjaqg'
-#   CONTENTFUL_ACCESS_TOKEN: 'vjrfHg8Nbo3z9rjUV40oVhIf3ZiwD0pIEbE43QGbtAU'
 
 jobs:
-  cypress-run:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+  # cypress-run:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
 
-      # - name: Test
-      #   env:
-      #     TEST_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     TEST_SECRET: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
-      #   run: |
-      #     echo ${#TEST_GITHUB_TOKEN}
-      #     echo ${#TEST_SECRET}
+  #     - name: Create and configure .env.development for Contentful
+  #       run: |
+  #         touch .env.development && echo {\"CONTENTFUL_SPACE_ID\": \"${CONTENTFUL_SPACE_ID}\", \"CONTENTFUL_ACCESS_TOKEN\": \"${CONTENTFUL_ACCESS_TOKEN}\"} > .env.development
 
-      # - name: Install dependencies
-      #   run: yarn install --frozen-lockfile --prefer-offline
-      
-      # - name: Create and configure .env.development.json for Contentful
-      #   run: |
-      #     touch .env.development.json && echo {\"CONTENTFUL_SPACE_ID\": \"${env.CONTENTFUL_SPACE_ID}\", \"CONTENTFUL_ACCESS_TOKEN\": \"${env.CONTENTFUL_ACCESS_TOKEN}\"} > .contentful.json
+  #     # Install NPM dependencies, cache them correctly
+  #     # and run all Cypress tests
+  #     - name: Cypress run
+  #       uses: cypress-io/github-action@v2
+  #       with:
+  #         build: npm run build
+  #         start: npm run serve
+  #         wait-on: http://localhost:9000
 
-      # - name: Run Gatsby Develop
-      #   run: yarn run gatsby develop
-      
-      - name: Create and configure .env.development for Contentful
-        run: |
-          touch .env.development && echo {\"CONTENTFUL_SPACE_ID\": \"${CONTENTFUL_SPACE_ID}\", \"CONTENTFUL_ACCESS_TOKEN\": \"${CONTENTFUL_ACCESS_TOKEN}\"} > .env.development
-
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
-        with:
-          build: npm run build
-          start: npm run serve
-          wait-on: http://localhost:9000
-
-      # - name: Run Gatsby Build 
-      #   run: yarn build 
+  #     # - name: Run Gatsby Build 
+  #     #   run: yarn build 
   axe:
     runs-on: ubuntu-latest
     steps:
@@ -56,7 +35,9 @@ jobs:
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 14.x
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --prefer-offline
       - run: npm ci
       - run: npm run build --if-present
       - run: npm start & npx wait-on http://localhost:3000
