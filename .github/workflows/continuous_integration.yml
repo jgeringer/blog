@@ -32,27 +32,25 @@ jobs:
           configPath: './lighthouserc.json'
           runs: 5
           temporaryPublicStorage: true
-  # cypress-run:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
 
-  #     - name: Create and configure .env.development for Contentful
-  #       run: |
-  #         touch .env.development && echo {\"CONTENTFUL_SPACE_ID\": \"${CONTENTFUL_SPACE_ID}\", \"CONTENTFUL_ACCESS_TOKEN\": \"${CONTENTFUL_ACCESS_TOKEN}\"} > .env.development
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-  #     # Install NPM dependencies, cache them correctly
-  #     # and run all Cypress tests
-  #     - name: Cypress run
-  #       uses: cypress-io/github-action@v2
-  #       with:
-  #         build: npm run build
-  #         start: npm run serve
-  #         wait-on: http://localhost:9000
+      - name: Create and configure .env.development for Contentful
+        run: |
+          touch .env.development && echo {\"CONTENTFUL_SPACE_ID\": \"${CONTENTFUL_SPACE_ID}\", \"CONTENTFUL_ACCESS_TOKEN\": \"${CONTENTFUL_ACCESS_TOKEN}\"} > .env.development
 
-  #     # - name: Run Gatsby Build 
-  #     #   run: yarn build 
+      # Run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          build: npm run build
+          start: npm run serve
+          wait-on: http://localhost:9000
+
   axe:
     runs-on: ubuntu-latest
     steps:
