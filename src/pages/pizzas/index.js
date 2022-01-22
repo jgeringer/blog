@@ -6,13 +6,10 @@ import * as styles from './style.module.css'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 import RichText from '@components/RichText'
-import { act } from 'react-test-renderer';
 
 export default function Pizzas({ data }) {
 
     const { register, handleSubmit, watch, getValues, formState: { errors } } = useForm();
-
-    console.log(`pizza time: `, data);
 
     const allPizzarias = data.allPizzarias.nodes;
     const pizzarias = data.pizzarias.nodes;
@@ -27,8 +24,6 @@ export default function Pizzas({ data }) {
     const [initialYearEstablishedOld, setInitialYearEstablishedOld] = useState(true)
     const [initialYearEstablishedNew, setInitialYearEstablishedNew] = useState(false)
 
-    console.log(`initialPizzas:: `, initialPizzas);
-
     // all active styles...
     const allActiveStyles = allPizzarias.map(style => style.styles);
 
@@ -37,10 +32,8 @@ export default function Pizzas({ data }) {
 
     // remove duplicates from array...
     const activeStyles = [...new Set(activeStylesFlattened)]
-    console.log('styles: ', activeStyles)
     
     const [activePizzaria, setActivePizzaria] = useState(pizzarias.length === 1 ? pizzarias[0] : null)
-    console.log('ACTIVE PIZZARIA: ', activePizzaria)
 
     const applyFilters = (data) => {
         // check the value of all form data
