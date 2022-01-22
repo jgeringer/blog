@@ -21,8 +21,11 @@ jobs:
       # - name: Install dependencies
       #   run: yarn install --frozen-lockfile --prefer-offline
 
-      - name: Run Gatsby Build
-        run: npm run build
+      - name: npm install, build
+        run: |
+          npm install
+          npm run build
+
 
       - name: Audit URLs using Lighthouse
         uses: treosh/lighthouse-ci-action@v8
