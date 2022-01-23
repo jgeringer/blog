@@ -133,6 +133,11 @@
     background: -webkit-linear-gradient(180deg, #cc84ff, #4649eb);
     -webkit-text-fill-color: #0000;
     -webkit-background-clip: text;
+    a {
+      background: -webkit-linear-gradient(180deg, #cc84ff, #4649eb);
+      -webkit-text-fill-color: #0000;
+      -webkit-background-clip: text;
+    }
     [aria-current]:after {
       content: none;
     }
