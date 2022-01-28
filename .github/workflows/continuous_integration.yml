@@ -56,10 +56,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
+      - name: 🚚 Upgrade NPM
+        run: npm install -g npm
       - run: npm ci
       - run: npm run build --if-present
       - run: npm run serve & npx wait-on http://localhost:9000
