@@ -61,11 +61,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - name: 🚚 Upgrade NPM
-        run: npm install -g npm
-      - run: npm ci
-      - run: npm run build --if-present
-      - run: npm run serve & npx wait-on http://localhost:9000
+        run: npm install
+        run: npm ci
+        run: npm run build --if-present
+        run: npm run serve & npx wait-on http://localhost:9000
       - name: Run axe
         run: |
           npm install -g @axe-core/cli
