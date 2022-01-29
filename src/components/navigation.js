@@ -29,27 +29,6 @@ export default function() {
     <div className={navigationWrapperClass}>
 
       <nav role="navigation" className={classNames("wrapper", styles.navigationContainer)}>
-          {/* <ul className={styles.navigation}>
-            <li className={styles.navigationItem}>
-              <Link to="/">Joe Geringer</Link>
-            </li>
-            <li className={styles.navigationItem}>
-              <Link to="/blog/">Journal</Link>
-            </li>
-            <li className={styles.navigationItem}>
-              <Link to="/resume/">Resume</Link>
-            </li>
-            <li className={styles.navigationItem}>
-              <Link to="/contact">Contact</Link>
-            </li>
-            <li className={styles.navigationItem}>
-              <Link to="/kitchen">Kitchen</Link>
-            </li>
-            <li className={styles.navigationItem}>
-              <Link to="/pizzas">Chicago Pizzas</Link>
-            </li>
-          </ul> */}
-
           <ul className={styles.navigation}>
             <li className={styles.navigationItem}>
               <Link to="/">Joe Geringer</Link>

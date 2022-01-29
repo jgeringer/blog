@@ -14,7 +14,7 @@ export default function SingleRecipePage({ data: { recipe } }) {
                 <div
                     className={styles.recipeHeroWrapper}
                     style={{
-                        backgroundImage: `url(${recipe.image.file.url}?w=1400&h=1400&q=75)`,
+                        backgroundImage: `url(${recipe.image.file.url}?w=1400&h=800&q=50&fit=fill&fl=progressive)`,
                     }}
                 >
                     <div className={styles.recipeHero}>
@@ -159,7 +159,6 @@ export const query = graphql`
                 sectionHeading
             }
             image {
-                gatsbyImageData(width: 1400)
                 file {
                     url
                 }

@@ -136,7 +136,6 @@ async function turnPizzasIntoPages({ graphql, actions }) {
 
   data.pizzas.nodes.forEach((pizza) => {
     const pizzariaSlug = pizza.pizzaria[0].slug;
-    console.log('PIZZA SLUG: ', `/pizzas/${pizzariaSlug}/${pizza.slug}`);
     actions.createPage({
       path: `/pizzas/${pizzariaSlug}/${pizza.slug}`,
       component: template,

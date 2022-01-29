@@ -5,6 +5,8 @@
     background-size: cover;
     background-position: 50%;
     height: 50vh;
+    border-radius: 16px;
+    overflow: hidden;
     @media (--above-smartphone) {
         height: 60vh;
         background-attachment: fixed;
