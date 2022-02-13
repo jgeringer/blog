@@ -11,7 +11,7 @@ function SingleRecipe({ recipe }) {
                 <input type="checkbox" />
                 <span className={styles.checkmark}></span>
             </label> */}
-            <Link to={`/kitchen/${recipe.type}/${recipe.slug}`}>
+            <Link to={recipe.slug}>
                 {recipe.image && (
                     <GatsbyImage alt="" image={recipe.image.gatsbyImageData} className={styles.recipeImage} />
                 )}

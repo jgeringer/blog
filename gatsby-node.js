@@ -73,7 +73,8 @@ async function turnRecipesIntoPages({ graphql, actions }) {
 
   data.recipes.nodes.forEach((recipe) => {
     actions.createPage({
-      path: `/kitchen/${recipe.type}/${recipe.slug}`,
+      // path: `/kitchen/${recipe.type}/${recipe.slug}`,
+      path: recipe.slug,
       component: recipeTemplate,
       context: {
         slug: recipe.slug
@@ -107,6 +108,7 @@ async function turnTypesIntoPages({ graphql, actions }) {
   });
 }
 
+// TODO: pizza detail page - built out, but not linked to yet
 async function turnPizzasIntoPages({ graphql, actions }) {
   const template = path.resolve('./src/templates/pizza/index.js');
 
@@ -165,7 +167,7 @@ async function turnPizzariasIntoPages({ graphql, actions }) {
 
   data.pizzaria.nodes.forEach((pizzaria) => {
     actions.createPage({
-      path: `/pizzas/${pizzaria.slug}`,
+      path: pizzaria.slug,
       component: template,
       context: {
         slug: pizzaria.slug,

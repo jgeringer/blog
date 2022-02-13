@@ -3,6 +3,10 @@ import { Link } from 'gatsby'
 import * as styles from './navigation.module.css'
 import classNames from 'classnames';
 
+import Search from '@components/Search';
+
+const searchIndices = [{ name: `Pages`, title: `Pages` }]
+
 export default function() {
   
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -19,11 +23,6 @@ export default function() {
     console.log('clicked it', showMobileMenu)
     setShowMobileMenu(!showMobileMenu)
   }
-
-  // mobileMenuButton
-  // const handleMobileMenu = () => {
-
-  // }
 
   return (
     <div className={navigationWrapperClass}>
@@ -59,7 +58,7 @@ export default function() {
               <Link to="/pizzas" onClick={() => handleMobileMenuClick() }>Chicago Pizzas</Link>
             </li>
           </ul>
-
+          <Search indices={searchIndices} />
         </nav>
       </div>
   );

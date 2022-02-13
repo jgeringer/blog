@@ -103,7 +103,7 @@ export default function Pizzas({ data }) {
                                     <ul>
                                         {allPizzarias.map(pizzaria => (
                                             <li key={pizzaria.id}>
-                                                <Link to={`/pizzas/${pizzaria.slug}`} className={styles.pizzaria}>
+                                                <Link to={pizzaria.slug} className={styles.pizzaria}>
                                                     {pizzaria.title}
                                                 </Link>
                                             </li>
@@ -247,7 +247,7 @@ export default function Pizzas({ data }) {
                         <div className={styles.pizzaGrid}>
                             {pizzasToShow.map(pizzaria => (
                                 <div key={pizzaria.id}>
-                                    <Link to={`/pizzas/${pizzaria.slug}`} className={styles.link}>
+                                    <Link to={pizzaria.slug} className={styles.link}>
                                         <GatsbyImage className={styles.pizzaImage} alt={pizzaria.description || pizzaria.title} image={pizzaria.coverPhoto.gatsbyImageData} />
                                         <span className={styles.linkText}>
                                             {/* <span>{pizza.restaurant}</span> */}

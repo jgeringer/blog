@@ -5,7 +5,6 @@ import KitchenFilter from '../../components/KitchenFilter'
 import KitchenList from '../../components/KitchenList'
 
 export default function Kitchen({ data }) {
-    console.log(`in the kitchen`);
     const recipes = data.recipes.nodes;
 
     return(

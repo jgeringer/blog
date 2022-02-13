@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTools } from "@fortawesome/free-solid-svg-icons"
 import { faCodepen, faGit, faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
 
-
 export default function Layout({ children }) {
   return (
     <>
