@@ -4,19 +4,28 @@ import KitchenFilter from '../components/KitchenFilter'
 import * as styles from './recipeStyle.module.css';
 import { GatsbyImage } from 'gatsby-plugin-image'
 import RichText from '@components/RichText'
+import PropTypes from 'prop-types'
+
+import { removeSpaces } from '@utils/text';
+import { IMAGE_FOCUS } from '@utils/constants';
 
 export default function SingleRecipePage({ data: { recipe } }) {
+
+    const renderImage = (recipe) => {
+        const imageFocus = recipe.imageFocus || IMAGE_FOCUS.CENTER;
+        const imageFocusFragment = `image${removeSpaces(imageFocus)}`
+        return <GatsbyImage image={recipe[imageFocusFragment].gatsbyImageData} alt={recipe.image.title} className={styles.recipeHeroImage} />
+    }
+
     return (
         <div className="wrapper">
             <KitchenFilter />
             
             {recipe.image && (
-                <div
-                    className={styles.recipeHeroWrapper}
-                    style={{
-                        backgroundImage: `url(${recipe.image.file.url}?w=1400&h=800&q=50&fit=fill&fl=progressive)`,
-                    }}
-                >
+                <div className={styles.recipeHeroWrapper}>
+                    <div>
+                        {renderImage(recipe)}
+                    </div>
                     <div className={styles.recipeHero}>
                         <div className={styles.stickyHeader}>
                             <h2 className={styles.recipeTitle}>{recipe.title}</h2>
@@ -113,7 +122,15 @@ export default function SingleRecipePage({ data: { recipe } }) {
            </section>
         </div>
     );
+};
+
+SingleRecipePage.defaultProps = {
+    imageFocus: IMAGE_FOCUS.CENTER,
 }
+
+SingleRecipePage.propTypes = {
+    imageFocus: PropTypes.oneOf(Object.values(IMAGE_FOCUS)),
+};
 
 // This needs to be dynacmic base on slug via context in gatsby-node.js
 export const query = graphql`
@@ -158,11 +175,8 @@ export const query = graphql`
                 price
                 sectionHeading
             }
-            image {
-                file {
-                    url
-                }
-            }
+            ...imageFocusQuery
+            imageFocus
         }
     }
 `;

@@ -1,6 +1,8 @@
+@import '~styles/imports/index';
+
 .section {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-gap: 1rem;
     grid-auto-rows: 250px;
     grid-auto-flow: dense;
@@ -41,7 +43,7 @@
             }
         }
         @media (--above-smartphone) {
-            &:first-child, &:nth-child(6n) {
+            &:first-child {
                 grid-row: span 2;
                 grid-column: span 2;
             }
@@ -52,6 +54,10 @@
             &:nth-child(4n) {
                 grid-row: span 2;
                 grid-column: span 1;
+            }
+            &:nth-child(6n) {
+                grid-row: span 2;
+                grid-column: span 2;
             }
         }
     }

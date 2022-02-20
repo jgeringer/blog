@@ -4,13 +4,17 @@
     position: relative;
     background-size: cover;
     background-position: 50%;
-    height: 50vh;
+    /* height: 50vh; */
+    height: 480px;
     border-radius: 16px;
     overflow: hidden;
     @media (--above-smartphone) {
-        height: 60vh;
-        background-attachment: fixed;
+        /* height: 60vh; */
     }
+}
+
+.recipeHeroImage {
+    height: 480px;
 }
 
 .stickyHeader {

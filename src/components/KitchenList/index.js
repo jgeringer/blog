@@ -13,7 +13,7 @@ function SingleRecipe({ recipe }) {
             </label> */}
             <Link to={recipe.slug}>
                 {recipe.image && (
-                    <GatsbyImage alt="" image={recipe.image.gatsbyImageData} className={styles.recipeImage} />
+                    <GatsbyImage alt={recipe.image.description} image={recipe.image.gatsbyImageData} className={styles.recipeImage} />
                 )}
                 <div>
                     <h4>{recipe.title}</h4>

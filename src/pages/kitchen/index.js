@@ -64,7 +64,9 @@ export const query = graphql`
                 image {
                     title
                     gatsbyImageData(width: 800)
+                    description
                 }
+                imageFocus
             }
         }
     }

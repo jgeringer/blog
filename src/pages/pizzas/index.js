@@ -62,6 +62,9 @@ export default function Pizzas({ data }) {
         const filterByStylePan = (pizza) => 
             values.Pan === true ? pizza.styles.includes('Pan') === values.Pan : false || true;
 
+        const filterByStyleNeapolitan = (pizza) => 
+            values.Neapolitan === true ? pizza.styles.includes('Neapolitan') === values.Neapolitan : false || true;
+
         const filterByGoodCold = (pizza) => 
             values.goodCold === true ? pizza.goodCold === values.goodCold : false || true;
 
@@ -81,6 +84,7 @@ export default function Pizzas({ data }) {
                 .filter(filterArea)
                 .filter(filterByStyleThinCrust)
                 .filter(filterByStylePan)
+                .filter(filterByStyleNeapolitan)
                 .filter(filterByStyleStuffed)
                 .filter(filterByStyleDeepDish)
                 .filter(filterByStyleSpecialty)
