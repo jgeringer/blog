@@ -30,7 +30,7 @@ const Controls = () => {
 const Plane = () => (
   <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.5, 0]} receiveShadow>
     <planeBufferGeometry attach="geometry" args={[100, 100]} />
-    <meshPhysicalMaterial attach="material" color="white" />
+    <meshPhysicalMaterial attach="material" color="red" />
   </mesh>
 );
 
@@ -64,7 +64,7 @@ export default () => (
       gl.shadowMap.enabled = true
       gl.shadowMap.type = THREE.PCFSoftShadowMap
     }}>
-      <fog attach="fog" args={["#eee", 5, 15]} />
+      {/* <fog attach="fog" args={["#eee", 5, 15]} /> */}
       <Controls />
       <Box />
       <Plane />
