@@ -74,7 +74,7 @@ const ProtonGunPack = () => {
   const [hovered, setHovered] = useState(false);
   const [active, setActive] = useState(false);
 
-  const Box = () => {
+  const SwitchTop = () => {
   
     const props = useSpring({
       scale: [.001, .017, .001],
@@ -83,6 +83,118 @@ const ProtonGunPack = () => {
       // x y
       position: active ? [.009, .037, .01] : [.009, .035, .01],
       color: hovered ? 'red' : 'gold',
+    })
+  
+    return (
+      <a.mesh
+        onPointerOver={() => setHovered(true)} 
+        onPointerOut={() => setHovered(false)}
+        onClick={() => playSfx()}
+        scale={props.scale}
+        position={props.position}
+        rotation={props.rotation}
+        castShadow
+      >
+        <ambientLight />
+        <spotLight position={[0, 5, 10]} penumbra={1} castShadow />
+        <cylinderBufferGeometry  attach="geometry" args={[1, 1, 1]} />
+        <a.meshPhysicalMaterial attach="material" color={props.color} />
+      </a.mesh>
+    )
+  }
+
+  const SwitchBottom = () => {
+    const props = useSpring({
+      scale: [.001, .017, .001],
+      // away-from-handle up towards-handle
+      rotation: active ? [.6, 0, 0] : [.8, 0, 0],
+      // x y
+      position: active ? [.009, .026, .024] : [.009, .024, .024],
+      color: hovered ? 'red' : 'gold',
+    })
+  
+    return (
+      <a.mesh
+        onPointerOver={() => setHovered(true)} 
+        onPointerOut={() => setHovered(false)}
+        onClick={() => playSfx()}
+        scale={props.scale}
+        position={props.position}
+        rotation={props.rotation}
+        castShadow
+      >
+        <ambientLight />
+        <spotLight position={[0, 5, 10]} penumbra={1} castShadow />
+        <cylinderBufferGeometry  attach="geometry" args={[1, 1, 1]} />
+        <a.meshPhysicalMaterial attach="material" color={props.color} />
+      </a.mesh>
+    )
+  }
+
+  const SwitchActivate = () => {
+    const props = useSpring({
+      scale: [.001, .017, .001],
+      // away-from-handle up towards-handle
+      rotation: active ? [.6, 0, 0] : [.8, 0, 0],
+      // x y
+      position: active ? [.009, .026, .024] : [-.0618, .009, .040],
+      color: hovered ? 'red' : 'gold',
+    })
+  
+    return (
+      <a.mesh
+        onPointerOver={() => setHovered(true)} 
+        onPointerOut={() => setHovered(false)}
+        onClick={() => playSfx()}
+        scale={props.scale}
+        position={props.position}
+        rotation={props.rotation}
+        castShadow
+      >
+        <ambientLight />
+        <spotLight position={[0, 5, 10]} penumbra={1} castShadow />
+        <cylinderBufferGeometry  attach="geometry" args={[1, 1, 1]} />
+        <a.meshPhysicalMaterial attach="material" color={props.color} />
+      </a.mesh>
+    )
+  }
+  
+  const SwitchIntensify = () => {
+    const props = useSpring({
+      scale: [.0018, .017, .0018],
+      // away-from-handle up towards-handle
+      rotation: active ? [.6, 0, 0] : [.8, 0, 0],
+      // x y
+      position: active ? [.009, .026, .024] : [-.0618, .02, .03],
+      color: hovered ? 'red' : 'blue',
+    })
+  
+    return (
+      <a.mesh
+        onPointerOver={() => setHovered(true)} 
+        onPointerOut={() => setHovered(false)}
+        onClick={() => playSfx()}
+        scale={props.scale}
+        position={props.position}
+        rotation={props.rotation}
+        castShadow
+      >
+        <ambientLight />
+        <spotLight position={[0, 5, 10]} penumbra={1} castShadow />
+        <cylinderBufferGeometry  attach="geometry" args={[1, 1, 1]} />
+        <a.meshPhysicalMaterial attach="material" color={props.color} />
+      </a.mesh>
+    )
+  }
+
+  const SwitchLever = () => {
+    const props = useSpring({
+      scale: [.002, .017, .002],
+      // away-from-handle up towards-handle
+      rotation: active ? [.6, 0, 0] : [.8, 0, 0],
+      // x y
+      position: active ? [.009, .026, .024] : [-.044, .02, .035],
+      color: hovered ? 'red' : 'green',
     })
   
     return (
@@ -128,7 +240,11 @@ const ProtonGunPack = () => {
       {/* <ambientLight intensity={.01} /> */}
       {/* <pointLight position={[0, 0, 0]} color="yellow" intensity={1} /> */}
       <Controls />
-      <Box />
+      <SwitchTop />
+      <SwitchBottom />
+      <SwitchActivate />
+      <SwitchIntensify />
+      <SwitchLever />
       <ProtonGun />
       {/* <Plane /> */}
     </Canvas>
