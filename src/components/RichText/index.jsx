@@ -29,11 +29,8 @@ const RichText = (props) => {
         // eslint-disable-next-line react/destructuring-assignment
         const target = node.data?.target;
 
-        console.log('111 target: ', target);
-        console.log('111 node: ', node);
-
         if (!target) {
-          console.error('>>>>>>>>>>>>>>', node);
+          console.error(node);
           return JSON.stringify(node, null, 2);
         }
 
@@ -46,7 +43,7 @@ const RichText = (props) => {
 
         if (contentType === 'video/mp4') {
           return (
-            <video loop="true" autoplay="true">
+            <video autoPlay muted loop playsInline>
               <source src={url} type="video/mp4" />
             </video>
           )

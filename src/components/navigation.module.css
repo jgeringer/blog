@@ -1,6 +1,7 @@
 @import '~styles/imports/index';
 
 .navigationContainer {
+  font-weight: 600;
   @media (--smartphone) {
     position: fixed;
     top: 0;
