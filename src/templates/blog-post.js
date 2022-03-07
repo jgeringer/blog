@@ -75,6 +75,19 @@ export const pageQuery = graphql`
       }
       bodyRichText {
         raw
+        references {
+          ... on ContentfulAsset {
+            __typename
+            contentful_id
+            description
+            title
+            gatsbyImageData(quality: 85, layout: FULL_WIDTH)
+            file {
+              contentType
+              url
+            }
+          }
+        }
       }
     }
   }

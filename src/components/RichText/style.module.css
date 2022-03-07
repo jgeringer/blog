@@ -10,6 +10,18 @@ ol {
     }
 }
 
+video {
+    width: 100%;
+}
+
+code {
+    background: black;
+    color: #fff;
+    display: block;
+    padding: 1rem;
+    white-space: break-spaces;
+}
+
 .copy {
     &:first-child {
         margin-top: 0;

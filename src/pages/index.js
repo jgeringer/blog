@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import get from 'lodash/get'
 import { Helmet } from 'react-helmet'
 import Hero from '../components/hero'
@@ -20,7 +20,10 @@ class RootIndex extends React.Component {
             <div className={styles.mainContent}>
               <Hero data={author.node} />
               <div>
-                <h2 className="section-headline heading--h3">Recent entry</h2>
+                <h2 className="section-headline heading--h3">
+                  <span>Recent entry</span>
+                  <Link to="/blog" className={styles.allLink}>all posts</Link>
+                </h2>
                 <ul className="article-list">
                   {posts.map(({ node }) => {
                     return (

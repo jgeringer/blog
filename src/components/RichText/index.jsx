@@ -29,6 +29,9 @@ const RichText = (props) => {
         // eslint-disable-next-line react/destructuring-assignment
         const target = node.data?.target;
 
+        console.log('111 target: ', target);
+        console.log('111 node: ', node);
+
         if (!target) {
           console.error('>>>>>>>>>>>>>>', node);
           return JSON.stringify(node, null, 2);
@@ -41,7 +44,15 @@ const RichText = (props) => {
           // return <PDF url={url} />;
         }
 
-        // return <Image extraClassName={styles.image} image={target} alt={description || title} />;
+        if (contentType === 'video/mp4') {
+          return (
+            <video loop="true" autoplay="true">
+              <source src={url} type="video/mp4" />
+            </video>
+          )
+        }
+
+        return <Image extraClassName={styles.image} image={target} alt={description || title} />;
       },
       // eslint-disable-next-line react/prop-types
       [INLINES.HYPERLINK]: ({ data }, children) => (
@@ -83,6 +94,9 @@ export const RichTextFragment = graphql`
         contentful_id
         url
         text
+        file {
+          url
+        }
       }
     }
   }
