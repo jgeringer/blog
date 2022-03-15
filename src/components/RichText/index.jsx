@@ -25,17 +25,21 @@ const RichText = (props) => {
       [BLOCKS.HEADING_4]: (node, children) => <h4 className={typography.h4}>{children}</h4>,
       [BLOCKS.PARAGRAPH]: (node, children) => <p className={styles.paragraph}>{children}</p>,
       [BLOCKS.QUOTE]: (node, children) => <blockquote>{children}</blockquote>,
-      [BLOCKS.EMBEDDED_ASSET]: (node) => {
+      [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
         // eslint-disable-next-line react/destructuring-assignment
         const target = node.data?.target;
-
+        console.log('node: ', node)
+;
         if (!target) {
           console.error(node);
           return JSON.stringify(node, null, 2);
         }
 
         const { description, file, title } = target;
+        console.log('target:', target)
+
         const { contentType, url } = file;
+
 
         if (contentType === 'application/pdf') {
           // return <PDF url={url} />;
