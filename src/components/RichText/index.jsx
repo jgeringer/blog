@@ -8,6 +8,7 @@ import { Link } from 'gatsby'
 
 import * as styles from './style.module.css';
 import * as typography from '@styles/typography.module.css';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 const RichText = (props) => {
   const { body } = props;
@@ -35,7 +36,7 @@ const RichText = (props) => {
           return JSON.stringify(node, null, 2);
         }
 
-        const { description, file, title } = target;
+        const { description, file, title, gatsbyImageData } = target;
         console.log('target:', target)
 
         const { contentType, url } = file;
@@ -53,7 +54,7 @@ const RichText = (props) => {
           )
         }
 
-        return <Image extraClassName={styles.image} image={target} alt={description || title} />;
+        return <GatsbyImage image={getImage(gatsbyImageData)} alt={description || title} />;
       },
       // eslint-disable-next-line react/prop-types
       [INLINES.HYPERLINK]: ({ data }, children) => (
@@ -98,6 +99,7 @@ export const RichTextFragment = graphql`
         file {
           url
         }
+        gatsbyImageData(width: 1000)
       }
     }
   }
