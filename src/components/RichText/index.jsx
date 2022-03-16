@@ -41,11 +41,6 @@ const RichText = (props) => {
 
         const { contentType, url } = file;
 
-
-        if (contentType === 'application/pdf') {
-          // return <PDF url={url} />;
-        }
-
         if (contentType === 'video/mp4') {
           return (
             <video autoPlay muted loop playsInline>
