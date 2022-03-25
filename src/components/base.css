@@ -55,6 +55,26 @@ main {
   }
 }
 
+pre {
+  border-radius: 12px;
+  background-color: #000 !important;  
+  filter: drop-shadow(2px 4px 6px black);
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+code {
+  background-color: #000 !important;
+}
+
+article {
+  .gatsby-image-wrapper {
+    filter: drop-shadow(2px 4px 6px black);
+    overflow: hidden;
+    border-radius: 12px;
+  }
+}
+
 .u-flex {
   display: flex;
 }

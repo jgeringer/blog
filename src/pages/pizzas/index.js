@@ -44,8 +44,8 @@ export default function Pizzas({ data }) {
 
         const filterHasRcCola = pizza => values.hasRcCola === true ? pizza.hasRcCola === values.hasRcCola : false || true;
 
-        const filterByStyleThinCrust = (pizza) => 
-            values['Thin Crust'] === true ? pizza.styles.includes('Thin Crust') === values['Thin Crust'] : false || true;
+        // const filterByStyleThinCrust = (pizza) => 
+        //     values['Thin Crust'] === true ? pizza.styles.includes('Thin Crust') === values['Thin Crust'] : false || true;
 
         const filterByStyleStuffed = (pizza) => 
             values['Stuffed'] === true ? pizza.styles.includes('Stuffed') === values['Stuffed'] : false || true;
@@ -82,7 +82,7 @@ export default function Pizzas({ data }) {
                 .sort((a, b) => sortByOldest ? (a.yearEstablished > b.yearEstablished) : (a.yearEstablished < b.yearEstablished) ? 1 : -1)
                 .filter(filterHasRcCola)
                 .filter(filterArea)
-                .filter(filterByStyleThinCrust)
+                // .filter(filterByStyleThinCrust)
                 .filter(filterByStylePan)
                 .filter(filterByStyleNeapolitan)
                 .filter(filterByStyleStuffed)
@@ -102,7 +102,7 @@ export default function Pizzas({ data }) {
                             <ul>
                                 <li>
                                     <Link to={`/pizzas`} className={styles.pizzaria}>
-                                        All Pizzarias
+                                        All Pizzarias:
                                     </Link>
                                     <ul>
                                         {allPizzarias.map(pizzaria => (
@@ -118,7 +118,7 @@ export default function Pizzas({ data }) {
                                 {!activePizzaria && (
                                     <>
                                         <li>
-                                            Styles
+                                            Styles:
                                             <ul>
                                                 {activeStyles.map(style => (
                                                     <li>

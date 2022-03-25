@@ -6,6 +6,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import RichText from '@components/RichText'
 
 import * as heroStyles from '../components/hero.module.css'
+import * as styles from './blog-post.module.css'
 import ContentArea from '../components/contentArea'
 
 export default function BlogPostTemplate({ data: { post } }) {
@@ -22,27 +23,18 @@ export default function BlogPostTemplate({ data: { post } }) {
           />
         </div>
         <div className="wrapper">
-          <h1 className="section-headline">{post.title}</h1>
-
-          <p>For each contentType, load them here</p>
-
-          {post.contentArea !== null && (
-            <ContentArea contentTypes={post.contentArea} />
-          )}
-
-          <p
-            style={{
-              display: 'block',
-            }}
-          >
-            {post.publishDate}
-          </p>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: post.body.childMarkdownRemark.html,
-            }}
-          />
-          <RichText body={post.bodyRichText} />
+          <article className={styles.article}>
+            <h1 className="section-headline">{post.title}</h1>
+            {post.contentArea !== null && (
+              <ContentArea contentTypes={post.contentArea} />
+            )}
+            <RichText body={post.bodyRichText} />
+          </article>
+          <aside>
+            <p>
+              {post.publishDate}
+            </p>
+          </aside>
         </div>
       </div>
   )
@@ -66,11 +58,6 @@ export const pageQuery = graphql`
         ... on Node {
           ...Gallery
           ...Calculator
-        }
-      }
-      body {
-        childMarkdownRemark {
-          html
         }
       }
       bodyRichText {

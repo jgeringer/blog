@@ -6,7 +6,7 @@ import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
 import { Link } from 'gatsby'
 import hljs from 'highlight.js';
-import 'highlight.js/styles/github.css';
+import 'highlight.js/styles/atom-one-dark.css';
 
 import * as styles from './style.module.css';
 import * as typography from '@styles/typography.module.css';
