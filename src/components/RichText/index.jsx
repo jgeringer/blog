@@ -49,7 +49,7 @@ const RichText = (props) => {
           )
         }
 
-        // otherwise it's an image...
+        // otherwise it's an image..
         return <GatsbyImage image={getImage(gatsbyImageData)} alt={description || title} />;
       },
       // eslint-disable-next-line react/prop-types
