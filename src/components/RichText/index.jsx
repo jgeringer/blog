@@ -5,6 +5,8 @@ import { graphql } from 'gatsby';
 import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
 import { Link } from 'gatsby'
+import hljs from 'highlight.js';
+import 'highlight.js/styles/github.css';
 
 import * as styles from './style.module.css';
 import * as typography from '@styles/typography.module.css';
@@ -18,6 +20,19 @@ const RichText = (props) => {
     renderMark: {
       [MARKS.BOLD]: (text) => <strong className={typography.bold}>{text}</strong>,
       [MARKS.ITALIC]: (text) => <span className={typography.italic}>{text}</span>,
+      [MARKS.CODE]: (text) => {
+        const highlightedCode = hljs.highlightAuto(text)
+        
+        return (
+          <pre className="hljs">
+            <code
+              className="hljs"
+              dangerouslySetInnerHTML={{ __html: highlightedCode.value }}
+            >
+            </code>
+          </pre>
+        )
+      }
     },
     renderNode: {
       [BLOCKS.HEADING_1]: (node, children) => <h1 className={typography.h1}>{children}</h1>,
