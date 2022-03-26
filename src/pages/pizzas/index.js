@@ -343,7 +343,7 @@ export const query = graphql`
                     }
                 }
                 coverPhoto {
-                    gatsbyImageData(width: 520, height: 416)
+                    gatsbyImageData(width: 1200, height: 800)
                     title
                     description
                 }
