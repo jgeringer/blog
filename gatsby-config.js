@@ -86,6 +86,7 @@ module.exports = {
           parser: 'postcss-scss',
         },
         postCssPlugins: [
+          require('autoprefixer'),
           require('postcss-import')({
             resolve: resolver({
               alias: {
@@ -95,7 +96,11 @@ module.exports = {
               modules: ['src', 'node_modules'],
             }),
           }),
-          require('precss')
+          require('postcss-advanced-variables'),
+          require('postcss-nested'),
+          require('postcss-custom-media'),
+          require('postcss-extend-rule'),
+          require('postcss-calc'),
         ],
       },
     },

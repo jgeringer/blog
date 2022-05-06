@@ -1,5 +1,5 @@
-@custom-media --smartphone (width <= $breakpoint-smartphone);
-@custom-media --tablet (width <= $breakpoint-tablet);
+@custom-media --smartphone (max-width: $breakpoint-smartphone);
+@custom-media --tablet (max-width: $breakpoint-tablet);
 
-@custom-media --above-smartphone (width > $breakpoint-smartphone);
-@custom-media --above-tablet (width > $breakpoint-tablet);
+@custom-media --above-smartphone (min-width: $breakpoint-smartphone);
+@custom-media --above-tablet (min-width: $breakpoint-tablet);
