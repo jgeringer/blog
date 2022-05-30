@@ -6,7 +6,7 @@ import * as styles from './article-preview.module.css'
 
 export default ({ article }) => (
   <div className={styles.preview}>
-    <Link to={`/blog/${article.slug}`}><GatsbyImage alt="" image={article.heroImage.gatsbyImageData} />
+    <Link to={`/blog/${article.slug}`}><GatsbyImage alt="" image={article.heroImage?.gatsbyImageData} />
       <h3 className={styles.previewTitle}>
         {article.title}
       </h3>
@@ -14,7 +14,7 @@ export default ({ article }) => (
     <small>{article.publishDate}</small>
     <div
       dangerouslySetInnerHTML={{
-        __html: article.description.childMarkdownRemark.html,
+        __html: article.description?.childMarkdownRemark?.html,
       }}
     />
     {article.tags &&

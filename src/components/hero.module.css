@@ -12,6 +12,14 @@
   max-height: 400px;
 }
 
+.fullViewportHeight {
+  height: 80vh;
+  max-height: 80vh;
+  img {
+    object-position: top right;
+  }
+}
+
 .heroDetails {
   font-size: 14px;
   padding: 0 0.5em;
