@@ -11,7 +11,12 @@ const Entry = () => {
   */
   // const cma = useCMA();
 
-  return <Paragraph>Hello Entry Editor Component (AppId: {sdk.ids.app})</Paragraph>;
+  return (
+    <>
+      <Paragraph>Hello Entry Editor Component (AppId: {sdk.ids.app})</Paragraph>
+      <Paragraph>You can customize this too.</Paragraph>
+    </>
+  );
 };
 
 export default Entry;

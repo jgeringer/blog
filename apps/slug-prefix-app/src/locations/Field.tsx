@@ -56,6 +56,7 @@ const Field = () => {
 
   return (
     <div>
+      {/* TODO: Add TextInput instead to show the difference. */}
       <SlugEditor field={sdk.field} baseSdk={sdk} />
       <Paragraph>Help text here</Paragraph>
     </div>
