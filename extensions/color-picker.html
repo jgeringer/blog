@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://unpkg.com/@contentful/app-sdk@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <link rel="stylesheet" href="https://contentful.github.io/ui-extensions-sdk/cf-extension.css" />
+
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        overflow: hidden;
+      }
+      .cf-form-input {
+        margin-top: 20px;
+      }
+      .preview {
+        width: 100%;
+        margin-top: 20px;
+      }
+      .swatch {
+        width: 50px;
+        height: 50px;
+      }
+    </style>
+    <style>
+      :root {
+        --color-primary-lightest: #e6e6fc;
+        --color-primary-light: #a8a9fc;
+        --color-primary-base: #4a4af4;
+        --color-primary-dark: #2f2fc1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="content">
+      <select id="colorSelect" class="cf-form-input">
+        <option value="">None</option>
+        <option value="var(--color-primary-base)">Base</option>
+        <option value="var(--color-primary-lightest)">Light</option>
+        <option value="var(--color-primary-light)">Medium</option>
+        <option value="var(--color-primary-dark)">Dark</option>
+        <option value="custom">Custom tint</option>
+      </select>
+
+      <input id="customColorInput" class="cf-form-input" type="text" placeholder="Custom tint (e.g., '#FFFFFF')" />
+
+      <div class="preview" id="previewSwatch"></div>
+    </div>
+
+    <script type="text/javascript">
+      // initialize the contentful extension
+      // using the UI extensions SDK
+      window.contentfulExtension.init((extension) => {
+        // Allow app iframe to be able to auto resize to fit the extension on the screen
+        extension.window.startAutoResizer();
+
+        // get the value of the field this extension is bound to
+        const currentValue = extension.field.getValue();
+        const value = currentValue || { color: '', customColor: '' };
+
+        const previewSwatch = document.getElementById('previewSwatch');
+
+        const colorSelect = document.getElementById('colorSelect');
+        const customColorInput = document.getElementById('customColorInput');
+
+        colorSelect.value = value.color;
+        customColorInput.value = value.customColor;
+
+        if (value.color !== 'custom') {
+          customColorInput.style.display = 'none';
+        }
+
+        showPreview();
+
+        // send changes to the Contentful web app
+        colorSelect.addEventListener('change', (event) => {
+          value.color = event.target.value;
+
+          if (value.color === 'custom') {
+            customColorInput.style.display = 'block';
+          } else {
+            customColorInput.style.display = 'none';
+            value.customColor = '';
+          }
+
+          if (!value.color && !value.customColor) {
+            value = undefined;
+          }
+          
+          extension.field.setValue(value);
+          console.log('color value: ', value);
+          showPreview();
+        });
+
+        customColorInput.addEventListener('change', (event) => {
+          value.customColor = event.target.value;
+
+          if (!value.color && !value.customColor) {
+            value = undefined;
+          }
+
+          extension.field.setValue(value);
+          showPreview();
+        });
+
+        function showPreview() {
+          previewSwatch.innerHTML = '';
+          if (colorSelect.value === '') return;
+          let currColor = value.color === 'custom' ? value.customColor : value.color;
+          let swatch = `<div class="swatch" style="background-color: ${currColor}"></div>`;
+          previewSwatch.insertAdjacentHTML('beforeend', swatch);
+          extension.window.updateHeight();
+        }
+      });
+    </script>
+  </body>
+</html>
