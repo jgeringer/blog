@@ -10,16 +10,15 @@ import * as heroStyles from '../components/hero.module.css'
 import * as styles from './blog-post.module.css'
 import ContentArea from '../components/contentArea'
 
-export default function BlogPostTemplate({ data: { post } }) {
-  const siteTitle = get(post, 'data.site.siteMetadata.title')
-
+export default function BlogPostTemplate({ data: { post }}) {
+  const siteTitle = get(this, 'props.data.site.siteMetadata.title')
   const heroClass = classNames(heroStyles.heroImage, {
     [heroStyles.fullViewportHeight]: post.heroImageHeight === 'Full Viewport Height',
   })
 
   return (
       <div>
-        <Helmet title={`${post.title} | ${siteTitle}`} />
+        <Helmet title={`Joe Geringer | Frontend Web Developer - ${post.title}`} />
         <div className={heroStyles.hero}>
           <GatsbyImage
             className={heroClass}
@@ -47,11 +46,6 @@ export default function BlogPostTemplate({ data: { post } }) {
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     post: contentfulBlogPost(slug: { eq: $slug }) {
       title
       publishDate(formatString: "MMMM Do, YYYY")
