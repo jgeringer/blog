@@ -4,6 +4,7 @@ import { Link, graphql } from 'gatsby'
 import * as styles from './style.module.css'
 
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { Helmet } from 'react-helmet'
 
 import RichText from '@components/RichText'
 
@@ -95,6 +96,7 @@ export default function Pizzas({ data }) {
 
     return(
         <div className="wrapper">
+            <Helmet title={`Joe Geringer | Chicago Pizzas`} />
             <section className={styles.pizzaListingPage}>
                 <div className={styles.filtersWrapper}>
                     <div className={styles.filters}>
@@ -232,6 +234,7 @@ export default function Pizzas({ data }) {
                 <div className={styles.mainContent}>
                     {activePizzaria && (
                         <div>
+                            <Helmet title={`Joe Geringer | Chicago Pizzas - ${activePizzaria.title}`} />
                             <h1>{activePizzaria.title}</h1>
                             {activePizzaria.description && (
                                 <RichText body={activePizzaria.description} />

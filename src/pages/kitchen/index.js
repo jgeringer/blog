@@ -3,16 +3,20 @@ import { Link, graphql } from 'gatsby'
 import * as styles from './kitchen.module.css'
 import KitchenFilter from '../../components/KitchenFilter'
 import KitchenList from '../../components/KitchenList'
+import { Helmet } from 'react-helmet'
 
 export default function Kitchen({ data }) {
     const recipes = data.recipes.nodes;
 
     return(
-        <div className="wrapper">
-            <h2>Kitchen</h2>
-            <KitchenFilter />
-            <KitchenList recipes={recipes} />
-        </div>
+        <>
+            <Helmet title={`Joe Geringer | Kitchen`} />
+            <div className="wrapper">
+                <h2>Kitchen</h2>
+                <KitchenFilter />
+                <KitchenList recipes={recipes} />
+            </div>
+        </>
     )
 }
 

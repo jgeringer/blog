@@ -9,6 +9,8 @@ import PropTypes from 'prop-types'
 import { removeSpaces } from '@utils/text';
 import { IMAGE_FOCUS } from '@utils/constants';
 
+import { Helmet } from 'react-helmet'
+
 export default function SingleRecipePage({ data: { recipe } }) {
 
     const renderImage = (recipe) => {
@@ -20,7 +22,7 @@ export default function SingleRecipePage({ data: { recipe } }) {
     return (
         <div className="wrapper">
             <KitchenFilter />
-            
+            <Helmet title={`Joe Geringer | Kitchen - ${recipe.title}`} />
             {recipe.image && (
                 <div className={styles.recipeHeroWrapper}>
                     <div>

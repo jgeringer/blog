@@ -1,6 +1,5 @@
 import React from 'react'
 import Layout from '../../components/layout'
-import Counter from '../../components/Counter'
 
 class Uses extends React.Component {
     render() {
@@ -8,8 +7,8 @@ class Uses extends React.Component {
         return (
             <>
                 <div>
-                    <Counter />
-                    <h1>What I Use:</h1>
+                    <h1>Uses:</h1>
+                    <p>Some of the things I use.</p>
                     <ol>
                         <li>Hardware
                             <ul>
@@ -29,8 +28,9 @@ class Uses extends React.Component {
                         <li>CMS
                             <ul>
                                 <li>Contentful</li>
-                                <li>Episerver</li>
+                                <li>Episerver/Optimizely</li>
                                 <li>Shopify</li>
+                                <li>Craft CMS</li>
                             </ul>
                         </li>
                         <li>Communication
@@ -60,6 +60,17 @@ class Uses extends React.Component {
                                 <li><a href="https://matthewpalmer.net/rocket/" target="_blank">Rocket</a> - For enabling system wide emojis.</li>
                                 <li><a href="https://www.blender.org/" target="_blank">Blender</a></li>
                                 <li>MAME Cabinet</li>
+                            </ul>
+                        </li>
+                        <li>Other
+                            <ul>
+                                <li><a href="https://www.screentogif.com/" target="_blank">ScreenToGif (Win)</a> - Screen recorder</li>
+                            </ul>
+                        </li>
+                        <li>Extensions
+                            <ul>
+                                <li><a href="https://chrome.google.com/webstore/detail/meta-debugger/jfpdemgdamgplelnlmaecbonkfgfgomp?hl=en" target="_blank">Meta Debugger</a> - View Head content in an orgainized way</li>
+                                <li><a href="https://www.deque.com/axe/devtools/" target="_blank">Axe DevTools</a> - Accessibility</li>
                             </ul>
                         </li>
                     </ol>

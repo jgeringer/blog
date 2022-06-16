@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { Helmet } from 'react-helmet'
+
 
 export default function SinglePizzaPage({ data: { pizza } }) {
     console.log(`individual pizza: `, pizza);
@@ -9,6 +11,7 @@ export default function SinglePizzaPage({ data: { pizza } }) {
 
     return (
         <div>
+            <Helmet title={`Joe Geringer | Chicago Pizzas - ${pizza.title}`} />
             <div className="wrapper">
                 <h1>{pizzaria} / {pizza.title}</h1>
             </div>

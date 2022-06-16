@@ -18,7 +18,7 @@ class ResumeIndex extends React.Component {
     return (
         <div>
           <Helmet title={siteTitle} />
-          <div className={styles.hero}>Resume</div>
+          <div className={styles.hero}>Not a Resume</div>
           <div className="wrapper">
 
             <Calculator months={[3,6,12]} rangeVal={rangeValue} rangeValMin={rangeMinValue} rangeValMax={rangeMaxValue} />
