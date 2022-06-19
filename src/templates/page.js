@@ -1,13 +1,12 @@
 import { graphql, Link } from 'gatsby';
 import React from 'react';
-// import * as styles from './recipeStyle.module.css';
-import { GatsbyImage } from 'gatsby-plugin-image'
-import RichText from '../components/RichText'
 
 export default function SinglePage({ data: { page } }) {
+    console.log('page: ', page)
     return (
-        <div className="wrapper">
-           <p>Page here: {page.title}</p>
+        <div className="wrapper" style={{backgroundColor: page.backgroundColor.color}}>
+           <h1>{page.title}</h1>
+           <h2>{page.pageDescription}</h2>
         </div>
     );
 }
@@ -19,6 +18,11 @@ export const query = graphql`
             slug
             id
             title
+            pageDescription
+            backgroundColor {
+                color
+                customColor
+            }
         }
     }
 `;

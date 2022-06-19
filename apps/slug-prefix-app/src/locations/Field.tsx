@@ -1,5 +1,5 @@
-import React from 'react';
-import { Paragraph } from '@contentful/f36-components';
+import React, { useState } from 'react';
+import { Select } from '@contentful/f36-components';
 import { FieldExtensionSDK } from '@contentful/app-sdk';
 import { useSDK } from '@contentful/react-apps-toolkit';
 import { SlugEditor } from '@contentful/field-editor-slug';
@@ -16,23 +16,17 @@ const Field = () => {
 
   // grab the Entry Title field, in this case it's the `title`.
   const titleField = sdk.entry.fields[sdk.contentType.displayField];
-  
-  // retrieve the current content type id (ex: blogPost)
-  var currentContentType = sdk.contentType.sys.id;
-  
-  // override the slug prefix for ones that I like to be named shorter.
-  // TODO: Set these in the ConfigScreen instead.
-  switch (currentContentType) {
-    case 'blogPost':
-      currentContentType = 'blog'
-      break;
-    case 'recipe':
-      currentContentType = 'kitchen'
-      break;
-    case 'pizzaria':
-      currentContentType = 'pizzas'
-      break;
-  }
+
+  const initSlug = sdk.field.getValue();
+
+  //get the current value between slashes
+  const initPrefix = initSlug ? initSlug.substring(
+    initSlug.indexOf("/") + 1, 
+    initSlug.lastIndexOf("/")
+  ) : '';
+
+  const [slugPrefixValue, setSlugPrefixValue] = useState(initSlug ? initPrefix : 'page');
+  const handleOnChange = (event: { target: { value: React.SetStateAction<string>; }; }) => setSlugPrefixValue(event.target.value);
 
   // https://www.30secondsofcode.org/js/s/slugify
   const slugify = (str: string) =>
@@ -45,7 +39,7 @@ const Field = () => {
 
   function updateSlugField(value: any) {
     if (value === undefined) return;    
-    const slugWithPrefix = `/${currentContentType}/${slugify(value)}`;    
+    const slugWithPrefix = `/${slugPrefixValue}/${slugify(value)}`;    
     sdk.field.setValue(slugWithPrefix);
   }
 
@@ -56,9 +50,19 @@ const Field = () => {
 
   return (
     <div>
-      {/* TODO: Add TextInput instead to show the difference. */}
+        <Select
+          id="slugPrefix"
+          name="slugPrefix"
+          value={slugPrefixValue}
+          onChange={handleOnChange}
+        >
+          <Select.Option value="blog">Blog Post</Select.Option>
+          <Select.Option value="recipe">Recipe</Select.Option>
+          <Select.Option value="event">Event</Select.Option>
+          <Select.Option value="page">Root</Select.Option>
+      </Select>
+      <br />
       <SlugEditor field={sdk.field} baseSdk={sdk} />
-      <Paragraph>Help text here</Paragraph>
     </div>
   );
 };

@@ -18,7 +18,7 @@ async function turnPagesIntoPages({ graphql, actions }) {
 
   data.pages.nodes.forEach((page) => {
     actions.createPage({
-      path: `/${page.slug}`,
+      path: `${page.slug}`,
       component: pageTemplate,
       context: {
         slug: page.slug

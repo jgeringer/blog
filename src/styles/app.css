@@ -1,5 +1,12 @@
 /* TODO: Add a normalize */
 
+:root {
+    --color-primary-lightest: #e6e6fc;
+    --color-primary-light: #a8a9fc;
+    --color-primary-base: #4a4af4;
+    --color-primary-dark: #2f2fc1;
+  }
+
 * {
     box-sizing: border-box;
 }
