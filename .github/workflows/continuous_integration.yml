@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v1
         with:
           node-version: 14.x
           cache: 'yarn' # or 'npm'
@@ -38,6 +38,11 @@ jobs:
         run: |
           yarn install
           yarn build
+
+      # - name: run Lighthouse CI
+      #   run: |
+      #     npm install -g @lhci/cli@0.8.x
+      #     lhci autorun
 
       - name: Audit URLs using Lighthouse
         uses: treosh/lighthouse-ci-action@v9
