@@ -184,7 +184,7 @@ exports.createPages = async (params) => {
     turnBlogPostsIntoPages(params),
     turnRecipesIntoPages(params),
     turnTypesIntoPages(params),
-    turnPagesIntoPages(params),
+    // turnPagesIntoPages(params),
     turnPizzariasIntoPages(params),
     turnPizzasIntoPages(params)
   ]);
