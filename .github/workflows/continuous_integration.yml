@@ -10,14 +10,14 @@ env:
   ALGOLIA_ADMIN_KEY: ${{secrets.ALGOLIA_ADMIN_KEY}}
 
 jobs:
-  lighthouse-audit:
+  lighthouseci:
     name: Lighthouse Audit
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v1
         with:
           node-version: 14.x
           cache: 'yarn' # or 'npm'
@@ -38,14 +38,17 @@ jobs:
         run: |
           yarn install
           yarn build
+        - run: npm install && npm install -g @lhci/cli@0.8.x
+        - run: npm run build
+        - run: lhci autorun
 
-      - name: Audit URLs using Lighthouse
-        uses: treosh/lighthouse-ci-action@v9
-        with:
-          configPath: './lighthouserc.json'
-          uploadArtifacts: true,
-          runs: 5
-          temporaryPublicStorage: true
+      # - name: Audit URLs using Lighthouse
+        # uses: treosh/lighthouse-ci-action@v9
+        # with:
+        #   configPath: './lighthouserc.json'
+        #   uploadArtifacts: true,
+        #   runs: 5
+        #   temporaryPublicStorage: true
 
   # cypress-run:
   #   runs-on: ubuntu-latest
