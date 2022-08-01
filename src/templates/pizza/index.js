@@ -19,6 +19,7 @@ export default function SinglePizzaPage({ data: { pizza } }) {
     );
 }
 
+// test
 export const query = graphql`
     query($slug: String!) {
         pizza: contentfulPizza(slug: { eq: $slug }) {
