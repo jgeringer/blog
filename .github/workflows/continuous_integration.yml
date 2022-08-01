@@ -40,45 +40,45 @@ jobs:
           yarn build
 
       - name: Audit URLs using Lighthouse
-        uses: treosh/lighthouse-ci-action@v7
+        uses: treosh/lighthouse-ci-action@v9
         with:
           configPath: './lighthouserc.json'
           uploadArtifacts: true,
           runs: 5
           temporaryPublicStorage: true
 
-  cypress-run:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+  # cypress-run:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
 
-      - name: Create and configure .env.development for Contentful
-        run: |
-          touch .env.development && echo {\"CONTENTFUL_SPACE_ID\": \"${CONTENTFUL_SPACE_ID}\", \"CONTENTFUL_ACCESS_TOKEN\": \"${CONTENTFUL_ACCESS_TOKEN}\"} > .env.development
+  #     - name: Create and configure .env.development for Contentful
+  #       run: |
+  #         touch .env.development && echo {\"CONTENTFUL_SPACE_ID\": \"${CONTENTFUL_SPACE_ID}\", \"CONTENTFUL_ACCESS_TOKEN\": \"${CONTENTFUL_ACCESS_TOKEN}\"} > .env.development
 
-      # Run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
-        with:
-          build: yarn build
-          start: yarn serve
-          wait-on: http://localhost:9000
+  #     # Run all Cypress tests
+  #     - name: Cypress run
+  #       uses: cypress-io/github-action@v2
+  #       with:
+  #         build: yarn build
+  #         start: yarn serve
+  #         wait-on: http://localhost:9000
 
-  axe:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
+  # axe:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
 
-      - name: Use Node.js 14.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14.x
-      - run: npm install
-      - run: npm ci
-      - run: npm run build --if-present
-      - run: npm run serve & npx wait-on http://localhost:9000
-      - name: Run axe
-        run: |
-          npm install -g @axe-core/cli
-          axe http://localhost:9000 --exit
+  #     - name: Use Node.js 14.x
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 14.x
+  #     - run: npm install
+  #     - run: npm ci
+  #     - run: npm run build --if-present
+  #     - run: npm run serve & npx wait-on http://localhost:9000
+  #     - name: Run axe
+  #       run: |
+  #         npm install -g @axe-core/cli
+  #         axe http://localhost:9000 --exit

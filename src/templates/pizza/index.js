@@ -5,7 +5,6 @@ import { Helmet } from 'react-helmet'
 
 
 export default function SinglePizzaPage({ data: { pizza } }) {
-    console.log(`individual pizza: `, pizza);
     // const pizza = data.pizza
     const pizzaria = pizza.pizzaria[0].title
 
