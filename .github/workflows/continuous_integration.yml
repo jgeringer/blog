@@ -48,9 +48,8 @@ jobs:
         uses: treosh/lighthouse-ci-action@v9
         with:
           configPath: './lighthouserc.json'
-          uploadArtifacts: true,
+          uploadArtifacts: true
           runs: 5
-          temporaryPublicStorage: true
 
   # cypress-run:
   #   runs-on: ubuntu-latest
