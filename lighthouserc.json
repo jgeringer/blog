@@ -1,7 +1,6 @@
 {
     "ci": {
       "collect": {
-        "url": ["http://localhost/", "https://www.joegeringer.dev/"],
         "staticDistDir": "./public"
       },
       "assert": {

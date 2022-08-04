@@ -47,6 +47,10 @@ jobs:
       - name: Audit URLs using Lighthouse
         uses: treosh/lighthouse-ci-action@v9
         with:
+        with:
+          urls: |
+            http://localhost/
+            https://www.joegeringer.dev/
           configPath: './lighthouserc.json'
           uploadArtifacts: true
           runs: 5
