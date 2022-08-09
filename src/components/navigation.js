@@ -34,19 +34,16 @@ export default function() {
             </li>
             <li className={styles.mobileMenu}>
               <div className={styles.mobileMenuButton} onClick={() => handleMobileMenuClick() }>
-                MENU
+                <div className={styles.hamburgerMenu}><span></span><span></span><span></span></div>
               </div>
             </li>
           </ul>
           <ul className={mobileMenuClass}>
             <li onClick={() => handleMobileMenuClick() } className={styles.closeButton}>
-              Close
+              <div className={classNames(styles.hamburgerMenu, styles.hamburgerMenuClose)}><span></span><span></span><span></span></div>
             </li>
             <li className={styles.navigationItem}>
               <Link to="/blog/" onClick={() => handleMobileMenuClick() }>Journal</Link>
-            </li>
-            <li className={styles.navigationItem}>
-              <Link to="/resume/" onClick={() => handleMobileMenuClick() }>Resume</Link>
             </li>
             <li className={styles.navigationItem}>
               <Link to="/contact" onClick={() => handleMobileMenuClick() }>Contact</Link>
@@ -57,8 +54,10 @@ export default function() {
             <li className={styles.navigationItem}>
               <Link to="/pizzas" onClick={() => handleMobileMenuClick() }>Chicago Pizzas</Link>
             </li>
+            <li className={styles.navigationItem}>
+              <Search indices={searchIndices} />
+            </li>
           </ul>
-          <Search indices={searchIndices} />
         </nav>
       </div>
   );
