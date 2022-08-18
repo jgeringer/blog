@@ -10,17 +10,19 @@ env:
   ALGOLIA_ADMIN_KEY: ${{secrets.ALGOLIA_ADMIN_KEY}}
 
 jobs:
-  lighthouse-audit:
-    name: Lighthouse Audit
+  report:
     runs-on: ubuntu-latest
-    steps:
-      - uses: craftech-io/slack-action@v1
+      steps:
+        - uses: craftech-io/slack-action@v1
           with:
             slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
             slack_channel: general
             slack_username: Github
           if: always()
-
+  lighthouse-audit:
+    name: Lighthouse Audit
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v2
 
       - name: Setup Node
