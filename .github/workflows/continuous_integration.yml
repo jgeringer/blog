@@ -11,6 +11,7 @@ env:
 
 jobs:
   report:
+    name: Slack Webhook for GitHub Actions
     runs-on: ubuntu-latest
       steps:
         - uses: craftech-io/slack-action@v1
