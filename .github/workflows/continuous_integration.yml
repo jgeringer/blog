@@ -14,6 +14,13 @@ jobs:
     name: Lighthouse Audit
     runs-on: ubuntu-latest
     steps:
+      - uses: craftech-io/slack-action@v1
+          with:
+            slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+            slack_channel: general
+            slack_username: Github
+          if: always()
+
       - uses: actions/checkout@v2
 
       - name: Setup Node
