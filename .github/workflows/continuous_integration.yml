@@ -12,17 +12,6 @@ env:
   SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
 
 jobs:
-    # name: Slack Notification
-    # runs-on: ubuntu-latest
-    #   steps:
-    #   - uses: actions/checkout@v2
-    #   - name: Slack Notification
-    #   - uses: rtCamp/action-slack-notify@v2
-    #     with:
-    #       slack_webhook_url: ${{secrets.SLACK_WEBHOOK_URL}}
-    #       slack_channel: general
-    #       slack_username: Github
-    #     if: always()
   lighthouse-audit:
     name: Lighthouse Audit
     runs-on: ubuntu-latest
@@ -64,11 +53,20 @@ jobs:
           uploadArtifacts: true,
           runs: 5
           temporaryPublicStorage: true
+  # https://github.com/slackapi/slack-github-action
   slacknotification:
     name: slack
     id: slack
     uses: slackapi/slack-github-action@v1.18.0
     with:
+      # For posting a rich message using Block Kit
+      payload: |
+        {
+          "text": "Deployment started (In Progress)"
+        }
+    uses: slackapi/slack-github-action@v1.18.0
+    with:
+      update-ts: ${{ steps.slack.outputs.ts }}
       # For posting a rich message using Block Kit
       payload: |
         {
@@ -83,29 +81,6 @@ jobs:
             }
           ]
         }
-  # slackNotification:
-  #   name: Slack
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: ./
-  #       with:
-  #         status: success
-  #         slack_webhook_url: ${{secrets.SLACK_WEBHOOK_URL}}
-  #       if: always()
-
-  #     - uses: ./
-  #       with:
-  #         status: cancelled 
-  #         slack_webhook_url: ${{secrets.SLACK_WEBHOOK_URL}}
-  #       if: always()
-        
-  #     - uses: ./
-  #       with:
-  #         status: failure
-  #         slack_webhook_url: ${{secrets.SLACK_WEBHOOK_URL}}
-  #       if: always()
-
   # cypress-run:
   #   runs-on: ubuntu-latest
   #   steps:
