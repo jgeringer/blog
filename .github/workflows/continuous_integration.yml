@@ -8,7 +8,8 @@ env:
   GATSBY_ALGOLIA_APP_ID: ${{secrets.GATSBY_ALGOLIA_APP_ID}}
   GATSBY_ALGOLIA_SEARCH_KEY: ${{secrets.GATSBY_ALGOLIA_SEARCH_KEY}}
   ALGOLIA_ADMIN_KEY: ${{secrets.ALGOLIA_ADMIN_KEY}}
-  SLACK_WEBHOOK_URL: ${{secrets.SLACK_WEBHOOK_URL}}
+  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
 
 jobs:
     # name: Slack Notification
@@ -82,9 +83,6 @@ jobs:
             }
           ]
         }
-    env:
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
   # slackNotification:
   #   name: Slack
   #   runs-on: ubuntu-latest
