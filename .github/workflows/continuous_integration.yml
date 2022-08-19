@@ -8,18 +8,42 @@ env:
   GATSBY_ALGOLIA_APP_ID: ${{secrets.GATSBY_ALGOLIA_APP_ID}}
   GATSBY_ALGOLIA_SEARCH_KEY: ${{secrets.GATSBY_ALGOLIA_SEARCH_KEY}}
   ALGOLIA_ADMIN_KEY: ${{secrets.ALGOLIA_ADMIN_KEY}}
+  SLACK_WEBHOOK_URL: ${{secrets.SLACK_WEBHOOK_URL}}
 
 jobs:
-  report:
-    name: Slack Webhook for GitHub Actions
+  slackNotification:
     runs-on: ubuntu-latest
       steps:
-        - uses: craftech-io/slack-action@v1
+        - uses: actions/checkout@v2
+        - uses: ./
           with:
-            slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
-            slack_channel: general
-            slack_username: Github
+            status: success
+            slack_webhook_url: ${{secrets.SLACK_WEBHOOK_URL}}
           if: always()
+
+        - uses: ./
+          with:
+            status: cancelled 
+            slack_webhook_url: ${{secrets.SLACK_WEBHOOK_URL}}
+          if: always()
+          
+        - uses: ./
+          with:
+            status: failure
+            slack_webhook_url: ${{secrets.SLACK_WEBHOOK_URL}}
+          if: always()
+
+    # name: Slack Notification
+    # runs-on: ubuntu-latest
+    #   steps:
+    #   - uses: actions/checkout@v2
+    #   - name: Slack Notification
+    #   - uses: rtCamp/action-slack-notify@v2
+    #     with:
+    #       slack_webhook_url: ${{secrets.SLACK_WEBHOOK_URL}}
+    #       slack_channel: general
+    #       slack_username: Github
+    #     if: always()
   lighthouse-audit:
     name: Lighthouse Audit
     runs-on: ubuntu-latest
