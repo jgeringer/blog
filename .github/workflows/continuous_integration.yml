@@ -11,27 +11,27 @@ env:
   SLACK_WEBHOOK_URL: ${{secrets.SLACK_WEBHOOK_URL}}
 
 jobs:
-  slackNotification:
-    runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
-        - uses: ./
-          with:
-            status: success
-            slack_webhook_url: ${{secrets.SLACK_WEBHOOK_URL}}
-          if: always()
+  # slackNotification:
+  #   runs-on: ubuntu-latest
+  #     steps:
+  #       - uses: actions/checkout@v2
+  #       - uses: ./
+  #         with:
+  #           status: success
+  #           slack_webhook_url: ${{secrets.SLACK_WEBHOOK_URL}}
+  #         if: always()
 
-        - uses: ./
-          with:
-            status: cancelled 
-            slack_webhook_url: ${{secrets.SLACK_WEBHOOK_URL}}
-          if: always()
+  #       - uses: ./
+  #         with:
+  #           status: cancelled 
+  #           slack_webhook_url: ${{secrets.SLACK_WEBHOOK_URL}}
+  #         if: always()
           
-        - uses: ./
-          with:
-            status: failure
-            slack_webhook_url: ${{secrets.SLACK_WEBHOOK_URL}}
-          if: always()
+  #       - uses: ./
+  #         with:
+  #           status: failure
+  #           slack_webhook_url: ${{secrets.SLACK_WEBHOOK_URL}}
+  #         if: always()
 
     # name: Slack Notification
     # runs-on: ubuntu-latest
