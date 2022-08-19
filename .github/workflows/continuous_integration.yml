@@ -63,7 +63,7 @@ jobs:
           uploadArtifacts: true,
           runs: 5
           temporaryPublicStorage: true
-  slacknotification
+  slacknotification:
     name: slack
     id: slack
     uses: slackapi/slack-github-action@v1.18.0
