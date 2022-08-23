@@ -194,6 +194,10 @@
   }
 }
 
+.testclass {
+  display: block;
+}
+
 /* test */
 .searchBottom {
   display: none;
