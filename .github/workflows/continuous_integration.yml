@@ -8,18 +8,10 @@ env:
   GATSBY_ALGOLIA_APP_ID: ${{secrets.GATSBY_ALGOLIA_APP_ID}}
   GATSBY_ALGOLIA_SEARCH_KEY: ${{secrets.GATSBY_ALGOLIA_SEARCH_KEY}}
   ALGOLIA_ADMIN_KEY: ${{secrets.ALGOLIA_ADMIN_KEY}}
+  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
 
 jobs:
-  report:
-    name: Slack Webhook for GitHub Actions
-    runs-on: ubuntu-latest
-      steps:
-        - uses: craftech-io/slack-action@v1
-          with:
-            slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
-            slack_channel: general
-            slack_username: Github
-          if: always()
   lighthouse-audit:
     name: Lighthouse Audit
     runs-on: ubuntu-latest
@@ -61,7 +53,26 @@ jobs:
           uploadArtifacts: true,
           runs: 5
           temporaryPublicStorage: true
-
+  # https://github.com/slackapi/slack-github-action
+  slacknotification:
+    name: slack
+    id: slack
+    uses: slackapi/slack-github-action@v1.18.0
+    with:
+      # For posting a rich message using Block Kit
+      payload: |
+        {
+          "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+          "blocks": [
+            {
+              "type": "section",
+              "text": {
+                "type": "mrkdwn",
+                "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+              }
+            }
+          ]
+        }
   # cypress-run:
   #   runs-on: ubuntu-latest
   #   steps:
