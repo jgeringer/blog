@@ -20,13 +20,6 @@ img {
 h1,
 h2,
 h3 {
-  font-size: 2em;
-  font-weight: normal;
-}
-
-h1,
-h2,
-h3 {
   &:first-child {
     margin-top: 0;
   }

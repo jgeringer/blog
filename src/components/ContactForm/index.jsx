@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import * as styles from './style.module.css';
+
 const THIS_PAGE = "/contact";
 
 const ContactForm = () => {
@@ -54,11 +56,12 @@ const ContactForm = () => {
     			action={THIS_PAGE}
                 data-netlify="true" 
                 data-netlify-honeypot="bot-field" 
+                className={styles.form}
             >
                 <input type="hidden" name="bot-field" />
                 <input type="hidden" name="form-name" value="contact-form" />
                 <div>
-                    <label htmlFor="name">Name</label>
+                    <label htmlFor="name">Name</label><br />
                     <input 
                         type="text" 
                         name="name" 
@@ -68,7 +71,7 @@ const ContactForm = () => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email">Email</label><br />
                     <input 
                         type="email" 
                         name="email" 
@@ -77,21 +80,22 @@ const ContactForm = () => {
                         required
                     />
                 </div>
-                <div>
-                    <label htmlFor="message">Message</label>
+                <div className={styles.colspan3}>
+                    <label htmlFor="message">Message</label><br />
                     <textarea 
                         name="message" 
                         value={formData.message}
+                        rows="7"
                         onChange={e => handleChange(e)}
                         required
                     />
                 </div>
-                <div>
+                <div className={styles.colspan3}>
                     <button 
                         type="submit" 
                         name="submit" 
                     >
-                        Send Email
+                        Send message
                     </button>
                 </div>
             </form>

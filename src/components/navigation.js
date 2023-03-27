@@ -46,13 +46,16 @@ export default function() {
               <Link to="/blog/" onClick={() => handleMobileMenuClick() }>Journal</Link>
             </li>
             <li className={styles.navigationItem}>
-              <Link to="/contact" onClick={() => handleMobileMenuClick() }>Contact</Link>
-            </li>
-            <li className={styles.navigationItem}>
               <Link to="/kitchen" onClick={() => handleMobileMenuClick() }>Kitchen</Link>
             </li>
             <li className={styles.navigationItem}>
               <Link to="/pizzas" onClick={() => handleMobileMenuClick() }>Chicago Pizzas</Link>
+            </li>
+            <li className={styles.navigationItem}>
+              <Link to="/resume" onClick={() => handleMobileMenuClick() }>Resume</Link>
+            </li>
+            <li className={styles.navigationItem}>
+              <Link to="/contact" onClick={() => handleMobileMenuClick() }>Contact</Link>
             </li>
             <li className={styles.navigationItem}>
               <Search indices={searchIndices} />

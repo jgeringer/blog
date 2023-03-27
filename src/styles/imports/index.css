@@ -21,8 +21,20 @@ body {
   h1,
   h2,
   h3 {
-    font-size: 2em;
     font-weight: normal;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.6rem;
+  }
+  h3 {
+    font-size: 1.2rem;
+  }
+  h4 {
+    font-size: 1.1rem;
   }
   
   h1,
@@ -103,8 +115,30 @@ body {
   }
   
   /**
-   *
+   * Lists
    */
+  .list-tag {
+    display: flex;
+    gap: 8px;
+    li {
+      background: #ff00cc;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+  }
+
+  .list-category {
+    display: flex;
+    gap: 4px;
+    color: #383b4e;
+    font-size: .8rem;
+    flex-wrap: wrap;
+    li {
+      background: #cc84ff;
+      padding: 2px 6px;
+    }
+  }
+
   .list-inline, .list-plain {
     margin: 0;
     padding: 0;
@@ -114,4 +148,37 @@ body {
   .list-inline li {
     display: inline-block;
   }
+
+  ul.list-circles {
+    list-style: none;
+    padding: 0;
+  }
+  ul.list-circles li {
+    position: relative;
+    padding-left: 32px;
+  }
   
+  ul.list-circles li:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 15px;
+    height: 15px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' viewBox='0 0 426.667 426.667' style='enable-background:new 0 0 426.667 426.667;' xml:space='preserve'%3E%3Cg%3E%3Cg%3E%3Cg%3E%3Cpath d='M213.333,106.667c-58.88,0-106.667,47.787-106.667,106.667S154.453,320,213.333,320S320,272.213,320,213.333 S272.213,106.667,213.333,106.667z' fill='%234649eb'/%3E%3Cpath d='M213.333,0C95.467,0,0,95.467,0,213.333s95.467,213.333,213.333,213.333S426.667,331.2,426.667,213.333 S331.2,0,213.333,0z M213.333,384c-94.293,0-170.667-76.373-170.667-170.667S119.04,42.667,213.333,42.667 S384,119.04,384,213.333S307.627,384,213.333,384z' fill='%234649eb' /%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  .spacing {
+    &-v {
+      &-b {
+        &-z {
+          margin-bottom: 0;
+        }
+      }
+      &-t {
+        &-z {
+          margin-top: 0;
+        }
+      }
+    }
+  }
