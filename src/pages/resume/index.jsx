@@ -39,7 +39,7 @@ const Resume = () => {
                     </a>
                 </li>
                 <li>
-                    <a href='/Joe-Geringer-Resume.pdf' download>
+                    <a href='https://assets.ctfassets.net/gop6x1ssjaqg/7kfoSy5F8OfdzalHg4vSw2/65a558bbdb9a57c5ecf2f9f89830a471/Joe-Geringer-Resume.pdf' download>
                         <FontAwesomeIcon icon={faDownload} /> Download Resume
                     </a>
                 </li>
