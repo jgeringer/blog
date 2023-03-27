@@ -7,7 +7,6 @@ body {
   background: #383A4D;
   margin: 0;
   font-display: swap;
-  /* font-family: 'Sarpanch', sans-serif; */
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 400;
 }
@@ -127,4 +126,9 @@ article {
 
 .list-inline li {
   display: inline-block;
+}
+
+input, textarea {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1rem;
 }

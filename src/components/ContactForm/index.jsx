@@ -40,7 +40,7 @@ const ContactForm = () => {
                 // clear the form
                 setFormData(initFormData);
 
-                setStatusText("Thank you!");
+                setStatusText("Thank you! I'll be reaching back out to you shortly.");
             })
             .catch(error => setStatusText(`Error: ${error.message}`));
     };
