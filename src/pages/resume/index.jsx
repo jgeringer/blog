@@ -22,23 +22,23 @@ const Resume = () => {
             </div>
         </div>
         <div className={styles.links}>
-            <ol className='list-plain list-inline'>
+            <ol className='list-plain list-inline u-flex list--links'>
                 <li>
                     <a href="https://codepen.io/jgeringer" target="_blank">
-                    <FontAwesomeIcon icon={faCodepen} /> Codepen
+                        <FontAwesomeIcon icon={faCodepen} /> <span className='u-mobile-hide'>Codepen</span>
                     </a>
                 </li>
                 <li>
                     <a href="https://github.com/jgeringer" target="_blank">
-                    <FontAwesomeIcon icon={faGithub} /> Github
+                        <FontAwesomeIcon icon={faGithub} /> <span className='u-mobile-hide'>Github</span>
                     </a>
                 </li>
                 <li>
                     <a href="https://www.linkedin.com/in/joe-geringer/" target="_blank">
-                    <FontAwesomeIcon icon={faLinkedinIn} /> LinkedIn
+                        <FontAwesomeIcon icon={faLinkedinIn} /> <span className='u-mobile-hide'>LinkedIn</span>
                     </a>
                 </li>
-                <li>
+                <li className='list-item-end'>
                     <a href='https://assets.ctfassets.net/gop6x1ssjaqg/7kfoSy5F8OfdzalHg4vSw2/65a558bbdb9a57c5ecf2f9f89830a471/Joe-Geringer-Resume.pdf' download>
                         <FontAwesomeIcon icon={faDownload} /> Download Resume
                     </a>

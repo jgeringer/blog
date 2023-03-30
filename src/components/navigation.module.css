@@ -92,7 +92,6 @@
 .navigationItem {
   display: inline-flex;
   align-items: flex-end;
-  margin: 0 6px;
   position: relative;
   line-height: 1.3rem;
   &:first-child {
@@ -101,6 +100,11 @@
     }
   }
   a {
+    @media (--smartphone) {
+      padding: 1rem;
+      display: block;
+      width: 100%;
+    }
     @media (--above-smartphone) {
       padding: 12px;
       &:after {

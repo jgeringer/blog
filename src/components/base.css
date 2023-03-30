@@ -1,5 +1,12 @@
 @import '~styles/imports/index';
 
+:root {
+  --header-height: 82px;
+  @media (--above-smartphone) {
+    --header-height: 0;
+  }
+}
+
 body {
   font-size: 1em;
   line-height: 1.65;
@@ -9,6 +16,7 @@ body {
   font-display: swap;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 400;
+  padding-top: var(--header-height);
 }
 
 img {
@@ -39,12 +47,6 @@ footer {
 
 a {
   color: currentColor;
-}
-
-main {
-  @media (--smartphone) {
-    padding: 48px 0;
-  }
 }
 
 pre {
@@ -78,6 +80,30 @@ article {
   
   .u-lg-3of4 {
     width: 75%; 
+  }
+}
+
+.u-mobile-hide {
+  @media (--smartphone) {
+    display: none;
+  }
+}
+
+.u-desktop-hide {
+  @media (--above-smartphone) {
+    display: none;
+  }
+}
+
+.u-mobile-block {
+  @media (--smartphone) {
+    display: block;
+  }
+}
+
+.u-desktop-block {
+  @media (--above-smartphone) {
+    display: block;
   }
 }
 
@@ -126,6 +152,20 @@ article {
 
 .list-inline li {
   display: inline-block;
+}
+
+.list-item-end {
+  margin-left: auto;
+}
+
+.list--links {
+  li {
+    padding: 0;
+    a {
+      padding: 1rem;
+      display: block;
+    }
+  }
 }
 
 input, textarea {
