@@ -6,7 +6,8 @@
     position: fixed;
     top: 0;
     z-index: 99;
-    background: #201f3a;
+    /* background: #201f3a; */
+    background: linear-gradient(27deg, rgba(60,0,91,.95) 0%, rgba(4,0,185,.95) 100%);
   }
   @media (--above-smartphone) {
     align-items: center;
@@ -17,6 +18,13 @@
 }
 
 .navigationWrapper {
+  @media (--above-smartphone) {
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(27deg, rgba(60,0,91,.95) 0%, rgba(4,0,185,.95) 100%);
+  }
   &:before {
     content: '';
     position: fixed;

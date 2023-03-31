@@ -14,6 +14,7 @@ export default function BlogPostTemplate({ data: { post }}) {
   const siteTitle = get(this, 'props.data.site.siteMetadata.title')
   const heroClass = classNames(heroStyles.heroImage, {
     [heroStyles.fullViewportHeight]: post.heroImageHeight === 'Full Viewport Height',
+    [heroStyles.fullSize]: post.heroImageHeight === 'Full Size',
   })
 
   return (
@@ -50,10 +51,10 @@ export const pageQuery = graphql`
       title
       publishDate(formatString: "MMMM Do, YYYY")
       heroImage {
-        gatsbyImageData(width: 1920, height: 1000, quality: 80)
+        gatsbyImageData(quality: 80)
       }
       full: heroImage {
-        gatsbyImageData(width: 1920, height: 1000, quality: 80)
+        gatsbyImageData(quality: 80)
       }
       heroImageHeight
       contentArea {

@@ -20,6 +20,15 @@
   }
 }
 
+.fullSize {
+  height: auto;
+  max-height: calc(100vh - var(--header-height));
+  display: block;
+  img {
+    object-position: top right;
+  }
+}
+
 .heroDetails {
   font-size: 14px;
 }
