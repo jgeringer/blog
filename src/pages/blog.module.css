@@ -1,10 +1,14 @@
 .hero {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 61.8vh;
-  max-height: 400px;
-  background: #e1e1e1;
-  font-size: 2em;
+  height: 200px;
   overflow: hidden;
+  flex-direction: column;
+  background: rgb(11 0 91);
+  h1, h2{
+    margin: 0;
+  }
+  h1 {
+    display: block;
+  }
 }

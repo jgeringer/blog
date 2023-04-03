@@ -46,8 +46,7 @@ const Resume = () => {
             </ol>
         </div>
 
-        <article>
-            
+        <article className={styles.article}>            
             <section>
                 <h2>Experience</h2>
                 <div className={styles.company}>

@@ -43,7 +43,7 @@ export default function() {
               <div className={classNames(styles.hamburgerMenu, styles.hamburgerMenuClose)}><span></span><span></span><span></span></div>
             </li>
             <li className={styles.navigationItem}>
-              <Link to="/blog/" onClick={() => handleMobileMenuClick() }>Journal</Link>
+              <Link to="/blog/" onClick={() => handleMobileMenuClick() }>Blog</Link>
             </li>
             <li className={styles.navigationItem}>
               <Link to="/kitchen" onClick={() => handleMobileMenuClick() }>Kitchen</Link>

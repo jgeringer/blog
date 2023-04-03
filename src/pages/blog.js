@@ -4,6 +4,7 @@ import get from 'lodash/get'
 import { Helmet } from 'react-helmet'
 import * as styles from './blog.module.css'
 import ArticlePreview from '../components/article-preview'
+import * as typography from '@styles/typography.module.css';
 
 class BlogIndex extends React.Component {
   render() {
@@ -13,7 +14,12 @@ class BlogIndex extends React.Component {
     return (
         <div>
           <Helmet title={siteTitle} />
-          <div className={styles.hero}>Blog</div>
+          <div className={styles.hero}>
+            <div className="wrapper">
+              <h1>Blog</h1>
+              <h2 className={typography.headingH3}>Random thoughts & fun projects.</h2>
+            </div>
+          </div>
           <div className="wrapper">
             <h2 className="section-headline">Recent articles</h2>
             <ul className="article-list">

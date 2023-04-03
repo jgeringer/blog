@@ -35,9 +35,20 @@
     background: rgba(111,111,111,.5);
     opacity: 0;
     transition: opacity 300ms;
-    &Expaned {
+  }
+}
+
+@media (--smartphone) {
+  .navigationWrapperExpanded {
+    &:before {
+      background: rgba(0,0,0,.75);
       opacity: 1;
       width: 100vw;
+    }
+
+    ~ main {
+      position: relative;
+      z-index: -1;
     }
   }
 }
@@ -67,10 +78,18 @@
     display: none;
   }
 }
-
+/* 
 .mobileMenuNavExpanded {
-
-}
+  &:before {
+    content: '';
+    background: red;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+} */
 
 .mobileMenuNav {
   @media (--smartphone) {

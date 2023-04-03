@@ -6,10 +6,10 @@ class Uses extends React.Component {
         
         return (
             <>
-                <div>
+                <div className='wrapper'>
                     <h1>Uses:</h1>
                     <p>Some of the things I use.</p>
-                    <ol>
+                    <ol className='list-plain'>
                         <li>Hardware
                             <ul>
                                 <li>Macbook Pro: 2.5 GHz Quad-Core Intel Core i7</li>
@@ -23,34 +23,6 @@ class Uses extends React.Component {
                                 <li>Visual Studio</li>
                                 <li>iTerm (Mac) - with <a href="https://ohmyz.sh/" target="_blank">oh my zsh</a></li>
                                 <li>Cmdr (Windows)</li>
-                            </ul>
-                        </li>
-                        <li>CMS
-                            <ul>
-                                <li>Contentful</li>
-                                <li>Episerver/Optimizely</li>
-                                <li>Shopify</li>
-                                <li>Craft CMS</li>
-                            </ul>
-                        </li>
-                        <li>Communication
-                            <ul>
-                                <li>Atlassian: JIRA, Confluence</li>
-                                <li>Trello</li>
-                                <li>Slack</li>
-                                <li>MS Teams</li>
-                                <li>Mattermost</li>
-                            </ul>
-                        </li>
-                        <li>Code
-                            <ul>
-                                <li>Javascript</li>
-                                <li>HTML</li>
-                                <li>CSS/SCSS/LESS</li>
-                                <li>Vue</li>
-                                <li>React</li>
-                                <li>Gatsby</li>
-                                <li>Nuxt</li>
                             </ul>
                         </li>
                         <li>Fun

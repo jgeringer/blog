@@ -17,10 +17,13 @@ export default function BlogPostTemplate({ data: { post }}) {
     [heroStyles.fullSize]: post.heroImageHeight === 'Full Size',
   })
 
+  const postTitleClass = classNames('section-headline', styles.postTitle);
+
   return (
       <div>
         <Helmet title={`Joe Geringer | Frontend Web Developer - ${post.title}`} />
         <div className={heroStyles.hero}>
+          <h1 className={postTitleClass}>{post.title}</h1>
           <GatsbyImage
             className={heroClass}
             alt={post.title}
@@ -29,17 +32,14 @@ export default function BlogPostTemplate({ data: { post }}) {
         </div>
         <div className="wrapper">
           <article className={styles.article}>
-            <h1 className="section-headline">{post.title}</h1>
+            <p>
+              {post.publishDate}
+            </p>
             {post.contentArea !== null && (
               <ContentArea contentTypes={post.contentArea} />
             )}
             <RichText body={post.bodyRichText} />
           </article>
-          <aside>
-            <p>
-              {post.publishDate}
-            </p>
-          </aside>
         </div>
       </div>
   )

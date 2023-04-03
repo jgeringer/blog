@@ -32,7 +32,7 @@
     }
 }
 
-article {
+.article {
     display: flex;
     gap: 48px;
     @media (--smartphone) {
