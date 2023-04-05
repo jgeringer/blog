@@ -1,19 +1,18 @@
 module.exports = {
   "env": {
     "browser": true,
-    "es6": true,
+    "es6": true
   },
-  "plugins": [
-    "react",
-  ],
+  "plugins": ["react"],
   "globals": {
-    "graphql": false,
+    "graphql": false
   },
   "parserOptions": {
     "sourceType": "module",
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
-      "jsx": true,
-    },
-  }
-}
+      "jsx": true
+    }
+  },
+  extends: ["plugin:storybook/recommended"]
+};
