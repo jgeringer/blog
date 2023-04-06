@@ -37,7 +37,7 @@ async function turnBlogPostsIntoPages({ graphql, actions }) {
       blogPosts: allContentfulBlogPost {
         nodes {
           title
-          slug
+          slugPrefix
           id
         }
       }
@@ -46,10 +46,10 @@ async function turnBlogPostsIntoPages({ graphql, actions }) {
 
   data.blogPosts.nodes.forEach((post) => {
     actions.createPage({
-      path: `/blog/${post.slug}`,
+      path: post.slugPrefix,
       component: blogPostTemplate,
       context: {
-        slug: post.slug
+        slug: post.slugPrefix
       }
     });
   });

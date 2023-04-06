@@ -47,7 +47,7 @@ export default function BlogPostTemplate({ data: { post }}) {
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
-    post: contentfulBlogPost(slug: { eq: $slug }) {
+    post: contentfulBlogPost(slugPrefix: { eq: $slug }) {
       title
       publishDate(formatString: "MMMM Do, YYYY")
       heroImage {

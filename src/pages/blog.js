@@ -25,7 +25,7 @@ class BlogIndex extends React.Component {
             <ul className="article-list">
               {posts.map(({ node }) => {
                 return (
-                  <li key={node.slug}>
+                  <li key={node.slugPrefix}>
                     <ArticlePreview article={node} />
                   </li>
                 )
@@ -51,7 +51,7 @@ export const pageQuery = graphql`
         node {
           id
           title
-          slug
+          slugPrefix
           publishDate(formatString: "MMMM Do, YYYY")
           tags
           heroImage {

@@ -27,7 +27,7 @@ class RootIndex extends React.Component {
                 <ul className="article-list">
                   {posts.map(({ node }) => {
                     return (
-                      <li key={node.slug}>
+                      <li key={node.slugPrefix}>
                         <ArticlePreview article={node} />
                       </li>
                     )
@@ -54,7 +54,7 @@ export const pageQuery = graphql`
       edges {
         node {
           title
-          slug
+          slugPrefix
           publishDate(formatString: "MMMM Do, YYYY")
           tags
           heroImage {
