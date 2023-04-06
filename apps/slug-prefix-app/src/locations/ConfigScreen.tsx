@@ -59,8 +59,8 @@ const ConfigScreen = () => {
   return (
     <Flex flexDirection="column" className={css({ margin: '80px', maxWidth: '800px' })}>
       <Form>
-        <Heading>App Config</Heading>
-        <Paragraph>Welcome to your contentful app. This is your config page!</Paragraph>
+        <Heading>Slug Prefix App Config</Heading>
+        <Paragraph>This App enables you to automatically prefix slugs based on a dropdown selection. This helps avoid typos in the slug feild and removes the need for editors to add slashes.</Paragraph>
       </Form>
     </Flex>
   );

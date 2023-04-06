@@ -14,15 +14,16 @@ const Sidebar = () => {
 
   const [ allEntries, setAllEntries ] = useState([])
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   async function fetchProducts() {
     try {
       const response = await cma.entry.getMany({
         query: {
           limit: 100,
-          content_type: `mealType`,
+          content_type: `blogPost`,
         },
       })
-      const json = await response;
+      const json = response;
       console.log('json: ', json);
       // @ts-ignore
       setAllEntries(json.items)
@@ -38,20 +39,14 @@ const Sidebar = () => {
   
 
   useEffect(() => {
-    // fetchProducts().then(data => setAllEntries([data?.items] || []));
     let myArr = []
     const theItems = fetchProducts().then(data => console.log(myArr.push(data?.items)));
     console.log('theItems: ', theItems)
 
     // setAllEntries(test);
 
-}, [])
+}, [fetchProducts])
 
-  // jsonPromise.then((json) => console.log(json?.items));
-  
-  console.log('sdk: ', sdk);
-  console.log('cma: ', cma);
-  // console.log(jsonPromise)
 
   return (
     <>
@@ -60,9 +55,8 @@ const Sidebar = () => {
         <>
           <TextLink
             // @ts-ignore
-            href={entry.fields.mySlug['en-US']}
+            href={`https://app.contentful.com/spaces/${entry.sys.space.sys.id}/entries/${entry.sys.id}`}
             target="_blank"
-            rel="noopener noreferrer"
             // @ts-ignore
             key={entry.sys.id}
             >
