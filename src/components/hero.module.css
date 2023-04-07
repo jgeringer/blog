@@ -10,6 +10,7 @@
   */
   height: 61.8vh;
   max-height: 400px;
+  width: 100%;
 }
 
 .fullViewportHeight {

@@ -12,3 +12,11 @@ h3,
 .bold {
     font-weight: strong;
 }
+
+.inline_code {
+    color: #abb2bf;
+    background: #282c34;
+    font-family: monospace;
+    padding: 4px 6px;
+    border-radius: 4px;
+}

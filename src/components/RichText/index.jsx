@@ -20,6 +20,7 @@ const RichText = (props) => {
     renderMark: {
       [MARKS.BOLD]: (text) => <strong className={typography.bold}>{text}</strong>,
       [MARKS.ITALIC]: (text) => <span className={typography.italic}>{text}</span>,
+      [MARKS.UNDERLINE]: (text) => <span className={typography.inline_code}>{text}</span>,
       [MARKS.CODE]: (text) => {
         const highlightedCode = hljs.highlightAuto(text)
         
@@ -58,7 +59,7 @@ const RichText = (props) => {
 
         if (contentType === 'video/mp4') {
           return (
-            <video autoPlay muted loop playsInline>
+            <video autoPlay muted loop playsInline controls>
               <source src={url} type="video/mp4" />
             </video>
           )

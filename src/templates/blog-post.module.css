@@ -2,6 +2,14 @@
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
+
+  h2 {
+    margin-top: 6rem;
+  }
+  
+  h4 {
+    margin-top: 3rem;
+  }
 }
 
 .postTitle {

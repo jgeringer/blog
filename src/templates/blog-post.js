@@ -22,8 +22,7 @@ export default function BlogPostTemplate({ data: { post }}) {
   return (
       <div>
         <Helmet title={`Joe Geringer | Frontend Web Developer - ${post.title}`} />
-        <div className={heroStyles.hero}>
-          <h1 className={postTitleClass}>{post.title}</h1>
+        <div className={heroStyles.hero}>          
           <GatsbyImage
             className={heroClass}
             alt={post.title}
@@ -32,6 +31,7 @@ export default function BlogPostTemplate({ data: { post }}) {
         </div>
         <div className="wrapper">
           <article className={styles.article}>
+            <h1 className={classNames(styles.article)}>{post.title}</h1>
             <p>
               {post.publishDate}
             </p>
