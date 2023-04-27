@@ -177,10 +177,28 @@ body {
         &-z {
           margin-bottom: 0;
         }
+        &-sm {
+          margin-bottom: 6px;
+        }
+        &-md {
+          margin-bottom: 12px;
+        }
+        &-lg {
+          margin-bottom: 18px;
+        }
       }
       &-t {
         &-z {
           margin-top: 0;
+        }
+        &-sm {
+          margin-top: 6px;
+        }
+        &-md {
+          margin-top: 12px;
+        }
+        &-lg {
+          margin-top: 18px;
         }
       }
     }
