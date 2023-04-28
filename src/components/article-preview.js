@@ -17,11 +17,14 @@ export default ({ article }) => (
         __html: article.description?.childMarkdownRemark?.html,
       }}
     />
-    {article.tags &&
-      article.tags.map(tag => (
-        <p className={styles.tag} key={tag}>
-          {tag}
-        </p>
-      ))}
+    {article.tags && (
+      <div className={styles.tagWrapper}>
+        {article.tags.map(tag => (
+          <div className={styles.tag} key={tag}>
+            {tag}
+          </div>
+        ))}
+      </div>
+    )}
   </div>
 )

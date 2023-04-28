@@ -23,8 +23,15 @@
             padding: 1rem;
         }
         a {
-            overflow: hidden;
+            color: #fff;
             height: 100%;
+            opacity: .85;
+            overflow: hidden;
+            transition: opacity 160ms;
+            &:hover {
+                opacity: 1;
+                color: #fff;
+            }
             &:before {
                 position: absolute;
                 bottom: 0;

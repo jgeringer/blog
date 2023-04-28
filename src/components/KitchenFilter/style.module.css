@@ -3,7 +3,7 @@
     gap: 1rem;
     margin-bottom: 1rem;
     a[aria-current="page"]{
-        color: green;
+        color: #8e4ef3;
     }
 }
 

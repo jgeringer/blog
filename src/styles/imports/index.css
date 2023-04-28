@@ -62,13 +62,13 @@ body {
   }
   
   a {
-    color: currentColor;
+    color: #c594f7;
+    transition: 160ms ease color;
+    &:hover {
+        color: #8e4ef3;
+    }
   }
-/*   
-  main {
-    padding: 48px 0;
-  }
-   */
+
   .u-flex {
     display: flex;
   }
@@ -127,6 +127,9 @@ body {
       background: #ff00cc;
       padding: 4px 8px;
       border-radius: 4px;
+      a {
+        color: #fff;
+      }
     }
   }
 
