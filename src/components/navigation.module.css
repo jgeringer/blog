@@ -116,6 +116,10 @@
   }
 }
 
+.searchWrapper {
+  padding-left: 1rem;
+}
+
 .navigationItem {
   display: inline-flex;
   align-items: flex-end;

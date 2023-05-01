@@ -57,7 +57,7 @@ export default function() {
             <li className={styles.navigationItem}>
               <Link to="/contact" onClick={() => handleMobileMenuClick() }>Contact</Link>
             </li>
-            <li className={styles.navigationItem}>
+            <li className={classNames(styles.navigationItem, styles.searchWrapper)}>
               <Search indices={searchIndices} />
             </li>
           </ul>
