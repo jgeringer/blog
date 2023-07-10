@@ -458,6 +458,12 @@ const Resume = () => {
               <li>Figma</li>
             </ul>
 
+            <h3 className={styles.category}>Testing</h3>
+            <ul className="list-category list-plain">
+              <li>Cypress</li>
+              <li>Jest</li>
+            </ul>
+
             <h3 className={styles.category}>Process</h3>
             <ul className="list-category list-plain">
               <li>JIRA</li>
