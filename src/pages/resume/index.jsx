@@ -401,10 +401,11 @@ const Resume = () => {
               <li>.NET</li>
               <li>.NET Core</li>
             </ul>
-            <h3 className={styles.category}>Style</h3>
+            <h3 className={styles.category}>CSS Preprocessors</h3>
             <ul className="list-category list-plain">
               <li>LESS</li>
               <li>SASS</li>
+              <li>SCSS</li>
             </ul>
             <h3 className={styles.category}>CMS</h3>
             <ul className="list-category list-plain">
@@ -429,6 +430,7 @@ const Resume = () => {
             <ul className="list-category list-plain">
               <li>Webpack</li>
               <li>Gulp</li>
+              <li>Grunt</li>
             </ul>
 
             <h3 className={styles.category}>IDE</h3>
@@ -446,6 +448,7 @@ const Resume = () => {
             <h3 className={styles.category}>Source</h3>
             <ul className="list-category list-plain">
               <li>Git</li>
+              <li>TFS</li>
             </ul>
 
             <h3 className={styles.category}>Creative</h3>
@@ -462,11 +465,14 @@ const Resume = () => {
             <ul className="list-category list-plain">
               <li>Cypress</li>
               <li>Jest</li>
+              <li>Selenium</li>
             </ul>
 
             <h3 className={styles.category}>Process</h3>
             <ul className="list-category list-plain">
               <li>JIRA</li>
+              <li>Confluence</li>
+              <li>Asana</li>
               <li>Trello</li>
             </ul>
 
