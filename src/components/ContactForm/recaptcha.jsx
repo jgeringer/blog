@@ -30,18 +30,17 @@ const RecaptchaContactForm = () => {
       console.log('*** grecaptcha ready ***')
       console.log('formdata: ', formData)
 
-      const dataToPost = {
-        'form-name': form.getAttribute('name'),
-        'g-recaptcha-response': token,
-        ...formData,
-      }
-
       window.grecaptcha
         .execute('6LdpGdYUAAAAAEjBrvf-SIO_H6asq-FowPTZwFKY', {
           //AIzaSyAK-_yeiFLPL6itA27tu4G0T8X1ZQkGCLY
           action: 'submit',
         })
         .then(function (token) {
+          const dataToPost = {
+            'form-name': form.getAttribute('name'),
+            'g-recaptcha-response': token,
+            ...formData,
+          }
           // Add your logic to submit to your backend server here.
           console.log('going to the backend...')
           fetch(`/api/recaptcha`, {
