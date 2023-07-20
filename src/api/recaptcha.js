@@ -7,6 +7,8 @@ export default function handler(req, res) {
     console.log(`req:`, req);
 
     // https://www.geeksforgeeks.org/how-to-verify-recaptcha-in-node-js-server-call/
+    // https://medium.com/@sergeisizov/using-recaptcha-v3-with-node-js-6a4b7bc67209
+    
     const name = req.body.name;
 
     // const response_key = req.body["g-recaptcha-response"];
@@ -22,22 +24,25 @@ export default function handler(req, res) {
     .then(response => response.json())
     .then(google_response => res.json({ google_response }))
     .catch(error => res.json({ error }));
-      // .then((google_response) => {
+    
+    // TODO: Send a success message to the FE responds if the score is above .7
+
+    // .then((google_response) => {
    
-      //   // google_response is the object return by
-      //   // google as a response
-      //   if (google_response.success == true) {
-      //     //   if captcha is verified
-      //     return res.send({ response: "Successful!" });
-      //   } else {
-      //     // if captcha is not verified
-      //     return res.send({ response: "Failed!" });
-      //   }
-      // })
-      // .catch((error) => {
-      //     // Some error while verify captcha
-      //   return res.json({ error });
-      // });
+    //     // google_response is the object return by
+    //     // google as a response
+    //     if (google_response.success == true) {
+    //       //   if captcha is verified
+    //       return res.send({ response: "Successful!" });
+    //     } else {
+    //       // if captcha is not verified
+    //       return res.send({ response: "Failed!" });
+    //     }
+    //   })
+    //   .catch((error) => {
+    //       // Some error while verify captcha
+    //     return res.json({ error });
+    //   });
 
   }
   

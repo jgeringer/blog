@@ -45,7 +45,11 @@ const RecaptchaContactForm = () => {
           // Add your logic to submit to your backend server here.
           console.log('going to the backend...')
           fetch(`/api/recaptcha`, {
-            method: 'POST',
+            method: 'post',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
             body: JSON.stringify(dataToPost),
           }).then((response) => {
             console.log(`response: `, response)
@@ -53,7 +57,7 @@ const RecaptchaContactForm = () => {
         })
     })
 
-    // TODO: REMOVE THIS LINE!
+    // TODO: MOVE THIS into the success above when the score is over .7. !
     return
 
     fetch(THIS_PAGE, {
