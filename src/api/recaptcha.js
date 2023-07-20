@@ -25,12 +25,12 @@ export default function handler(req, res) {
           return res.send({ response: "Successful!" });
         } else {
           // if captcha is not verified
-          return res.send({ response: "Failed!" });
+          return res.send({ response: "Failed!", err: req.body["g-recaptcha-response"] });
         }
       })
       .catch((error) => {
           // Some error while verify captcha
-        return res.json({ error });
+        return res.json({ error, err: req.body["g-recaptcha-response"] });
       });
 
   }
