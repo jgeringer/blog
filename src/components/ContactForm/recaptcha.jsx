@@ -38,10 +38,8 @@ const RecaptchaContactForm = () => {
           console.log('going to the backend...')
           fetch(`/api/recaptcha`, {
             method: 'POST',
-            body: new URLSearchParams({
-              'form-name': form.getAttribute('name'),
-              ...formData,
-            }).toString(),
+          }).then((response) => {
+            console.log(`response: `, response)
           })
         })
     })
@@ -88,7 +86,8 @@ const RecaptchaContactForm = () => {
         id="contact-form"
         method="POST"
         onSubmit={(e) => handleSubmit(e)}
-        action={THIS_PAGE}
+        // action={THIS_PAGE}
+        action="/api/submit"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         className={styles.form}

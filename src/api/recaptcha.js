@@ -6,6 +6,7 @@ export default function handler(req, res) {
     console.log(`req:`, req);
 
     // https://www.geeksforgeeks.org/how-to-verify-recaptcha-in-node-js-server-call/
+    const name = req.body.name;
     const response_key = req.body["g-recaptcha-response"];
 
     const secret_key = "6LdpGdYUAAAAAFW_hG8BcMNamliqxiZvzD5XVxmk";
@@ -25,12 +26,12 @@ export default function handler(req, res) {
           return res.send({ response: "Successful!" });
         } else {
           // if captcha is not verified
-          return res.send({ response: "Failed!", err: req.body["g-recaptcha-response"] });
+          return res.send({ response: "Failed!" });
         }
       })
       .catch((error) => {
           // Some error while verify captcha
-        return res.json({ error, err: req.body["g-recaptcha-response"] });
+        return res.json({ error });
       });
 
   }
