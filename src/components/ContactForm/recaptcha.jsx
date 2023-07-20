@@ -38,7 +38,8 @@ const RecaptchaContactForm = () => {
         .then(function (token) {
           const dataToPost = {
             'form-name': form.getAttribute('name'),
-            'g-recaptcha-response': token,
+            token: token,
+            // 'g-recaptcha-response': token,
             ...formData,
           }
           // Add your logic to submit to your backend server here.
