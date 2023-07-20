@@ -28,6 +28,14 @@ const RecaptchaContactForm = () => {
 
     window.grecaptcha.ready(function () {
       console.log('*** grecaptcha ready ***')
+      console.log('formdata: ', formData)
+
+      const dataToPost = {
+        'form-name': form.getAttribute('name'),
+        'g-recaptcha-response': token,
+        ...formData,
+      }
+
       window.grecaptcha
         .execute('6LdpGdYUAAAAAEjBrvf-SIO_H6asq-FowPTZwFKY', {
           //AIzaSyAK-_yeiFLPL6itA27tu4G0T8X1ZQkGCLY
@@ -38,11 +46,7 @@ const RecaptchaContactForm = () => {
           console.log('going to the backend...')
           fetch(`/api/recaptcha`, {
             method: 'POST',
-            body: new URLSearchParams({
-              'form-name': form.getAttribute('name'),
-              'g-recaptcha-response': token,
-              ...formData,
-            }).toString(),
+            body: JSON.stringify(dataToPost),
           }).then((response) => {
             console.log(`response: `, response)
           })
