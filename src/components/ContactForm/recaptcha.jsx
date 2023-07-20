@@ -38,6 +38,11 @@ const RecaptchaContactForm = () => {
           console.log('going to the backend...')
           fetch(`/api/recaptcha`, {
             method: 'POST',
+            body: new URLSearchParams({
+              'form-name': form.getAttribute('name'),
+              'g-recaptcha-response': token,
+              ...formData,
+            }).toString(),
           }).then((response) => {
             console.log(`response: `, response)
           })
