@@ -61,6 +61,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.16.12",
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^6.1.0",
     "babel-eslint": "^10.1.0",
     "contentful-import": "^8.2.24",
     "cypress": "8.5.0",
@@ -68,9 +70,6 @@
     "eslint": "^7.32.0",
     "eslint-plugin-react": "^7.19.0",
     "inquirer": "^8.2.0",
-    "prettier": "^2.0.4",
-    "rimraf": "^3.0.2",
-    "webpack": "^5.67.0",
     "postcss": "^8.4.12",
     "postcss-advanced-variables": "^3.0.1",
     "postcss-calc": "^8.2.4",
@@ -80,7 +79,11 @@
     "postcss-import": "^14.1.0",
     "postcss-import-resolver": "^2.0.0",
     "postcss-nested": "^5.0.6",
-    "postcss-scss": "^4.0.3"
+    "postcss-scss": "^4.0.3",
+    "prettier": "^2.0.4",
+    "rimraf": "^3.0.2",
+    "typescript": "^5.1.6",
+    "webpack": "^5.67.0"
   },
   "homepage": "https://www.joegeringer.dev/",
   "keywords": [
@@ -93,7 +96,9 @@
     "type": "git",
     "url": "git+https://github.com/jgeringer/blog.git"
   },
-  "browserslist": ["defaults"],
+  "browserslist": [
+    "defaults"
+  ],
   "scripts": {
     "build": "gatsby build",
     "preview": "cross-env gatsby develop",
@@ -101,7 +106,7 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "test:e2e": "gatsby develop && cypress open",
-    "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-pattern public .",
     "test": "jest"
   }
 }

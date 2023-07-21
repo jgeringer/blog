@@ -1,7 +1,21 @@
+import { GatsbyFunctionRequest, GatsbyFunctionResponse } from "gatsby";
 import fetch from "node-fetch"
-require('dotenv').config();
+import 'dotenv/config';
 
-export default function handler(req, res) {
+interface RequestBody {
+  token: string;
+}
+
+interface GoogleResponse {
+  success: boolean;
+  score: number;
+  action: string;
+}
+
+export default function handler(
+  req: GatsbyFunctionRequest<RequestBody>, 
+  res: GatsbyFunctionResponse
+  ) {
     // https://developers.google.com/recaptcha/docs/v3
 
     const token = req.body.token;
@@ -12,7 +26,7 @@ export default function handler(req, res) {
       method: "post",
     })
     .then(response => response.json())
-    .then((google_response) => {
+    .then((google_response:GoogleResponse) => {
         // google_response is the object return by google as a response
 
         const successfulCriteria = 
