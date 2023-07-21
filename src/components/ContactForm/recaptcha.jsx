@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 
 import * as styles from './style.module.css'
 import { Helmet } from 'react-helmet'
-
-const THIS_PAGE = '/contact'
+import { isWindowDefined } from '@utils/dom'
 
 const RecaptchaContactForm = () => {
   const initFormData = {
@@ -32,66 +31,62 @@ const RecaptchaContactForm = () => {
 
       window.grecaptcha
         .execute('6LdpGdYUAAAAAEjBrvf-SIO_H6asq-FowPTZwFKY', {
-          //AIzaSyAK-_yeiFLPL6itA27tu4G0T8X1ZQkGCLY
           action: 'submit',
         })
         .then(function (token) {
           const dataToPost = {
             'form-name': form.getAttribute('name'),
             token: token,
-            // 'g-recaptcha-response': token,
             ...formData,
           }
           // Add your logic to submit to your backend server here.
-          console.log('going to the backend...')
-          fetch(`/api/recaptcha`, {
-            method: 'post',
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(dataToPost),
-          }).then((response) => {
-            console.log(`response: `, response)
-          })
+          ;(async () => {
+            const response = await fetch('/api/recaptcha', {
+              method: 'post',
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(dataToPost),
+            })
+            const recaptchaResponse = await response.json()
+            console.log(recaptchaResponse)
+
+            if (recaptchaResponse.success === true) {
+              // passed backend validation, so fire off the email form...
+              fetch(window.location.pathname, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                  'form-name': form.getAttribute('name'),
+                  ...formData,
+                }).toString(),
+              })
+                .then((response) => {
+                  if (!response.ok) throw Error(response.statusText)
+
+                  // clear the form
+                  setFormData(initFormData)
+
+                  setStatusText(
+                    "Thank you! I'll be reaching back out to you shortly."
+                  )
+                })
+                .catch((error) => setStatusText(`Error: ${error.message}`))
+            } else {
+              setStatusText(`Error processing`)
+            }
+          })()
         })
     })
-
-    // TODO: MOVE THIS into the success above when the score is over .7. !
-    return
-
-    fetch(THIS_PAGE, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({
-        'form-name': form.getAttribute('name'),
-        ...formData,
-      }).toString(),
-    })
-      .then((response) => {
-        if (!response.ok) throw Error(response.statusText)
-
-        // clear the form
-        setFormData(initFormData)
-
-        setStatusText("Thank you! I'll be reaching back out to you shortly.")
-      })
-      .catch((error) => setStatusText(`Error: ${error.message}`))
   }
 
   return (
     <>
       <Helmet>
-        {/* https://developers.google.com/recaptcha/docs/v3 */}
-        {/* <script src="https://www.google.com/recaptcha/api.js"></script>
-        <script type="text/javascript">{`
-            function onSubmit(token) {
-                console.log('submitting...');
-                document.getElementById("demo-form").submit();
-              }
-        `}</script> */}
         <script src="https://www.google.com/recaptcha/api.js?render=6LdpGdYUAAAAAEjBrvf-SIO_H6asq-FowPTZwFKY"></script>
-        {/* <script src="https://www.google.com/recaptcha/api.js?render=AIzaSyAK-_yeiFLPL6itA27tu4G0T8X1ZQkGCLY"></script> */}
       </Helmet>
       <p>{statusText}</p>
       <form
@@ -100,7 +95,7 @@ const RecaptchaContactForm = () => {
         method="POST"
         onSubmit={(e) => handleSubmit(e)}
         // action={THIS_PAGE}
-        action="/api/submit"
+        // action="/api/submit"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         className={styles.form}
@@ -141,21 +136,7 @@ const RecaptchaContactForm = () => {
           />
         </div>
         <div className={styles.colspan3}>
-          {/* show reCAPTCHA */}
-          <div
-            className="g-recaptcha"
-            // data-sitekey="6LdpGdYUAAAAAEjBrvf-SIO_H6asq-FowPTZwFKY"
-            data-sitekey="AIzaSyAK-_yeiFLPL6itA27tu4G0T8X1ZQkGCLY"
-          ></div>
-
-          <button
-            type="submit"
-            name="submit"
-            // className="g-recaptcha"
-            // data-sitekey="reCAPTCHA_site_key"
-            // data-callback="onSubmit"
-            // data-action="submit"
-          >
+          <button type="submit" name="submit">
             Send message
           </button>
         </div>
