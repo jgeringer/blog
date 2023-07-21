@@ -14,7 +14,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import classNames from 'classnames'
 
-import ContactForm from '../../components/ContactForm'
+import ContactForm from '../../components/ContactForm/recaptcha'
 
 import * as styles from './style.module.css'
 
