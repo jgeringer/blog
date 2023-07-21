@@ -1,9 +1,9 @@
 import fetch from "node-fetch"
 require('dotenv').config();
 
-// https://developers.google.com/recaptcha/docs/v3
-
 export default function handler(req, res) {
+    // https://developers.google.com/recaptcha/docs/v3
+
     const name = req.body.name;
     const token = req.body.token;
     const secret_key = process.env.RECAPTCHA_SECRET_KEY;
@@ -23,10 +23,10 @@ export default function handler(req, res) {
 
         if (successfulCriteria) {
           //   if captcha is verified
-          return res.send({ success: true });
+          return res.json({ success: true });
         } else {
           // if captcha is not verified
-          return res.send({ success: false });
+          return res.json({ success: false });
         }
       })
       .catch((error) => {
