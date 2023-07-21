@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faHistory,
   faGlobe,
-  faFilePdf,
   faDownload,
 } from '@fortawesome/free-solid-svg-icons'
 import {
@@ -12,7 +11,6 @@ import {
   faGithub,
   faLinkedinIn,
 } from '@fortawesome/free-brands-svg-icons'
-import classNames from 'classnames'
 
 import ContactForm from '../../components/ContactForm/recaptcha'
 
@@ -27,6 +25,7 @@ const Resume = () => {
           className={styles.profileImage}
           width="100"
           height="100"
+          alt="github profile image of Joe Geringer"
         />
         <div>
           <h1>Joe Geringer</h1>
@@ -392,14 +391,57 @@ const Resume = () => {
             </ul>
             <h3 className={styles.category}>Framework</h3>
             <ul className="list-category list-plain">
-              <li>Vue</li>
-              <li>React</li>
-              <li>Gatsby</li>
-              <li>Nuxt</li>
-              <li>NextJS</li>
-              <li>jQuery</li>
-              <li>.NET</li>
-              <li>.NET Core</li>
+              <li className={styles.boxLink}>
+                <a href="https://vuejs.org/" target="_blank">
+                  Vue
+                </a>
+              </li>
+              <li className={styles.boxLink}>
+                <a href="https://react.dev/" target="_blank">
+                  React
+                </a>
+              </li>
+              <li className={styles.boxLink}>
+                <a href="https://www.gatsbyjs.com/" target="_blank">
+                  Gatsby
+                </a>
+              </li>
+              <li className={styles.boxLink}>
+                <a href="https://chakra-ui.com/" target="_blank">
+                  Chakra
+                </a>
+              </li>
+              <li className={styles.boxLink}>
+                <a href="https://nuxt.com/" target="_blank">
+                  Nuxt
+                </a>
+              </li>
+              <li className={styles.boxLink}>
+                <a href="https://www.nextjs.org/" target="_blank">
+                  Nextjs
+                </a>
+              </li>
+              <li className={styles.boxLink}>
+                <a href="htps://jquery.cotm/" target="_blank">
+                  jQuery
+                </a>
+              </li>
+              <li className={styles.boxLink}>
+                <a
+                  href="https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet"
+                  target="_blank"
+                >
+                  .NET
+                </a>
+              </li>
+              <li className={styles.boxLink}>
+                <a
+                  href="https://learn.microsoft.com/en-us/aspnet/core/"
+                  target="_blank"
+                >
+                  .NET Core
+                </a>
+              </li>
             </ul>
             <h3 className={styles.category}>CSS Preprocessors</h3>
             <ul className="list-category list-plain">

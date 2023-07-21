@@ -18,6 +18,17 @@
     margin-bottom: 1rem;
     background-color: #4649eb;
 }
+.box-link {
+    a {
+        color: #383b4e;
+    }
+    &:hover {
+        background-color: #4649eb;
+        a {
+            color: #fff;
+        }
+    }
+}
 
 @media (--smartphone) {
     aside {

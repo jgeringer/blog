@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 import * as styles from './style.module.css'
 import { Helmet } from 'react-helmet'
-import { isWindowDefined } from '@utils/dom'
 
 const RecaptchaContactForm = () => {
   const initFormData = {
