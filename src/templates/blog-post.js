@@ -35,9 +35,9 @@ export default function BlogPostTemplate({ data: { post }}) {
             <p>
               {post.publishDate}
             </p>
-            {post.contentArea !== null && (
+            {/* {post.contentArea !== null && (
               <ContentArea contentTypes={post.contentArea} />
-            )}
+            )} */}
             <RichText body={post.bodyRichText} />
           </article>
         </div>
@@ -57,13 +57,13 @@ export const pageQuery = graphql`
         gatsbyImageData(quality: 80)
       }
       heroImageHeight
-      contentArea {
-        __typename
-        ... on Node {
-          ...Gallery
-          ...Calculator
-        }
-      }
+      # contentArea {
+      #   __typename
+      #   ... on Node {
+      #     ...Gallery
+      #     ...Calculator
+      #   }
+      # }
       bodyRichText {
         raw
         references {
