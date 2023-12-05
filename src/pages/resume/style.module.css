@@ -30,6 +30,20 @@
     }
 }
 
+.logos {
+    display: inline-block;
+    top: 2px;
+    position: relative;
+    > * {
+        margin-left: .5rem;
+    }
+}
+
+.optiLogo {
+    width: 16px;
+    height: 16px;
+}
+
 @media (--smartphone) {
     aside {
         display: flex;
