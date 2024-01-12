@@ -511,7 +511,7 @@ const Resume = () => {
               </svg>
               <div>
                 <a
-                  href="https://assets.ctfassets.net/hainwyaguyin/6udtcMblZ7dWVdaSZffu4B/c68e55f80954c68790dcb5e1794809bb/geringer-contentful-certificate.pdf"
+                  href="https://www.credly.com/badges/27e3a260-8c7d-4430-9a90-11e5c954ce8f/public_url"
                   target="_blank"
                 >
                   Contentful Certified Professional
