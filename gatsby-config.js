@@ -2,10 +2,6 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-console.log('*******');
-console.log(process.env.NODE_ENV);
-console.log('*******');
-
 const path = require('path')
 const resolver = require('postcss-import-resolver')
 
@@ -14,10 +10,6 @@ const contentfulConfig = {
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
   host: process.env.HOST,
 }
-
-// if (process.env.CONTENTFUL_PREVIEW) {
-//   contentfulConfig.host = 'preview.contentful.com';
-// }
 
 const { spaceId, accessToken, host } = contentfulConfig
 
