@@ -80,7 +80,7 @@ const Resume = () => {
             <ul className="list-circles">
               <li>
                 Build accessible, performant and responsive sites using a
-                variety of Frontend frameworks.
+                variety of Frontend frameworks such as NextJS, Gatsby and Astro.
               </li>
               <li>Develop sites using headless as well as traditional CMS.</li>
               <li>
@@ -88,10 +88,21 @@ const Resume = () => {
                 to help gather requirements and provide estimates.
               </li>
               <li>
+                Lead a small team of developers to review code, ensure best
+                practices are followed and construct a solid foundation for the
+                team to work from.
+              </li>
+              <li>Help onboard and mentor new hires.</li>
+              <li>
+                Pride myself on always finding time to help others solve
+                problems they may be stuck on. Always looking for ways to not
+                just help them understand the problem and how to solve it so
+                that they can learn and grow from the experience.
+              </li>
+              <li>
                 Leverage testing tools to ensure critical parts of the site
                 function sprint after sprint.
               </li>
-              <li>Help onboard and mentor new hires.</li>
               <li>Integrate personalization tools to A/B test features.</li>
               <li>
                 Helped develop internal projects: Worked with a group to create
