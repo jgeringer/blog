@@ -108,5 +108,9 @@
     "test:e2e": "gatsby develop && cypress open",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-pattern public .",
     "test": "jest"
+  },
+  "volta": {
+    "node": "16.13.0",
+    "yarn": "1.22.17"
   }
 }
